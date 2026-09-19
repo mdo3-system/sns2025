@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>建築士が、現場を守る。｜上善如水 壁量計算WEB 公式紹介ポータル</title>
+  <meta name="description" content="2025年改正建築基準法対応。年間ソフト代・Mac非対応・CAD分断からの完全解放。ブラウザで動く木造構造計算システム『上善如水 壁量計算WEB』。壁量・4分割・告示1460号N値金物・3D立体プレビューは完全無料。ベタ基礎・人通口補強・申請書出力は都度課金。">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@600;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --bg-card: #0f141c;
+      --bg-card-hover: #161e2b;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-bright: rgba(56, 189, 248, 0.35);
+      
+      --accent-blue: #38bdf8;
+      --accent-cyan: #22d3ee;
+      --accent-gold: #fbbf24;
+      --accent-amber: #f59e0b;
+      --accent-emerald: #10b981;
+      --accent-red: #f43f5e;
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --glow-blue: 0 0 35px rgba(56, 189, 248, 0.25);
+      --glow-gold: 0 0 35px rgba(251, 191, 36, 0.25);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ユーティリティ */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 10%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gradient-gold {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gradient-blue {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* グローバルナビゲーション */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 9, 14, 0.85);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: all 0.3s ease;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .brand-logo img {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+    }
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+    }
+    .brand-subtitle {
+      font-size: 0.72rem;
+      color: var(--accent-gold);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .header-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-b2b {
+      font-size: 0.82rem;
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.08);
+      padding: 8px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    .btn-b2b:hover {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: var(--accent-emerald);
+    }
+    .btn-launch {
+      font-size: 0.9rem;
+      color: #000;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--glow-gold);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-launch:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
+    }
+
+    /* 3大ドメイン告知ストリップ */
+    .domain-strip {
+      background: rgba(15, 20, 28, 0.9);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 10px 0;
+      font-size: 0.82rem;
+    }
+    .domain-strip-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .domain-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-muted);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.2s ease;
+    }
+    .domain-badge:hover {
+      border-color: var(--accent-blue);
+      color: var(--text-main);
+    }
+    .domain-badge b { color: var(--accent-blue); }
+    .domain-badge.gold b { color: var(--accent-gold); }
+    .domain-badge.green b { color: var(--accent-emerald); }
+
+    /* ヒーローセクション */
+    section.hero {
+      position: relative;
+      padding: 90px 0 110px 0;
+      overflow: hidden;
+    }
+    .hero-bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 70% 30%, rgba(56, 189, 248, 0.12) 0%, transparent 60%),
+                  radial-gradient(circle at 20% 70%, rgba(251, 191, 36, 0.08) 0%, transparent 50%),
+                  url('assets/official_header.jpg') center/cover no-repeat;
+      opacity: 0.35;
+      filter: blur(1px);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      background: rgba(251, 191, 36, 0.12);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      color: var(--accent-gold);
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+      animation: pulse 2.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 15px rgba(251, 191, 36, 0.2); }
+      50% { box-shadow: 0 0 25px rgba(251, 191, 36, 0.45); }
+    }
+    .hero-title {
+      font-size: 3.6rem;
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .hero-title span.focus {
+      display: block;
+      color: var(--accent-gold);
+      text-shadow: 0 0 40px rgba(251, 191, 36, 0.4);
+    }
+    .hero-desc {
+      font-size: 1.22rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 820px;
+      margin: 0 auto 40px auto;
+    }
+    .hero-desc strong {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .btn-main-cta {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #000;
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      padding: 18px 42px;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.35);
+      transition: all 0.25s ease;
+    }
+    .btn-main-cta:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 45px rgba(245, 158, 11, 0.55);
+    }
+    .btn-sub-cta {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-bright);
+      padding: 17px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .btn-sub-cta:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+
+    /* 信頼バッジ */
+    .hero-features-strip {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 28px;
+    }
+    .hero-features-strip span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+    .hero-features-strip span::before {
+      content: "✔";
+      color: var(--accent-emerald);
+      font-weight: 900;
+    }
+
+    /* セクション共通 */
+    section {
+      padding: 90px 0;
+      position: relative;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 56px auto;
+    }
+    .section-eyebrow {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    .section-eyebrow.gold { color: var(--accent-gold); }
+    .section-title {
+      font-size: 2.35rem;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* 使命感マニフェスト（建築士が現場を守る） */
+    .manifesto-box {
+      background: linear-gradient(135deg, rgba(15, 20, 28, 0.95), rgba(22, 30, 43, 0.85));
+      border: 1px solid var(--border-bright);
+      border-radius: 20px;
+      padding: 56px 48px;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      margin-bottom: 60px;
+    }
+    .manifesto-quote {
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1.8;
+      color: var(--text-main);
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .manifesto-quote span.highlight {
+      background: linear-gradient(transparent 60%, rgba(251, 191, 36, 0.3) 60%);
+    }
+    .manifesto-body {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+    }
+    .manifesto-body p { margin-bottom: 16px; }
+
+    /* 6つの革新カードグリッド */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-bright);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+    .feature-card.highlight {
+      border-color: rgba(251, 191, 36, 0.4);
+      background: linear-gradient(135deg, rgba(15, 20, 28, 0.95), rgba(30, 25, 15, 0.6));
+    }
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent-blue);
+    }
+    .feature-card.highlight .feature-icon {
+      background: rgba(251, 191, 36, 0.15);
+      border-color: rgba(251, 191, 36, 0.4);
+      color: var(--accent-gold);
+    }
+    .feature-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+    .feature-card.highlight .feature-badge {
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--accent-gold);
+      border-color: rgba(251, 191, 36, 0.4);
+    }
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+    .feature-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* 基礎計算キラー特集セクション */
+    section.killer-section {
+      background: linear-gradient(180deg, #07090e 0%, #0d131d 50%, #07090e 100%);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .killer-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .killer-box { grid-template-columns: 1fr; }
+    }
+    .killer-video-frame {
+      background: #000;
+      border-radius: 16px;
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+    .killer-video-frame video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .killer-video-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(251, 191, 36, 0.5);
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      z-index: 2;
+    }
+    .killer-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .killer-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.98rem;
+    }
+    .killer-list li span.num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(251, 191, 36, 0.15);
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* 料金透明性セクション */
+    .pricing-table-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .pricing-table-container { grid-template-columns: 1fr; }
+    }
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .pricing-card.free-card {
+      border-color: rgba(34, 197, 94, 0.4);
+      background: linear-gradient(135deg, rgba(15, 20, 28, 0.95), rgba(16, 185, 129, 0.06));
+    }
+    .pricing-card.paid-card {
+      border-color: rgba(251, 191, 36, 0.4);
+      background: linear-gradient(135deg, rgba(15, 20, 28, 0.95), rgba(245, 158, 11, 0.06));
+    }
+    .pricing-card-header h3 {
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    .pricing-price {
+      font-size: 2.8rem;
+      font-weight: 900;
+      font-family: 'Outfit', sans-serif;
+      margin: 16px 0;
+      line-height: 1;
+    }
+    .pricing-price span {
+      font-size: 1.0rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .pricing-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 24px 0 32px 0;
+      font-size: 0.95rem;
+    }
+    .pricing-items li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pricing-items li::before {
+      content: "✔";
+      font-weight: 900;
+      color: var(--accent-emerald);
+    }
+    .pricing-card.paid-card .pricing-items li::before {
+      color: var(--accent-gold);
+    }
+
+    /* 3大ドメインナビゲーションカード */
+    .portal-nav-section {
+      background: rgba(15, 20, 28, 0.6);
+      border-top: 1px solid var(--border-subtle);
+    }
+    .domain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .domain-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 32px;
+      text-decoration: none;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+    .domain-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-blue);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+    .domain-card.gold:hover { border-color: var(--accent-gold); }
+    .domain-card.green:hover { border-color: var(--accent-emerald); }
+    .domain-badge-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .domain-card-title {
+      font-size: 1.35rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    .domain-card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .domain-url-button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.92rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* フッター */
+    footer.site-footer {
+      border-top: 1px solid var(--border-subtle);
+      background: #040609;
+      padding: 50px 0 30px 0;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.3rem; }
+      .manifesto-box { padding: 36px 24px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 3大ドメイン情報ストリップ -->
+  <div class="domain-strip">
+    <div class="container domain-strip-inner">
+      <span style="font-weight: 800; color: var(--text-main);">🌐 公式3大窓口：</span>
+      <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="domain-badge gold">
+        💻 プログラム本体（即起動）：<b>2025.eie.jp</b> ➔
+      </a>
+      <a href="https://sns.eie.tokyo" class="domain-badge">
+        👤 個人・紹介ポータル：<b>sns.eie.tokyo</b>
+      </a>
+      <a href="https://pr.eie.tokyo" target="_blank" rel="noopener" class="domain-badge green">
+        🏢 法人契約管理・24h営業：<b>pr.eie.tokyo</b> ➔
+      </a>
+    </div>
+  </div>
+
+  <!-- メインヘッダー -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand-logo">
+        <img src="assets/official_avatar.jpg" alt="上善如水 壁量計算WEB ロゴ">
+        <div>
+          <div class="brand-title">上善如水 壁量計算WEB</div>
+          <div class="brand-subtitle">建築士が現場を守る。構造計算オープンシステム</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#manifesto">使命感と理念</a></li>
+        <li><a href="#features">6大革新機能</a></li>
+        <li><a href="#foundation">基礎計算キラー特集</a></li>
+        <li><a href="#pricing">安心の料金体系</a></li>
+        <li><a href="#video">実演動画</a></li>
+      </ul>
+
+      <div class="header-cta">
+        <a href="https://pr.eie.tokyo" target="_blank" rel="noopener" class="btn-b2b">法人窓口</a>
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-launch">
+          <span>🚀 今すぐ計算開始</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ヒーローセクション -->
+  <section class="hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="container hero-content">
+      <div class="hero-tagline">
+        🛡️ 2025年4月改正建築基準法・4号特例縮小対応
+      </div>
+      <h1 class="hero-title">
+        建築士が、<span class="focus">現場と命を守る。</span>
+      </h1>
+      <p class="hero-desc">
+        高額な年間ソフト代に屈するな。Macだからと諦めるな。<br>
+        <strong>ブラウザを開くだけで即座に起動。全CADのDXFと直結。</strong><br>
+        壁量算定・4分割法・告示1460号厳格N値金物は【完全無料】。<br>
+        すべての建築士に、妥協のない構造計算の武器を。
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-main-cta">
+          <span>💻 ブラウザで今すぐ無料計算を始める（2025.eie.jp）</span>
+          <span style="font-size: 1.3rem;">➔</span>
+        </a>
+        <a href="#video" class="btn-sub-cta">
+          <span>▶ 実演CM動画を見る（45秒）</span>
+        </a>
+      </div>
+
+      <div class="hero-features-strip">
+        <span>Mac & Windows 完全両対応</span>
+        <span>JWW / AutoCAD / BIM等 全CAD直結</span>
+        <span>日常の作図・検証は永久無料</span>
+        <span>ベタ基礎・人通口補強計算搭載</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 建築士の使命感ステートメント -->
+  <section id="manifesto" style="padding-top: 40px;">
+    <div class="container">
+      <div class="manifesto-box">
+        <div class="manifesto-quote">
+          「誰が、施主の家族と現場の安全を守るのか。<br>
+          それは、高額なソフトベンダーではない。<span class="highlight">図面を引くあなた自身だ。</span>」
+        </div>
+        <div class="manifesto-body">
+          <p>
+            2025年4月の法改正により、日本の木造建築は大きな転換点を迎えました。4号特例の縮小、構造安全性の審査義務化、複雑化する壁量・基礎の計算基準——。
+          </p>
+          <p>
+            しかし、現場の設計者が直面している現実はあまりに理不尽でした。「年に数棟しか申請しないのに毎月高額なライセンス料を請求される」「アトリエのMacでは動かない」「CADごとに図面を打ち直す二重手間」「そして何より、ベタ基礎の接地圧や人通口の補強検討を手計算や外注で消耗している……」。
+          </p>
+          <p>
+            <strong>『上善如水 壁量計算WEB』は、現場を守る建築士の尊厳を取り戻すために作られました。</strong><br>
+            専用ソフトのインストールは一切不要。普段お使いのCADからDXFを書き出せば、瞬時にミリ単位で直結。日常の作図・検証・3D立体確認はずっと無料。費用は確認申請書を一括出力する時だけの安心都度課金。<br>
+            もう高額ソフトの鎖に縛られる必要はありません。胸を張って、最高の安全を施主へ届けてください。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6大革新機能セクション -->
+  <section id="features" style="background: rgba(15, 20, 28, 0.4);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">TECHNOLOGY & PRECISION</div>
+        <h2 class="section-title">実務者基準を極めた「6大革新」</h2>
+        <p class="section-desc">簡易チェッカーではありません。許容応力度設計レベルの厳格な計算エンジンを、驚くほど直感的なブラウザUIに凝縮しました。</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- 1 -->
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <span class="feature-badge">完全無料</span>
+          <h3 class="feature-title">① 完全ブラウザ型（Mac/Win両対応）</h3>
+          <p class="feature-text">
+            ソフトのインストール・アップデートは一切不要。Safari、Chrome、EdgeでURLを開くだけで即起動。MacでもWindowsでも現場のiPadでも全く同じ操作性で動作します。
+          </p>
+        </div>
+
+        <!-- 2 -->
+        <div class="feature-card">
+          <div class="feature-icon">📐</div>
+          <span class="feature-badge">完全無料</span>
+          <h3 class="feature-title">② あらゆるCADのDXFを一発取込</h3>
+          <p class="feature-text">
+            Jw_cad、AutoCAD、ARCHICAD、Vectorworks、SketchUp、Grasshopper。どんなCADでもDXFをドロップすれば通り芯・柱・壁を瞬時に原点合致インポート。CAD間の分断を根絶します。
+          </p>
+        </div>
+
+        <!-- 3 -->
+        <div class="feature-card">
+          <div class="feature-icon">🧱</div>
+          <span class="feature-badge">完全無料</span>
+          <h3 class="feature-title">③ 耐力壁直感配置 ＆ リアルタイムOK判定</h3>
+          <p class="feature-text">
+            柱をクリックして掴む直感操作で耐力壁や筋交いを連続配置。壁を引くたびに存在壁量ゲージがリアルタイム加算され、一目で充足率OKが判定されます。面材＋筋交いの合成倍率も自由自在。
+          </p>
+        </div>
+
+        <!-- 4 -->
+        <div class="feature-card">
+          <div class="feature-icon">⚖️</div>
+          <span class="feature-badge">完全無料</span>
+          <h3 class="feature-title">④ 4分割法 ＆ 告示1460号厳格N値金物</h3>
+          <p class="feature-text">
+            外形枠から建物の1/4境界ラインを瞬時に自動算出し、壁率比0.5以上テーブルが追従。安易な建物重量減歩を行わない告示1460号に厳格準拠した引抜金物選定と立面軸力図ビューアを搭載。
+          </p>
+        </div>
+
+        <!-- 5 -->
+        <div class="feature-card highlight">
+          <div class="feature-icon">🏗️</div>
+          <span class="feature-badge">★ 熱望キラー機能（都度課金）</span>
+          <h3 class="feature-title">⑤ ベタ基礎接地圧 ＆ 人通口補強計算</h3>
+          <p class="feature-text">
+            スラブを閉合するだけで現れる「亀甲分割線」による接地圧算定。基礎梁連続梁解析。さらに実務者の頭を悩ませる「開口部梁成＝スラブ厚・上主筋欠損黒塗り・下主筋補強」の自動検定まで完全網羅！
+          </p>
+        </div>
+
+        <!-- 6 -->
+        <div class="feature-card">
+          <div class="feature-icon">👁️</div>
+          <span class="feature-badge">完全無料</span>
+          <h3 class="feature-title">⑥ 3Dリアルタイム構造モデル</h3>
+          <p class="feature-text">
+            基礎立ち上がり、地中梁、スラブ、柱、耐力壁、屋根伏図までが連動した3D立体モデルをブラウザ内で360度グルグル回転・拡大。整合性と構造美を施主の前でも即座にプレゼン可能。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 基礎計算キラー特集（動画付き） -->
+  <section id="foundation" class="killer-section">
+    <div class="container">
+      <div class="killer-box">
+        <div>
+          <div class="section-eyebrow gold">KILLED COMPLEXITY</div>
+          <h2 class="section-title" style="margin-bottom: 20px;">
+            もうベタ基礎と人通口で<br><span class="gradient-gold">消耗する必要はありません。</span>
+          </h2>
+          <p class="section-desc">
+            多くの設計事務所・工務店が外注に出したり、手計算に何日も費やしていたベタ基礎の構造計算。上善如水 壁量計算WEBは、そのすべてをブラウザ上で全自動化しました。
+          </p>
+
+          <ul class="killer-list">
+            <li>
+              <span class="num">1</span>
+              <div>
+                <strong>スラブ亀甲分割による接地圧・短期許容支持力算定</strong><br>
+                <span style="color:var(--text-muted); font-size:0.9rem;">四周固定スラブから片持ちスラブまで、多角形スラブを閉合した瞬間に荷重負担幅と接地圧を一発判定。</span>
+              </div>
+            </li>
+            <li>
+              <span class="num">2</span>
+              <div>
+                <strong>基礎梁・地中梁の連続梁応力解析</strong><br>
+                <span style="color:var(--text-muted); font-size:0.9rem;">長期荷重・短期地震時の曲げモーメントおよびせん断力を瞬時に精密解析。</span>
+              </div>
+            </li>
+            <li>
+              <span class="num">3</span>
+              <div>
+                <strong>人通口（点検口）スラブ補強筋検定の実務基準準拠</strong><br>
+                <span style="color:var(--text-muted); font-size:0.9rem;">耐力壁直下の配置を警告回避し、梁成をスラブ厚みのみとみなして上主筋欠損（黒塗り）と下主筋本数割増しで自動検定。</span>
+              </div>
+            </li>
+          </ul>
+
+          <div style="margin-top: 32px;">
+            <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-main-cta" style="padding: 14px 28px; font-size: 1.0rem;">
+              <span>ベタ基礎計算を今すぐ体験する（2025.eie.jp） ➔</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="killer-video-frame">
+          <div class="killer-video-badge">▶ 基礎計算 特化実演CM（45秒）</div>
+          <video controls playsinline preload="metadata" poster="assets/preview_foundation_45s.jpg">
+            <source src="videos/promo_foundation_45s.mp4" type="video/mp4">
+            お使いのブラウザは動画タグに対応していません。
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 実演動画セクション（30秒CM / 15秒CM） -->
+  <section id="video">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">PROMOTION VIDEOS</div>
+        <h2 class="section-title">動画で体感する圧倒的スピード</h2>
+        <p class="section-desc">百聞は一見にしかず。DXFをドロップした瞬間から、柱をつかんで壁を引く様子をご覧ください。</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 1040px; margin: 0 auto;">
+        <!-- 30秒CM -->
+        <div style="background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border-subtle); overflow: hidden; padding: 20px;">
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+            📺 30秒CM（標準実演版）
+          </h3>
+          <video controls playsinline preload="metadata" style="width: 100%; border-radius: 10px; display: block;" poster="assets/preview_30s.jpg">
+            <source src="videos/promo_30s.mp4" type="video/mp4">
+          </video>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 12px;">
+            木造構造計算がここまで自由に。あらゆるCADと直結し、日々の検証は完全無料。
+          </p>
+        </div>
+
+        <!-- 15秒CM -->
+        <div style="background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border-subtle); overflow: hidden; padding: 20px;">
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+            ⚡ 15秒CM（インパクト版）
+          </h3>
+          <video controls playsinline preload="metadata" style="width: 100%; border-radius: 10px; display: block;" poster="assets/preview_15s.jpg">
+            <source src="videos/promo_15s.mp4" type="video/mp4">
+          </video>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 12px;">
+            MacもWinもブラウザで即起動！インストール不要のスピード感を15秒で体感。
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 36px;">
+        <a href="../video_production/index.html" class="btn-sub-cta" style="font-size: 0.95rem;">
+          <span>🎬 全8話 操作解説動画シリーズ ポータルはこちら ➔</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 料金透明性セクション -->
+  <section id="pricing" style="background: rgba(15, 20, 28, 0.4);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow gold">FAIR & TRANSPARENT PRICING</div>
+        <h2 class="section-title">建築士のリスクをゼロにする料金設計</h2>
+        <p class="section-desc">年間数十万円の固定費はもう不要です。日々の検討は永久に完全無料。費用は申請書類を出す時だけの圧倒的フェアさ。</p>
+      </div>
+
+      <div class="pricing-table-container">
+        <!-- 無料プラン -->
+        <div class="pricing-card free-card">
+          <div>
+            <div class="pricing-card-header">
+              <span class="feature-badge">誰でも今すぐ使える</span>
+              <h3>日々の作図・設計検証</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">プランニング初期の壁量チェックや3D確認</p>
+            </div>
+            <div class="pricing-price" style="color: var(--accent-emerald);">
+              ¥0 <span>/ 永久完全無料</span>
+            </div>
+            <ul class="pricing-items">
+              <li>CAD（DXF）無制限インポート</li>
+              <li>耐力壁配置 ＆ 存在壁量リアルタイム判定</li>
+              <li>4分割法 ＆ 重心剛心プロット</li>
+              <li>告示1460号 厳格N値金物自動選定</li>
+              <li>屋根伏図 ＆ 見付面積立体自動算定</li>
+              <li>3Dリアルタイム構造モデルプレビュー</li>
+              <li>Mac / Windows / iPad マルチデバイス対応</li>
+            </ul>
+          </div>
+          <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-sub-cta" style="justify-content: center; width: 100%; border-color: rgba(16, 185, 129, 0.5);">
+            今すぐ無料で始める（2025.eie.jp）
+          </a>
+        </div>
+
+        <!-- 都度課金プラン -->
+        <div class="pricing-card paid-card">
+          <div>
+            <div class="pricing-card-header">
+              <span class="feature-badge" style="background:rgba(251,191,36,0.15); color:var(--accent-gold); border-color:rgba(251,191,36,0.4);">物件確定時のみ</span>
+              <h3>本格基礎計算 ＆ 申請用帳票</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">確認申請・構造審査へそのまま提出する時だけ</p>
+            </div>
+            <div class="pricing-price" style="color: var(--accent-gold);">
+              都度課金 <span>/ 使った分だけ</span>
+            </div>
+            <ul class="pricing-items">
+              <li>ベタ基礎スラブ亀甲分割 ＆ 接地圧算定</li>
+              <li>基礎立上り・地中梁 連続梁応力解析</li>
+              <li>人通口開口部スラブ補強筋・上主筋欠損検定</li>
+              <li>確認申請用 A4縦一括構造計算書PDF出力</li>
+              <li>年間固定ライセンス料・保守料 0円</li>
+              <li>必要な物件だけ手軽に決済可能</li>
+            </ul>
+          </div>
+          <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-main-cta" style="justify-content: center; width: 100%;">
+            プログラムを開く（2025.eie.jp）
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3大ドメイン連携セクション -->
+  <section class="portal-nav-section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 40px;">
+        <div class="section-eyebrow">ECOSYSTEM</div>
+        <h2 class="section-title">用途に応じた3つの公式ポータル</h2>
+        <p class="section-desc">個人設計者から大手工務店まで、あらゆる規模の木造設計実務を支える体制を整えています。</p>
+      </div>
+
+      <div class="domain-grid">
+        <!-- 1. プログラム本体 -->
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="domain-card gold">
+          <div>
+            <div class="domain-badge-label" style="color: var(--accent-gold);">【プログラム本体】</div>
+            <h3 class="domain-card-title">上善如水 壁量計算WEB</h3>
+            <p class="domain-card-desc">
+              インストール不要。ブラウザを開くだけで即座にDXFを取り込み、壁量判定・4分割・N値・3D確認を無料で実行できるWebシステム本体です。
+            </p>
+          </div>
+          <div class="domain-url-button" style="border-color: rgba(251, 191, 36, 0.4); color: var(--accent-gold);">
+            <span>https://2025.eie.jp</span>
+            <span>即起動 ➔</span>
+          </div>
+        </a>
+
+        <!-- 2. 紹介ポータル -->
+        <a href="https://sns.eie.tokyo" class="domain-card">
+          <div>
+            <div class="domain-badge-label" style="color: var(--accent-blue);">【紹介・SNSポータル】</div>
+            <h3 class="domain-card-title">個人向け紹介・操作解説</h3>
+            <p class="domain-card-desc">
+              個人事業主・アトリエ設計事務所に向けた情報発信拠点。全8話のチュートリアル動画、機能解説、X・note・Instagramとの連動ポータルです。
+            </p>
+          </div>
+          <div class="domain-url-button" style="border-color: rgba(56, 189, 248, 0.4); color: var(--accent-blue);">
+            <span>https://sns.eie.tokyo</span>
+            <span>現在地 ➔</span>
+          </div>
+        </a>
+
+        <!-- 3. 法人契約管理 -->
+        <a href="https://pr.eie.tokyo" target="_blank" rel="noopener" class="domain-card green">
+          <div>
+            <div class="domain-badge-label" style="color: var(--accent-emerald);">【工務店・法人窓口】</div>
+            <h3 class="domain-card-title">法人契約管理・PRポータル</h3>
+            <p class="domain-card-desc">
+              社内複数ライセンスの一括契約管理、月締め請求書払い、そして24時間働く法人向け自動営業システム連携をご提供するBtoB専用窓口です。
+            </p>
+          </div>
+          <div class="domain-url-button" style="border-color: rgba(16, 185, 129, 0.4); color: var(--accent-emerald);">
+            <span>https://pr.eie.tokyo</span>
+            <span>法人窓口 ➔</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最終CTAセクション -->
+  <section style="padding: 100px 0; text-align: center; position: relative;">
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto;">
+        <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 20px; line-height: 1.2;">
+          さあ、現場を守る武器を<br><span class="gradient-gold">その手の中に。</span>
+        </h2>
+        <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 40px;">
+          初期費用ゼロ。年間ライセンス料ゼロ。<br>
+          お手元のDXF図面を開いて、新しい木造構造計算の世界を体感してください。
+        </p>
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-main-cta" style="font-size: 1.25rem; padding: 20px 48px;">
+          <span>💻 プログラムを今すぐ起動する（2025.eie.jp）</span>
+          <span style="font-size: 1.4rem;">➔</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div style="font-weight: 800; font-size: 1.0rem; color: var(--text-main); margin-bottom: 4px;">
+          上善如水 壁量計算WEB
+        </div>
+        <div>建築士が現場を守る。オープン型 木造構造計算クラウド</div>
+      </div>
+      <div style="display: flex; gap: 24px;">
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" style="color: var(--text-muted); text-decoration: none;">プログラム本体（2025.eie.jp）</a>
+        <a href="https://sns.eie.tokyo" style="color: var(--text-muted); text-decoration: none;">紹介ポータル（sns.eie.tokyo）</a>
+        <a href="https://pr.eie.tokyo" target="_blank" rel="noopener" style="color: var(--text-muted); text-decoration: none;">法人契約（pr.eie.tokyo）</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 24px; text-align: center; font-size: 0.78rem; color: var(--text-dim);">
+      &copy; 2025-2026 上善如水 壁量計算WEB. All Rights Reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
