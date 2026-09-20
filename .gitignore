@@ -5,4 +5,6 @@ Thumbs.db
 uploads/tickets/*
 !uploads/tickets/.gitkeep
 scratch/
+/2025/
+default_page.png
 

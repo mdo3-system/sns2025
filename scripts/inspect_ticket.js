@@ -24,7 +24,7 @@ try {
 
 const SSH_HOST = 'mdo3@mdo3.xsrv.jp';
 const SSH_PORT = '10022';
-const REMOTE_BASE_DIR = 'eie.tokyo/public_html/sns/uploads/tickets';
+const REMOTE_BASE_DIR = 'eie.jp/public_html/uploads/tickets';
 const LOCAL_SCRATCH_DIR = path.resolve(__dirname, '../scratch/tickets');
 const INDEX_FILE = path.join(LOCAL_SCRATCH_DIR, '.ticket_index.json');
 
@@ -138,7 +138,7 @@ function getLatestTicketId() {
 // サーバー上のチケット一覧とメタデータを取得
 function fetchRemoteTicketSummaries() {
   try {
-    const sshCmd = `ssh -o BatchMode=yes -p ${SSH_PORT} ${SSH_HOST} "php eie.tokyo/public_html/sns/api/list_tickets.php"`;
+    const sshCmd = `ssh -o BatchMode=yes -p ${SSH_PORT} ${SSH_HOST} "php eie.jp/public_html/api/list_tickets.php"`;
     const jsonOutput = execSync(sshCmd, { encoding: 'utf-8' }).trim();
     if (jsonOutput) {
       return JSON.parse(jsonOutput);
