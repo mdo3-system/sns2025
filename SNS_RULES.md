@@ -15,7 +15,9 @@
 - **セキュリティ**: `.htaccess` により `uploads/` 内のスクリプト直接実行を完全無効化。
 - **エージェント自動診断・修正計画生成コマンド**:
   ```bash
-  node sns_portal/scripts/inspect_ticket.js --latest
+  node sns_portal/scripts/inspect_ticket.js --list  # 未解析一覧表示
+  node sns_portal/scripts/inspect_ticket.js 1       # [1]番を解析
+  node sns_portal/scripts/inspect_ticket.js --all   # 未解析全件を一括解析
   ```
 
 ## 【最重要・厳格義務】修正作業完了時の本番サーバー同期

@@ -27,14 +27,25 @@
 
 ユーザーからファイル添付付きの報告が届いた際、エージェントはファイルを自動取得・診断し、管理者へ修正計画書を提示します。
 
-### 実行手順（コマンド1発で完了）
+### 実行手順（対話的キュー管理 ＆ 一括バッチ対応）
 ```bash
-# 最新チケットを自動取得して診断する場合
-node sns_portal/scripts/inspect_ticket.js --latest
+# 1. 未解析チケットの一覧を表示（キュー確認）
+node sns_portal/scripts/inspect_ticket.js --list   # または引数なし
 
-# 特定のチケットIDを指定する場合
-node sns_portal/scripts/inspect_ticket.js <ticket_id>
+# 2. 一覧の番号（1, 2, 3...）を指定して1件ずつ解析
+node sns_portal/scripts/inspect_ticket.js 1
+
+# 3. 未解析の全チケットを一括自動バッチ解析（一晩で複数届いた際に最適）
+node sns_portal/scripts/inspect_ticket.js --all
+
+# 4. 特定のチケットIDを直接指定して解析
+node sns_portal/scripts/inspect_ticket.js ticket_20260920_161520_a8f9
 ```
+
+※チャット上での指示にも対応：
+- 「未処理チケットを見せて」➔ 未解析一覧を表示
+- 「1番を解析して」➔ 対象チケットを解析して Implementation Plan を提示
+- 「全部まとめて解析して」➔ 全件一括解析を実行してサマリーを提示
 
 ### スクリプトの自動処理内容
 1. **自動ダウンロード**: SSH/SCP経由でXServerから添付ファイル一式をローカル作業ディレクトリ（`sns_portal/scratch/tickets/{ticket_id}/`）へ取得。
