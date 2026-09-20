@@ -75,6 +75,18 @@ const QA_DATABASE = [
 
 const UPDATE_LOGS = [
   {
+    id: "upd-005",
+    version: "Ver 2.2.0",
+    date: "2026-09-20",
+    badgeType: "release",
+    badgeLabel: "🎉 公式note始動",
+    title: "公式note開設 ＆ 初回解説記事「木造構造計算に革命を」を公開",
+    reporter: "開発・運営チーム",
+    detail: "設計実務者の皆様へ法改正対策や計算ノウハウをお届けする公式note（https://note.com/jyouzen_2025）を開設し、初回記事を公開いたしました。また、実務質疑・不具合報告フォームからの添付ファイル自動診断パイプラインも本番稼働を開始いたしました。",
+    affectedAreas: "公式note連携 / 実務Q&A添付ファイル自動解析パイプライン",
+    shareSummary: "【公式note始動】『上善如水 壁量計算WEB』公式noteを開設し初回記事を公開しました！2025年法改正の構造審査を乗り切るノウハウを定期的にお届けします。 https://note.com/jyouzen_2025/n/n997c3e76eced"
+  },
+  {
     id: "upd-004",
     version: "Ver 2.1.4",
     date: "2026-09-20",
