@@ -2,3 +2,7 @@
 .DS_Store
 Thumbs.db
 *.log
+uploads/tickets/*
+!uploads/tickets/.gitkeep
+scratch/
+
