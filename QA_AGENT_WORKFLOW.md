@@ -42,7 +42,16 @@
 - **実務質問の場合**：`QA_DATABASE` に質問、丁寧な構造解説、キャプチャしたスクショ画像/動画、タグを自動追加。
 - **不具合解消の場合**：`UPDATE_LOGS` に「⚡ 即日解消」バッジ、報告者、修正内容、対応バージョンを自動追加。
 
-### ステップ④：SNS（X / note+ / Instagram）への爆速展開
+### ステップ④：本番サーバーへの即時デプロイ同期【必須・厳格義務】
+エージェントは `qa_data.js` やアセットの追加後、**直ちに以下の同期コマンドを実行して本番環境（`https://sns.eie.tokyo`）へ反映させます**：
+```bash
+git add .
+git commit -m "Add QA & update log: <質問または解消内容>"
+git push origin main
+ssh -o BatchMode=yes -p 10022 mdo3@mdo3.xsrv.jp "cd eie.tokyo/public_html/sns && git pull origin main"
+```
+
+### ステップ⑤：SNS（X / note+ / Instagram）への爆速展開
 ポータル上の各更新カードには **「𝕏 ポスト文をコピー」「📝 note・SNS用要約コピー」** ボタンが設置されているため：
 1. 運営者様がボタンを1クリック ➔ クリップボードに投稿用テキストがコピー。
 2. X（旧Twitter）やnote+にそのまま貼り付けて投稿するだけで、**「不具合報告からわずか数時間で解消した圧倒的な開発スピード」**を即座にSNSでアピールできます。

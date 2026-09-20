@@ -8,13 +8,22 @@
 - **実務・紹介・Q&Aポータル（本サイト）**: `https://sns.eie.tokyo`（実務Q&A・不具合解消速報・操作解説）
 - ※法人一括管理用BtoB窓口（`https://pr.eie.tokyo`）は、本ポータル（sns.eie.tokyo）には掲載せず独立運用。
 
-## デプロイ＆本番サーバー同期コマンド
+## 【最重要・厳格義務】修正作業完了時の本番サーバー同期
+**AIエージェントおよび開発者は、本リポジトリ（`sns_portal`）のファイル（HTML、CSS、JS、Q&Aデータ、画像等）を変更・追加した際は、ユーザーへ作業完了を報告する前に必ず以下のコマンドを実行し、本番サーバー（`https://sns.eie.tokyo`）への同期を完了させてください。ローカルの編集だけで作業完了としてはなりません。**
+
+### デプロイ＆本番サーバー同期コマンド（必須実行手順）
 ```bash
-# ローカルでコミット＆プッシュ
+# 1. ローカルでコミット＆GitHubへプッシュ
 git add .
-git commit -m "Update sns.eie.tokyo assets and content"
+git commit -m "Update sns.eie.tokyo: <更新内容の要約>"
 git push origin main
 
-# XServer本番環境へ完全同期
+# 2. XServer本番環境へ即時同期（SSH経由でgit pull）
 ssh -o BatchMode=yes -p 10022 mdo3@mdo3.xsrv.jp "cd eie.tokyo/public_html/sns && git pull origin main"
 ```
+
+※PowerShell環境で1行実行する場合：
+```powershell
+git add .; git commit -m "Update sns.eie.tokyo: <更新内容>"; git push origin main; ssh -o BatchMode=yes -p 10022 mdo3@mdo3.xsrv.jp "cd eie.tokyo/public_html/sns && git pull origin main"
+```
+
