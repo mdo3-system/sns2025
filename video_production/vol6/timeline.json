@@ -1,0 +1,87 @@
+{
+  "voice": "ja-JP-NanamiNeural",
+  "rate": "+3%",
+  "total_duration": 201.32399999999998,
+  "segments": [
+    {
+      "index": 1,
+      "id": "seg_01_intro",
+      "text": "上善如水 壁量計算WEB、Vol.6 柱とN値計算・金物自動選定編へようこそ。この動画では、地震時に柱が引き抜かれる力を算定する『告示1460号に基づくN値計算法』と、接合金物の自動判定、そして隅柱（出隅柱）の手動設定と立面軸力図の確認手順をわかりやすく解説します。",
+      "subtitle": "【Vol.6】柱＆N値計算・金物自動選定\n〜 告示1460号N値計算法による引抜力算定と金物自動選定 〜",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol6\\audio\\seg_01_intro.mp3",
+      "start": 0.5,
+      "duration": 27.936,
+      "end": 28.436
+    },
+    {
+      "index": 2,
+      "id": "seg_02_pillar_and_nvalue_mode",
+      "text": "右パネルから『N値計算・金物図』を選択します。耐力壁の配置に応じて、各柱の頭や脚にかかる引抜力が瞬時に算定され、図面上の柱脇に選定された金物記号が表示されます。なお本ツールでは、告示1460号に基づく厳格なN値計算法のみを採用しており、建物重量を減歩するような詳細計算は行いません。",
+      "subtitle": "STEP 1：N値計算・金物図モードの起動\n告示1460号に厳格準拠した引抜力算定",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol6\\audio\\seg_02_pillar_and_nvalue_mode.mp3",
+      "start": 29.636,
+      "duration": 29.184,
+      "end": 58.82
+    },
+    {
+      "index": 3,
+      "id": "seg_03_manual_corner_setting",
+      "text": "ここで極めて重要なのが『出隅柱（隅柱）』の設定です。隅柱は自動判定されませんので、必ずユーザー自身が外周部の出隅柱をクリックし、右パネルの『出隅柱（隅柱）として指定』にチェックを入れて設定します。出隅柱に設定することで、告示の出隅補正係数（B=0.8）と押さえ効果が正しく反映され、安全な金物が選定されます。",
+      "subtitle": "STEP 2：出隅柱（隅柱）の手動指定【必須】\n隅柱は自動判定されないため、右パネルで必ずチェック！",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol6\\audio\\seg_03_manual_corner_setting.mp3",
+      "start": 60.02,
+      "duration": 30.264,
+      "end": 90.284
+    },
+    {
+      "index": 4,
+      "id": "seg_04_pillar_detail_modal",
+      "text": "柱を選択して右パネルの『計算根拠』をクリックすると、詳細ダイアログが開きます。出隅係数B、柱頭・柱脚の告示押さえ効果L、X方向・Y方向の壁耐力差（Σα）による引抜力算定式、採用N値、そして自動判定された接合金物が一目で点検できます。",
+      "subtitle": "STEP 3：柱ごとのN値計算根拠ダイアログ\nX・Y方向の算定式・出隅係数・告示押さえL値を点検",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol6\\audio\\seg_04_pillar_detail_modal.mp3",
+      "start": 91.48400000000001,
+      "duration": 25.224,
+      "end": 116.70800000000001
+    },
+    {
+      "index": 5,
+      "id": "seg_05_elevation_axial_viewer",
+      "text": "続いて、左パネルの『耐力壁の軸力図（立面）』ボタンをクリックしてみましょう。通り芯ごとの立面フレームが表示され、地震時における各柱の引抜力や圧縮力が、視覚的なフレーム図と詳細な数値テーブルで確認できます。",
+      "subtitle": "STEP 4：耐力壁の軸力図（立面）ビューア\n通り芯ごとのフレーム応力・軸力推移を視覚化",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol6\\audio\\seg_05_elevation_axial_viewer.mp3",
+      "start": 117.90800000000002,
+      "duration": 18.888,
+      "end": 136.79600000000002
+    },
+    {
+      "index": 6,
+      "id": "seg_06_custom_hardware_dxf",
+      "text": "さらに右パネル下部では、柱の金物を手動変更したり、メーカー特注の任意金物を追加登録することも可能です。決定した配置データは『壁・金物 DXF出力』からCADへ逆輸入でき、伏図作成の手間を大幅に削減できます。",
+      "subtitle": "任意金物の手動指定 ＆ DXF逆輸入\n手動金物選定・CAD伏図へ即座にデータ連携",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol6\\audio\\seg_06_custom_hardware_dxf.mp3",
+      "start": 137.996,
+      "duration": 20.184,
+      "end": 158.18
+    },
+    {
+      "index": 7,
+      "id": "seg_07_floor_toggle",
+      "text": "画面上部から『2階 作図』へ切り替えると、2階の柱頭柱脚N値も瞬時に再計算されます。2階でも同様に外周の隅柱を手動で出隅設定します。左パネルでは上下階の柱直下率や壁直下率も同時に把握できます。",
+      "subtitle": "1F / 2F 階切替と2階隅柱の設定\n上下階の構造連続性と柱直下率を万全にチェック",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol6\\audio\\seg_07_floor_toggle.mp3",
+      "start": 159.38,
+      "duration": 20.424,
+      "end": 179.804
+    },
+    {
+      "index": 8,
+      "id": "seg_08_outro",
+      "text": "これで耐力壁から柱の出隅設定、N値金物選定まで、上部構造の構造計算がすべて完了しました。最終章となる次回Vol.7では、建物を支える『基礎梁・基礎スラブ構造計算編』を解説します。",
+      "subtitle": "上部構造計算完了！\n次回 Vol.7「基礎梁・基礎スラブ構造計算編」へつづく",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol6\\audio\\seg_08_outro.mp3",
+      "start": 181.004,
+      "duration": 18.12,
+      "end": 199.124
+    }
+  ]
+}

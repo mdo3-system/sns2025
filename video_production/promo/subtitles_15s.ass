@@ -1,0 +1,23 @@
+[Script Info]
+Title: Promo CM 15s - Jyouzen Fukyoshitsu Web
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: PromoTop,Meiryo UI,30,&H0000FFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,1,0,3,4,0,7,50,50,40,1
+Style: PromoBottom,Meiryo UI,36,&H00FFFFFF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,1,0,3,6,0,2,60,60,45,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,00:00:00.00,00:00:03.20,PromoTop,,0,0,0,,MacもWindowsもブラウザで即起動！
+Dialogue: 0,00:00:00.00,00:00:03.20,PromoBottom,,0,0,0,,インストール不要・専用ソフトの縛りを完全解放
+Dialogue: 0,00:00:03.20,00:00:07.00,PromoTop,,0,0,0,,JWW・AutoCAD・ARCHICAD・Vectorworks
+Dialogue: 0,00:00:03.20,00:00:07.00,PromoBottom,,0,0,0,,あらゆるCADのDXFを一発インポート！
+Dialogue: 0,00:00:07.00,00:00:11.00,PromoTop,,0,0,0,,壁量算定・4分割法・N値金物・3D確認は【完全無料】！
+Dialogue: 0,00:00:07.00,00:00:11.00,PromoBottom,,0,0,0,,ベタ基礎計算・申請用一括PDFは手軽な必要時課金
+Dialogue: 0,00:00:11.00,00:00:14.80,PromoTop,,0,0,0,,【プログラム本体】https://2025.eie.jp
+Dialogue: 0,00:00:11.00,00:00:14.80,PromoBottom,,0,0,0,,【紹介ポータル】https://sns.eie.tokyo

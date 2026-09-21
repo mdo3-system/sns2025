@@ -1,0 +1,82 @@
+[
+  {
+    "index": 0,
+    "id": "seg_01_intro",
+    "text": "上善如水 壁量計算WEB、Vol.3C 床面積入力・仕様変更と見上げ・見下げ面積徹底解説編へようこそ。この動画では、地震力算定の基礎となる床面積の作図方法、入力後の仕様変更、見上げ面積と見下げ面積の力学的違い、そして耐震等級2や3での新機能まで、丁寧に詳しく解説します。",
+    "subtitle": "【Vol.3C】床面積入力＆見上げ・見下げ面積徹底解説\n〜 特殊な多角形作図、仕様変更、見上げ・見下げの違いと必要壁量確定 〜",
+    "start": 0.5,
+    "end": 28.39,
+    "duration": 27.89,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_floor\\audio\\seg_01_intro.mp3"
+  },
+  {
+    "index": 1,
+    "id": "seg_02_floor_draw_spec",
+    "text": "まずは床面積の作図です。本ツールの入力方式は、少し特殊で洗練されたクリック操作を採用しています。右パネルの『面積の作図』から、最初に仕様（一般床、吹き抜け、バルコニーなど）を選択します。",
+    "subtitle": "床面積の特殊な作図手順①：仕様の選択\n右パネル「面積の作図」から「床面積」または用途仕様を選択",
+    "start": 29.59,
+    "end": 48.26,
+    "duration": 18.67,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_floor\\audio\\seg_02_floor_draw_spec.mp3"
+  },
+  {
+    "index": 2,
+    "id": "seg_03_floor_draw_points",
+    "text": "続いてキャンバス上で、建物の外周交点を時計回りに順次クリックしていきます。多角形の各頂点が青い線で結ばれ、最後の点をクリックしたあと、始点をもう一度クリックして閉じることで、床面積ポリゴンが確定します。",
+    "subtitle": "床面積の特殊な作図手順②：交点を押さえて閉じる\nグリッド交点を順次クリック ➔ 始点をクリックして領域を閉じる",
+    "start": 49.46,
+    "end": 68.06,
+    "duration": 18.6,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_floor\\audio\\seg_03_floor_draw_points.mp3"
+  },
+  {
+    "index": 3,
+    "id": "seg_04_floor_spec_change",
+    "text": "作図後に仕様を変更したい場合も簡単です。キャンバス上の多角形をクリックすると、左パネルにプロパティが表示されます。ここで床仕様を吹き抜けやバルコニーに変更すれば、即座に計算へ反映されます。",
+    "subtitle": "入力後の仕様変更（フレキシブル編集）\n作図した多角形をクリックし、左パネルで後から用途・仕様を変更可能",
+    "start": 69.26,
+    "end": 86.59,
+    "duration": 17.33,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_floor\\audio\\seg_04_floor_spec_change.mp3"
+  },
+  {
+    "index": 4,
+    "id": "seg_05_concept_difference",
+    "text": "ここで最も重要な『見上げ面積』と『見下げ面積』の違いを解説します。建築基準法の見下げ面積は、各階の床面積に上階の荷重を按分する簡易方式です。一方、品確法の性能表示制度で用いられる見上げ面積は、屋根や上階の実荷重を直下の床や耐力壁が支える実情に即した、力学的に極めて正確な算定方式です。",
+    "subtitle": "見上げ面積 vs 見下げ面積の力学的違い\n基準法（見下げ：上階按分） vs 性能表示（見上げ：直下負担の正確算定）",
+    "start": 87.79,
+    "end": 117.31,
+    "duration": 29.52,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_floor\\audio\\seg_05_concept_difference.mp3"
+  },
+  {
+    "index": 5,
+    "id": "seg_06_ui_restriction_grade",
+    "text": "本ツールでは安全設計を徹底するため、耐震等級2または耐震等級3を選択すると、見下げ面積は自動的に選択不可となります。法的に見下げ面積が認められない耐震等級2や3では、誤操作を防ぎ、性能表示の見上げ面積へ確実に固定されます。",
+    "subtitle": "【新機能】耐震等級2・3での見下げ不可UI制御\n耐震等級2・3選択時は見下げ面積をdisabled化し、性能表示に自動固定！",
+    "start": 118.51,
+    "end": 140.95,
+    "duration": 22.44,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_floor\\audio\\seg_06_ui_restriction_grade.mp3"
+  },
+  {
+    "index": 6,
+    "id": "seg_07_req_wall_sync",
+    "text": "床面積が確定したことで、地震力に対する必要壁量がリアルタイムに自動算定されました。前の動画で算定した風圧力の必要壁量と自動比較され、安全側となる目標必要壁量が各階・各方向で確定しました。",
+    "subtitle": "必要壁量の完全自動算定・安全側比較\n床面積の確定により、地震力と風圧力を自動比較した目標壁量が確定！",
+    "start": 142.15,
+    "end": 161.47,
+    "duration": 19.32,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_floor\\audio\\seg_07_req_wall_sync.mp3"
+  },
+  {
+    "index": 7,
+    "id": "seg_08_outro",
+    "text": "これで、建物の耐震・耐風設計に必要な目標壁量がすべて出揃いました。次回Vol.4では、この必要壁量をクリアするための『耐力壁の配置と壁仕様の選定』を詳しく解説します。",
+    "subtitle": "床面積・見上げ面積・必要壁量算定完了！\n次回 Vol.4「耐力壁配置＆壁仕様選定編」へつづく",
+    "start": 162.67,
+    "end": 179.61,
+    "duration": 16.94,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_floor\\audio\\seg_08_outro.mp3"
+  }
+]

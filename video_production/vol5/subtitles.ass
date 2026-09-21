@@ -1,0 +1,31 @@
+[Script Info]
+Title: Jyouzen Fukyoshitsu Vol.5 Floor Area & Div4 Balance
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: HeaderStep,Meiryo UI,26,&H0000FFFF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,1,0,3,4,0,7,50,50,45,1
+Style: SubtitleBottom,Meiryo UI,32,&H00FFFFFF,&H000000FF,&H00000000,&HA0000000,-1,0,0,0,100,100,1,0,3,6,0,2,80,80,50,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:00.50,0:00:20.87,HeaderStep,,0,0,0,,【Vol.5】床面積と4分割法・偏心率\N〜 バランス検定と重心・剛心の自動算定 〜
+Dialogue: 0,0:00:00.50,0:00:20.87,SubtitleBottom,,0,0,0,,上善如水 壁量計算WEB、Vol.5 床面積と4分割法・偏心率編へようこそ\Nこの動画では、耐力壁の配置バランスを検証する『4分割法』と、重心・剛心・偏心率の自動算定手順を解説します
+Dialogue: 1,0:00:21.87,0:00:43.72,HeaderStep,,0,0,0,,STEP 1：床面積と4分割判定枠\NVol.3Cで解説した床面積が4分割法の外形基準に！
+Dialogue: 0,0:00:21.87,0:00:43.72,SubtitleBottom,,0,0,0,,前回のVol.3Cでも解説しましたが、作図した床面積は、必要壁量の算出だけでなく、4分割法の判定枠を割り出すための重要な外形基準となります\N建物の外周が確定することで、側端部4分の1のエリアが正確に特定されます
+Dialogue: 1,0:00:44.72,0:01:04.23,HeaderStep,,0,0,0,,STEP 2：4分割法の1/4ライン自動算出\N建物の外周端部から1/4エリア境界を自動可視化
+Dialogue: 0,0:00:44.72,0:01:04.23,SubtitleBottom,,0,0,0,,床面積の外周が決まると、システムが自動的に建物のX方向とY方向の両端から4分割法を適用します\N右パネルの『4分割枠』にチェックを入れると、1/4境界ラインが図面上に明快に可視化されます
+Dialogue: 1,0:01:05.23,0:01:25.73,HeaderStep,,0,0,0,,側端部壁量 ＆ 壁率比の自動検定\N充足率・壁率比（0.5以上）が瞬時にOK判定！
+Dialogue: 0,0:01:05.23,0:01:25.73,SubtitleBottom,,0,0,0,,画面左下の『4分割 壁釣り合い』テーブルをご覧ください\N側端部4分の1エリアに含まれる耐力壁の存在壁量、充足率、そして壁率比がリアルタイムに集計され、すべて基準値0.5以上でOKと瞬時に判定されます
+Dialogue: 1,0:01:26.73,0:01:49.43,HeaderStep,,0,0,0,,STEP 3：重心G ＆ 剛心Cの自動プロット\N青丸: 重心G（重量中心） / 赤丸: 剛心C（剛性中心）
+Dialogue: 0,0:01:26.73,0:01:49.43,SubtitleBottom,,0,0,0,,続いて、重心と剛心です\N図面上をご覧ください\N青い丸印が床面積から求まる建物の重量中心『重心G』、赤い丸印が耐力壁の強さの中心『剛心C』です\N自動計算により常にリアルタイムに位置が追従します
+Dialogue: 1,0:01:50.43,0:02:04.73,HeaderStep,,0,0,0,,重心剛心・4分割境界情報の確認\N全体スパン・1/4ライン位置を数値一覧で点検
+Dialogue: 0,0:01:50.43,0:02:04.73,SubtitleBottom,,0,0,0,,左パネル上部の『重心剛心』ボタンをクリックすると、1階と2階それぞれの4分割境界情報やスパン寸法を、数値一覧で正確に確認することができます。
+Dialogue: 1,0:02:05.73,0:02:23.48,HeaderStep,,0,0,0,,ねじれに強いバランス設計\N壁の配置変更に合わせて重心・剛心がリアルタイム追従
+Dialogue: 0,0:02:05.73,0:02:23.48,SubtitleBottom,,0,0,0,,重心と剛心の距離が近いほど、ねじれが少なく地震に強い建物になります\N本ツールなら、壁の追加や移動を行うたびに、重心・剛心の動きが視覚的にも数値的にも即座に確認できます
+Dialogue: 1,0:02:24.47,0:02:43.18,HeaderStep,,0,0,0,,バランス検定クリア！\N次回 Vol.6「柱＆N値計算・金物自動選定編」へつづく
+Dialogue: 0,0:02:24.47,0:02:43.18,SubtitleBottom,,0,0,0,,壁量計算と4分割法・偏心率のバランス検定が完璧にクリアできました\N次回Vol.6では、柱の引き抜き力と接合金物を算定する『柱＆N値計算・金物自動選定編』を解説します

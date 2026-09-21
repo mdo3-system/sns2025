@@ -1540,7 +1540,7 @@
       </div>
 
       <div style="text-align: center; margin-top: 36px;">
-        <a href="../video_production/index.html" class="btn-sub-cta" style="font-size: 0.95rem;">
+        <a href="video_production/index.html" class="btn-sub-cta" style="font-size: 0.95rem;">
           <span>🎬 全8話 操作解説動画シリーズ ポータルはこちら ➔</span>
         </a>
       </div>
@@ -1960,8 +1960,9 @@
 
       container.innerHTML = items.map(item => {
         const tagsHtml = (item.tags || []).map(t => `<span class="qa-tag-item">#${t}</span>`).join('');
+        const videoHref = item.videoVol ? `video_production/index.html?vol=${item.videoVol}` : '#video';
         const mediaHtml = item.videoTitle ? `
-          <a href="#video" class="qa-media-preview" style="text-decoration: none;">
+          <a href="${videoHref}" class="qa-media-preview" style="text-decoration: none;">
             <img src="${item.mediaThumbnail || 'assets/feature_realtime.jpg'}" alt="動画サムネイル" class="qa-media-thumb">
             <div>
               <div style="font-size: 0.8rem; color: var(--accent-gold); font-weight: 800; margin-bottom: 2px;">🎬 操作解説実演動画</div>
@@ -2055,9 +2056,9 @@
 
       let shareText = '';
       if (platform === 'x') {
-        shareText = `【壁量計算WEB アップデート速報 ${upd.version}】\n${upd.badgeLabel}：${upd.title}\n\n${upd.shareSummary}\n\n詳細・実務Q&Aはこちら ➔ https://sns.eie.tokyo#qa\n#木造構造計算 #2025年法改正 #壁量計算 #建築士実務`;
+        shareText = `【壁量計算WEB アップデート速報 ${upd.version}】\n${upd.badgeLabel}：${upd.title}\n\n${upd.shareSummary}\n\n詳細・実務Q&Aはこちら ➔ https://eie.jp/#qa\n#木造構造計算 #2025年法改正 #壁量計算 #建築士実務`;
       } else {
-        shareText = `【アップデート改善報告】${upd.title}（${upd.version}）\n日付：${upd.date}\nご報告者：${upd.reporter}\n内容：${upd.detail}\n対応領域：${upd.affectedAreas}\n\n公式サイト：https://sns.eie.tokyo`;
+        shareText = `【アップデート改善報告】${upd.title}（${upd.version}）\n日付：${upd.date}\nご報告者：${upd.reporter}\n内容：${upd.detail}\n対応領域：${upd.affectedAreas}\n\n公式サイト：https://eie.jp/`;
       }
 
       navigator.clipboard.writeText(shareText).then(() => {

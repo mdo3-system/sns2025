@@ -1,0 +1,33 @@
+[Script Info]
+Title: Jyouzen Fukyoshitsu Vol.2 Revised
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: HeaderStep,Meiryo UI,26,&H0000FFFF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,1,0,3,4,0,7,50,50,45,1
+Style: SubtitleBottom,Meiryo UI,32,&H00FFFFFF,&H000000FF,&H00000000,&HA0000000,-1,0,0,0,100,100,1,0,3,6,0,2,80,80,50,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:00.00,0:00:18.94,HeaderStep,,0,0,0,,【Vol.2】DXF読込と原点設定\N〜 各スロットの役割と図面の正確な重ね合わせ 〜
+Dialogue: 0,0:00:00.00,0:00:18.94,SubtitleBottom,,0,0,0,,上善如水 壁量計算WEB、Vol.2 DXF読込と原点設定編へようこそ\Nこの動画では、各スロットの意味と、1階と2階の図面をぴったり重ね合わせる原点設定の手順を、ゆっくり丁寧に解説します
+Dialogue: 1,0:00:18.94,0:00:33.01,HeaderStep,,0,0,0,,STEP 1：右パネルからDXFファイルを選択\N※ 1階・2階のファイルをまとめて複数選択して開く
+Dialogue: 0,0:00:18.94,0:00:33.01,SubtitleBottom,,0,0,0,,まず、画面右側にある『DXFファイルを選択して読込』ボタンをクリックし、用意した1階と2階のDXFファイルを、まとめて複数選択して開きます。
+Dialogue: 1,0:00:33.01,0:00:50.83,HeaderStep,,0,0,0,,STEP 2：見附登録方式を選択\N「見附図はDXF/手入力で登録」を選択（屋根を省略）
+Dialogue: 0,0:00:33.01,0:00:50.83,SubtitleBottom,,0,0,0,,専用の読込ウィザードが立ち上がりました\N一番上の見附登録方式で、『見附図はDXFまたは手入力で登録』を選択します\Nこれにより屋根ステップがスキップされ、スムーズに進められます
+Dialogue: 1,0:00:50.83,0:01:27.07,HeaderStep,,0,0,0,,【重要】各スロットの役割\N割り当てDXF / 通り芯 / 寸法 / 柱 / 背景 / 通り芯文字の指定
+Dialogue: 0,0:00:50.83,0:01:27.07,SubtitleBottom,,0,0,0,,ここで、画面下部の各スロットをご説明します\N一番上の『割り当てDXF』でこの階のファイルを選択し、不足があれば右の『DXF追加』でいつでも追加できます\N下の4つのスロットは左から、グリッドを作る『通り芯レイヤー』、グリッド間隔を測る『寸法レイヤー』、柱を自動プロットする『柱レイヤー』、下絵となる『背景レイヤー』です\Nさらに一番下のラジオボタンで、本番の通り芯文字を採用する階を指定できます
+Dialogue: 1,0:01:27.07,0:01:43.35,HeaderStep,,0,0,0,,STEP 3：【1階図面】基準原点の設定\N左下の通り芯交点（X1 - Y1）をクリックして基準原点を確定
+Dialogue: 0,0:01:27.07,0:01:43.35,SubtitleBottom,,0,0,0,,それではStep 1、1階の図面です\N通り芯と柱が自動認識されているのを確認し、左下の通り芯交点、X1通りとY1通りの交点にマウスを合わせて左クリックします
+Dialogue: 1,0:01:43.35,0:01:54.57,HeaderStep,,0,0,0,,基準原点が確定！\N「確定して次へ ➔」をクリック
+Dialogue: 0,0:01:43.35,0:01:54.57,SubtitleBottom,,0,0,0,,赤いターゲットマークが立ち、基準原点が確定しました\N右下の緑色のボタン、『確定して次へ』をクリックします
+Dialogue: 1,0:01:54.57,0:02:14.28,HeaderStep,,0,0,0,,STEP 4：【2階図面】1階原点へ重ね合わせ\N1階の青い透け線を目印に、同じ「X1 - Y1交点」をクリックして完全合致！
+Dialogue: 0,0:01:54.57,0:02:14.28,SubtitleBottom,,0,0,0,,続いてStep 2、2階図面の設定です\N画面には1階の通り芯が青く透けて見えています\N2階の図面の中から、同じX1通りとY1通りの交点をクリックすると、ピタッと一致してズレが完全に解消されます
+Dialogue: 1,0:02:14.28,0:02:23.60,HeaderStep,,0,0,0,,上下階のズレゼロを確認！\N「🚀 平面図取込を確定し、見附手入力モードへ進む」をクリック
+Dialogue: 0,0:02:14.28,0:02:23.60,SubtitleBottom,,0,0,0,,上下階のズレがゼロになったのを確認し、右下の『平面図取込を確定』ボタンをクリックしましょう。
+Dialogue: 1,0:02:23.60,0:02:43.51,HeaderStep,,0,0,0,,インポート完了！\N通り芯が完全一致！屋根ロック＆見附面積手入力モードへ
+Dialogue: 0,0:02:23.60,0:02:43.51,SubtitleBottom,,0,0,0,,メイン画面に図面が展開されました\N1階と2階の通り芯・柱が完璧に一致しています\N屋根タブは黒塗りでロックされ、左パネルで見附面積が手入力できる状態になっています\N原点設定はこれで完璧です

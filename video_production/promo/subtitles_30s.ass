@@ -1,0 +1,24 @@
+[Script Info]
+Title: Promo CM 30s - Jyouzen Fukyoshitsu Web
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: PromoTop,Meiryo UI,30,&H0000FFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,1,0,3,4,0,7,50,50,40,1
+Style: PromoBottom,Meiryo UI,36,&H00FFFFFF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,1,0,3,6,0,2,60,60,45,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,00:00:00.00,00:00:05.00,PromoTop,,0,0,0,,木造構造計算が、ここまで自由になる。
+Dialogue: 0,00:00:00.00,00:00:05.00,PromoBottom,,0,0,0,,【インストール不要】ブラウザで動く次世代の壁量計算WEB
+Dialogue: 0,00:00:05.00,00:00:11.50,PromoBottom,,0,0,0,,MacでもWindowsでも！あらゆるCADと直結\nJWW・AutoCAD・ARCHICAD・SketchUp・Vectorworks
+Dialogue: 0,00:00:11.50,00:00:18.50,PromoTop,,0,0,0,,存在壁量リアルタイム判定・4分割法・N値金物・3D立体確認
+Dialogue: 0,00:00:11.50,00:00:18.50,PromoBottom,,0,0,0,,日々の作図・検証機能は【完全無料】！
+Dialogue: 0,00:00:18.50,00:00:24.00,PromoTop,,0,0,0,,ベタ基礎計算・確認申請用PDFは使った分だけの従量課金！
+Dialogue: 0,00:00:18.50,00:00:24.00,PromoBottom,,0,0,0,,年間ライセンス不要の圧倒的フェアさ
+Dialogue: 0,00:00:24.00,00:00:29.50,PromoTop,,0,0,0,,【プログラム本体】https://2025.eie.jp
+Dialogue: 0,00:00:24.00,00:00:29.50,PromoBottom,,0,0,0,,【紹介】https://sns.eie.tokyo （法人: pr.eie.tokyo）

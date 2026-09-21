@@ -1,6 +1,6 @@
 # 実務Q&A ＆ アップデート速報 運用・エージェント連携ワークフロー
 
-本ドキュメントは、「上善如水 壁量計算WEB」の紹介ポータル（`sns.eie.tokyo`）における、
+本ドキュメントは、「上善如水 壁量計算WEB」の紹介ポータル（`https://eie.jp`）における、
 **ユーザー質疑・不具合報告の受付 ➔ 運営通知 ➔ エージェント（Antigravity）によるスクショ・動画キャプチャ ➔ Q&A・SNS公開** の自動・半自動連携手順を定めた運用ガイドです。
 
 ---
@@ -8,7 +8,7 @@
 ## 1. 質疑受付 ＆ 添付ファイル・メール通知の仕組み
 
 ### ユーザー側の送信フロー
-1. ユーザーが `https://sns.eie.tokyo#qa` の「実務質問・不具合報告フォーム」に入力。
+1. ユーザーが `https://eie.jp#qa` の「実務質問・不具合報告フォーム」に入力。
 2. **検証用ファイルの添付（任意・推奨）**：
    - 読み込ませようとしているDXFファイル（`.dxf`）、作成中プロジェクトデータ（`.json`）、エラー画面スクショ（`.png`/`.jpg`）、ZIP等をドラッグ＆ドロップ（最大3ファイル・合計20MBまで）。
 3. **【最重要】事前承諾免責バナー**：
@@ -85,12 +85,12 @@ node sns_portal/scripts/inspect_ticket.js ticket_20260920_161520_a8f9
 - **不具合解消の場合**：`UPDATE_LOGS` に「⚡ 即日解消」バッジ、報告者、修正内容、対応バージョンを自動追加。
 
 ### ステップ④：本番サーバーへの即時デプロイ同期【必須・厳格義務】
-エージェントは `qa_data.js` やアセットの追加後、**直ちに以下の同期コマンドを実行して本番環境（`https://sns.eie.tokyo`）へ反映させます**：
+エージェントは `qa_data.js` やアセットの追加後、**直ちに以下の同期コマンドを実行して本番環境（`https://eie.jp`）へ反映させます**：
 ```bash
 git add .
 git commit -m "Add QA & update log: <質問または解消内容>"
 git push origin main
-ssh -o BatchMode=yes -p 10022 mdo3@mdo3.xsrv.jp "cd eie.tokyo/public_html/sns && git pull origin main"
+ssh -o BatchMode=yes -p 10022 mdo3@mdo3.xsrv.jp "cd eie.jp/public_html && git pull origin main"
 ```
 
 ### ステップ⑤：SNS（X / note+ / Instagram）への爆速展開

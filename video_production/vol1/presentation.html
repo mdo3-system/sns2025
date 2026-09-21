@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Vol.1 DXF作図ルール＆レイヤ設定編</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0b1120;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --card-border: rgba(56, 189, 248, 0.25);
+      --cyan: #38bdf8;
+      --green: #22c55e;
+      --yellow: #facc15;
+      --red: #f43f5e;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      background-color: var(--bg-dark);
+      background-image: 
+        linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      color: var(--text);
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    /* トップバー */
+    .topbar {
+      height: 70px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      flex-shrink: 0;
+    }
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo-badge {
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: #fff;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+    .topbar-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .topbar-right {
+      display: flex;
+      gap: 12px;
+    }
+    .status-pill {
+      font-size: 13px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--green);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    /* メインコンテンツ領域 */
+    .stage {
+      flex: 1;
+      position: relative;
+      padding: 40px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide {
+      position: absolute;
+      width: 1800px;
+      height: 900px;
+      opacity: 0;
+      transform: translateY(20px) scale(0.98);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .slide.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    /* 共通スライドスタイル */
+    .slide-header {
+      margin-bottom: 30px;
+    }
+    .slide-subtitle {
+      color: var(--cyan);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .slide-title {
+      font-size: 42px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .grid-3col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+    }
+    .card-highlight {
+      border-color: var(--cyan);
+      background: rgba(14, 165, 233, 0.1);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+    }
+
+    .rule-num {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 800;
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--cyan);
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+    .card-title {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+    .card-desc {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .layer-badge {
+      font-family: 'Fira Code', monospace;
+      font-size: 15px;
+      font-weight: 700;
+      background: #0f172a;
+      color: var(--cyan);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 6px 14px;
+      border-radius: 6px;
+    }
+    .layer-badge.green {
+      color: var(--green);
+      border-color: rgba(34, 197, 94, 0.4);
+    }
+    .layer-badge.yellow {
+      color: var(--yellow);
+      border-color: rgba(250, 204, 21, 0.4);
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .check-item {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .check-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(34, 197, 94, 0.2);
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .bad-icon {
+      background: rgba(244, 63, 94, 0.2);
+      color: var(--red);
+    }
+
+    /* 図解ボックス */
+    .diagram-box {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1e293b;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- トップバー -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <span class="logo-badge">MDO3</span>
+      <span class="topbar-title">上善如水 壁量計算WEB 操作マスターシリーズ</span>
+    </div>
+    <div class="topbar-right">
+      <span class="status-pill">Vol.1 CAD作図ルール＆レイヤ設定編</span>
+    </div>
+  </div>
+
+  <!-- メインステージ -->
+  <div class="stage">
+
+    <!-- Slide 0: イントロダクション -->
+    <div class="slide active" id="slide-0">
+      <div class="slide-header">
+        <div class="slide-subtitle">🚀 OPERATION TUTORIAL SERIES</div>
+        <h1 class="slide-title">Vol.1 DXF作図ルールとレイヤ設定<br><span style="font-size: 32px; color: var(--cyan); font-weight: 700;">〜 一発取込を成功させるCAD側の基本ルール 〜</span></h1>
+      </div>
+      <div class="grid-2col">
+        <div class="card card-highlight">
+          <span class="rule-num">KEY OBJECTIVE</span>
+          <h2 class="card-title">なぜ作図ルールが重要なのか？</h2>
+          <p class="card-desc">DXF読込の成否は、CAD側での準備が9割を握っています。本ツールが求めるシンプルな作図ルールを守るだけで、通り芯や柱、壁が一発で完全自動認識されます。</p>
+          <ul class="check-list">
+            <li class="check-item"><span class="check-icon">✓</span> 縮尺・単位の厳密な設定</li>
+            <li class="check-item"><span class="check-icon">✓</span> 推奨レイヤ名による自動認識</li>
+            <li class="check-item"><span class="check-icon">✓</span> ブロック解除による確実な線分抽出</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="rule-num">FLOW OVERVIEW</span>
+          <h2 class="card-title">解説する4大ルール</h2>
+          <div style="display:flex; flex-direction:column; gap:16px; margin-top:16px;">
+            <div style="background:rgba(255,255,255,0.05); padding:12px 18px; border-radius:8px; border-left:4px solid var(--cyan);">
+              <b>RULE 1:</b> 縮尺1:1 ＆ 単位ミリメートル（モデル空間）
+            </div>
+            <div style="background:rgba(255,255,255,0.05); padding:12px 18px; border-radius:8px; border-left:4px solid var(--green);">
+              <b>RULE 2:</b> 通り芯は連続直線 ＆ 推奨レイヤ名
+            </div>
+            <div style="background:rgba(255,255,255,0.05); padding:12px 18px; border-radius:8px; border-left:4px solid var(--yellow);">
+              <b>RULE 3:</b> 柱は独立レイヤで作図
+            </div>
+            <div style="background:rgba(255,255,255,0.05); padding:12px 18px; border-radius:8px; border-left:4px solid var(--red);">
+              <b>RULE 4:</b> ブロック解除（分解・EXPLODE）
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 1: ルール① 縮尺と単位 -->
+    <div class="slide" id="slide-1">
+      <div class="slide-header">
+        <div class="slide-subtitle">RULE 01 / 04</div>
+        <h1 class="slide-title">ルール①：縮尺と単位</h1>
+      </div>
+      <div class="grid-2col">
+        <div class="card card-highlight">
+          <span class="rule-num">ESSENTIAL RULE</span>
+          <h2 class="card-title">原寸（1:1）＆ ミリメートル（mm）</h2>
+          <p class="card-desc">図面は必ず原寸（縮尺1分の1）、単位は「ミリメートル（mm）」で作図・書き出しを行ってください。</p>
+          <ul class="check-list">
+            <li class="check-item"><span class="check-icon">✓</span> 910mmのグリッドはCAD上でも「910単位」で作図</li>
+            <li class="check-item"><span class="check-icon">✓</span> ペーパー空間ではなく「モデル空間」で保存</li>
+            <li class="check-item"><span class="check-icon bad-icon">✕</span> 1/100や1/50等に縮小したDXFはNG</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="rule-num">WHY IT MATTERS</span>
+          <h2 class="card-title">ツール側での自動判定</h2>
+          <p class="card-desc">本ツールは、図面上の座標寸法をミリメートル単位でそのまま読み込み、柱間隔（910/1000等）や壁長、床面積を精密に自動計算します。縮尺が崩れるとすべての計算に影響します。</p>
+          <div class="diagram-box">
+            <div style="text-align:center;">
+              <span style="font-size:48px;">📐</span>
+              <div style="font-size:18px; font-weight:bold; color:var(--cyan); margin-top:8px;">モデル空間（原寸 1:1）</div>
+              <div style="font-size:13px; color:var(--muted);">1グリッド = 910mm / 1000mm 基準</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: ルール② 通り芯の作図 -->
+    <div class="slide" id="slide-2">
+      <div class="slide-header">
+        <div class="slide-subtitle">RULE 02 / 04</div>
+        <h1 class="slide-title">ルール②：通り芯の作図ルール</h1>
+      </div>
+      <div class="grid-2col">
+        <div class="card card-highlight">
+          <span class="rule-num">GRID DRAWING</span>
+          <h2 class="card-title">通り芯は「連続した1本の直線」</h2>
+          <p class="card-desc">通り芯は途中で分断せず、端から端まで通った1本の連続直線（LINE）として作図します。線分同士の幾何交点をシステムが自動検出し、原点スナップ点として使用します。</p>
+          <ul class="check-list">
+            <li class="check-item"><span class="check-icon">✓</span> 水平線・垂直線の交点が自動でターゲット交点になる</li>
+            <li class="check-item"><span class="check-icon">✓</span> 点線・一点鎖線でもLINEエンティティならOK</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="rule-num">RECOMMENDED LAYERS</span>
+          <h2 class="card-title">推奨レイヤ名（自動認識）</h2>
+          <p class="card-desc">以下のいずれかの名称を含めておくと、読込ウィザードで「通り芯レイヤー」として自動選択されます。</p>
+          <div class="badge-group">
+            <span class="layer-badge">通り芯</span>
+            <span class="layer-badge">GRID</span>
+            <span class="layer-badge">GLID</span>
+            <span class="layer-badge">通芯</span>
+            <span class="layer-badge">軸線</span>
+          </div>
+          <p style="font-size:13px; color:var(--muted); margin-top:16px;">※小文字や括弧付き（例: <code>GLID[G0]</code>, <code>2F_通り芯</code>）も自動認識されます。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: ルール③ 柱の作図 -->
+    <div class="slide" id="slide-3">
+      <div class="slide-header">
+        <div class="slide-subtitle">RULE 03 / 04</div>
+        <h1 class="slide-title">ルール③：柱の作図とレイヤ分離</h1>
+      </div>
+      <div class="grid-2col">
+        <div class="card card-highlight">
+          <span class="rule-num">PILLAR DRAWING</span>
+          <h2 class="card-title">柱は独立したレイヤに作図</h2>
+          <p class="card-desc">柱は通り芯や壁線とは分け、必ず「柱専用のレイヤ」に配置してください。正方形（105角・120角）または円で作図された図形を、構造計算用の柱として自動プロットします。</p>
+          <ul class="check-list">
+            <li class="check-item"><span class="check-icon">✓</span> 柱の中心座標を自動検出して配置</li>
+            <li class="check-item"><span class="check-icon">✓</span> 出隅（角柱）や通り芯上の柱を自動認識</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="rule-num">RECOMMENDED LAYERS</span>
+          <h2 class="card-title">柱の推奨レイヤ名</h2>
+          <p class="card-desc">以下のレイヤ名にしておくことで、読込ウィザードが階層ごとの柱レイヤを自動判別します。</p>
+          <div class="badge-group">
+            <span class="layer-badge green">柱</span>
+            <span class="layer-badge green">COL</span>
+            <span class="layer-badge green">COL_1F</span>
+            <span class="layer-badge green">COL_2F</span>
+            <span class="layer-badge green">1F_COL</span>
+            <span class="layer-badge green">2F_COL</span>
+          </div>
+          <p style="font-size:13px; color:var(--muted); margin-top:16px;">※壁線と同じレイヤに柱を混ぜないことが、正確な抽出のコツです。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: ルール④ ブロック解除・分解 -->
+    <div class="slide" id="slide-4">
+      <div class="slide-header">
+        <div class="slide-subtitle">RULE 04 / 04</div>
+        <h1 class="slide-title">ルール④：ブロック解除（分解・EXPLODE）</h1>
+      </div>
+      <div class="grid-2col">
+        <div class="card card-highlight">
+          <span class="rule-num">CRITICAL CHECK</span>
+          <h2 class="card-title">図面のブロック化を解除して書き出す</h2>
+          <p class="card-desc">図面全体が1つのブロックや外部参照になっていると、各線分のレイヤ情報が取得できなくなります。DXF書き出し前に必ずブロック解除（分解）を行ってください。</p>
+          <ul class="check-list">
+            <li class="check-item"><span class="check-icon">✓</span> AutoCADの場合: <code>EXPLODE</code> コマンドで分解</li>
+            <li class="check-item"><span class="check-icon">✓</span> Jw_cadの場合: 「ブロック解除」を行ってDXF保存</li>
+            <li class="check-item"><span class="check-icon bad-icon">✕</span> 外部参照（XREF）の未バインドはNG</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="rule-num">DATA STRUCTURE</span>
+          <h2 class="card-title">通常の線分（LINE）で保存</h2>
+          <p class="card-desc">DXFの標準仕様であるENTITIESセクションに通常のLINE・LWPOLYLINEとして線分が展開されていることで、最高速度・最高精度でパースされます。</p>
+          <div class="diagram-box">
+            <div style="text-align:center;">
+              <span style="font-size:48px;">💥</span>
+              <div style="font-size:18px; font-weight:bold; color:var(--red); margin-top:8px;">EXPLODE（ブロック分解）</div>
+              <div style="font-size:13px; color:var(--muted);">線分ごとのレイヤ属性を正しく維持</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: モデルプランの実例 -->
+    <div class="slide" id="slide-5">
+      <div class="slide-header">
+        <div class="slide-subtitle">REAL EXAMPLE</div>
+        <h1 class="slide-title">実務モデルプランのレイヤ構成例</h1>
+      </div>
+      <div class="grid-2col">
+        <div class="card">
+          <span class="rule-num">1F.DXF LAYER MAP</span>
+          <h2 class="card-title">1階平面図（1f.dxf）</h2>
+          <div class="badge-group" style="gap:10px;">
+            <span class="layer-badge">GLID[G0] (通り芯)</span>
+            <span class="layer-badge green">COL_1F[G0] (1階柱)</span>
+            <span class="layer-badge yellow">壁[G0] (壁線)</span>
+            <span class="layer-badge">外壁仕上[G0]</span>
+            <span class="layer-badge">建具(木製戸)[G0]</span>
+            <span class="layer-badge">階段_踊場[G0]</span>
+          </div>
+          <p style="font-size:14px; color:var(--muted); margin-top:16px;">通り芯と柱が明確に分かれており、ツール側で一発自動マッチング！</p>
+        </div>
+        <div class="card card-highlight">
+          <span class="rule-num">2F.DXF LAYER MAP</span>
+          <h2 class="card-title">2階平面図（2F.dxf）</h2>
+          <div class="badge-group" style="gap:10px;">
+            <span class="layer-badge">通り芯 (通り芯)</span>
+            <span class="layer-badge green">柱 (2階柱)</span>
+            <span class="layer-badge yellow">壁 (壁線)</span>
+            <span class="layer-badge">外壁仕上</span>
+            <span class="layer-badge">建具(金属窓)</span>
+            <span class="layer-badge">階段_踊場</span>
+          </div>
+          <p style="font-size:14px; color:var(--muted); margin-top:16px;">日本語レイヤ名（通り芯・柱・壁）もUTF-8/Shift-JISで完全対応！</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6: まとめ＆Vol.2へ -->
+    <div class="slide" id="slide-6">
+      <div class="slide-header">
+        <div class="slide-subtitle">CHECKLIST & NEXT STEP</div>
+        <h1 class="slide-title">作図準備完了！ 次はVol.2へ</h1>
+      </div>
+      <div class="grid-2col">
+        <div class="card card-highlight">
+          <span class="rule-num">FINAL CHECKLIST</span>
+          <h2 class="card-title">書き出し前の3秒チェック</h2>
+          <ul class="check-list">
+            <li class="check-item"><span class="check-icon">✓</span> <b>縮尺:</b> 原寸（1:1）＆ ミリメートル単位か？</li>
+            <li class="check-item"><span class="check-icon">✓</span> <b>通り芯:</b> 連続直線で『通り芯/GRID』レイヤにあるか？</li>
+            <li class="check-item"><span class="check-icon">✓</span> <b>柱:</b> 独立した『柱/COL』レイヤにあるか？</li>
+            <li class="check-item"><span class="check-icon">✓</span> <b>ブロック:</b> 分解（EXPLODE）して保存したか？</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="rule-num">NEXT EPISODE</span>
+          <h2 class="card-title">【Vol.2】DXF読込＆原点設定編</h2>
+          <p class="card-desc">準備したDXFファイルをツールに読み込み、1階と2階の通り芯をピタッと一致させる実践編に進みましょう！</p>
+          <div style="background:rgba(56,189,248,0.15); border:1px solid var(--cyan); padding:16px; border-radius:10px; margin-top:20px; text-align:center;">
+            <div style="font-size:20px; font-weight:800; color:var(--cyan);">🚀 続けて【Vol.2】をご視聴ください</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    window.__setSlide = function(index) {
+      document.querySelectorAll('.slide').forEach((s, idx) => {
+        if (idx === index) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+    };
+  </script>
+</body>
+</html>

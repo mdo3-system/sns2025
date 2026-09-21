@@ -1,0 +1,27 @@
+[Script Info]
+Title: Promo CM foundation_45s - Jyouzen Fukyoshitsu Web
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: PromoTop,Meiryo UI,30,&H0000FFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,1,0,3,4,0,7,50,50,40,1
+Style: PromoBottom,Meiryo UI,36,&H00FFFFFF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,1,0,3,6,0,2,60,60,45,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,00:00:00.00,00:00:07.00,PromoTop,,0,0,0,,ベタ基礎計算や人通口の補強検討、外注や手計算で悩んでいませんか？
+Dialogue: 0,00:00:00.00,00:00:07.00,PromoBottom,,0,0,0,,【待望の基礎計算エンジン】上善如水 壁量計算WEBに完全搭載！
+Dialogue: 0,00:00:07.00,00:00:15.00,PromoTop,,0,0,0,,伏図からスラブ亀甲分割線を自動生成！接地圧・短期許容支持力を一発判定
+Dialogue: 0,00:00:07.00,00:00:15.00,PromoBottom,,0,0,0,,四周固定スラブから片持ちスラブまで柔軟に対応
+Dialogue: 0,00:00:15.00,00:00:23.00,PromoTop,,0,0,0,,基礎立上り・地中梁の連続梁応力解析を瞬時に実行！
+Dialogue: 0,00:00:15.00,00:00:23.00,PromoBottom,,0,0,0,,人通口（点検口）開口部のスラブ補強筋・梁増打ちも実務基準で自動検定
+Dialogue: 0,00:00:23.00,00:00:31.00,PromoTop,,0,0,0,,高額な基礎専用ソフトの年間ライセンスはもう不要！
+Dialogue: 0,00:00:23.00,00:00:31.00,PromoBottom,,0,0,0,,日々の伏図作成は無料・計算書出力は必要な時だけの安心課金モデル
+Dialogue: 0,00:00:31.00,00:00:37.00,PromoTop,,0,0,0,,確認申請・構造審査にそのまま出せる計算書を最短即日完成！
+Dialogue: 0,00:00:31.00,00:00:37.00,PromoBottom,,0,0,0,,個人設計事務所・工務店が待ち望んだ、ベタ基礎計算の新常識
+Dialogue: 0,00:00:37.00,00:00:44.00,PromoTop,,0,0,0,,【プログラム本体】https://2025.eie.jp
+Dialogue: 0,00:00:37.00,00:00:44.00,PromoBottom,,0,0,0,,【紹介ポータル】https://sns.eie.tokyo （BtoB: pr.eie.tokyo）

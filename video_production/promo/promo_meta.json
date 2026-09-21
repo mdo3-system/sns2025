@@ -1,0 +1,38 @@
+{
+  "15s": {
+    "title": "上善如水 壁量計算WEB 15秒CM",
+    "duration": 15.0,
+    "mp3": "audio/promo_15s.mp3",
+    "ass": "subtitles_15s.ass"
+  },
+  "30s": {
+    "title": "上善如水 壁量計算WEB 30秒CM",
+    "duration": 30.12,
+    "mp3": "audio/promo_30s.mp3",
+    "ass": "subtitles_30s.ass"
+  },
+  "45s": {
+    "title": "上善如水 壁量計算WEB 45秒CM",
+    "duration": 42.168,
+    "mp3": "audio/promo_45s.mp3",
+    "ass": "subtitles_45s.ass"
+  },
+  "foundation_45s": {
+    "title": "【基礎計算 特化CM】もうベタ基礎・人通口で悩まない！45秒",
+    "duration": 38.976,
+    "mp3": "audio/promo_foundation_45s.mp3",
+    "ass": "subtitles_foundation_45s.ass"
+  },
+  "60s": {
+    "title": "上善如水 壁量計算WEB 60秒CM",
+    "duration": 62.472,
+    "mp3": "audio/promo_60s.mp3",
+    "ass": "subtitles_60s.ass"
+  },
+  "90s": {
+    "title": "上善如水 壁量計算WEB 90秒CM",
+    "duration": 92.112,
+    "mp3": "audio/promo_90s.mp3",
+    "ass": "subtitles_90s.ass"
+  }
+}

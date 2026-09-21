@@ -1,0 +1,65 @@
+[
+  {
+    "key": "seg_01_intro",
+    "text": "上善如水 壁量計算WEB、Vol.1 DXF作図ルールとレイヤ設定編へようこそ。本ツールで図面を一発で正確に読み込むための、CAD側での作図の基本ルールを丁寧に解説します。",
+    "telop": "【Vol.1】DXF作図ルールとレイヤ設定\n〜 一発取込を成功させるCAD側の基本ルール 〜",
+    "mp3": "video_production/vol1/audio\\seg_01_intro.mp3",
+    "start": 0.0,
+    "duration": 16.544,
+    "speech_dur": 15.744
+  },
+  {
+    "key": "seg_02_scale_unit",
+    "text": "まず最も大切な基本は、縮尺と単位です。図面は必ず原寸である1分の1、単位はミリメートルで作図・保存してください。ペーパー空間ではなく、モデル空間で作図することが重要です。",
+    "telop": "ルール①：縮尺1:1 ＆ 単位ミリメートル(mm)\n※ モデル空間で原寸（1:1）で作図・保存する",
+    "mp3": "video_production/vol1/audio\\seg_02_scale_unit.mp3",
+    "start": 16.544,
+    "duration": 18.272000000000002,
+    "speech_dur": 17.472
+  },
+  {
+    "key": "seg_03_grid_rule",
+    "text": "次に、通り芯の作図ルールです。通り芯は必ず連続した1本の直線として引いてください。レイヤ名は『通り芯』『GRID』『GLID』などにしておくと、システムが自動で検出し、交点に磁石スナップが効くようになります。",
+    "telop": "ルール②：通り芯は連続直線 ＆ 推奨レイヤ名\nレイヤ名：『通り芯』『GRID』『GLID』等で自動認識",
+    "mp3": "video_production/vol1/audio\\seg_03_grid_rule.mp3",
+    "start": 34.816,
+    "duration": 19.304000000000002,
+    "speech_dur": 18.504
+  },
+  {
+    "key": "seg_04_pillar_rule",
+    "text": "続いて、柱の作図です。柱は通り芯とは別の、独立したレイヤに作図します。推奨レイヤ名は『柱』や『COL』です。四角形や円で作図された柱を自動認識し、構造計算用の柱として自動プロットします。",
+    "telop": "ルール③：柱は独立レイヤに配置\n推奨レイヤ名：『柱』『COL』等（四角・円を自動認識）",
+    "mp3": "video_production/vol1/audio\\seg_04_pillar_rule.mp3",
+    "start": 54.120000000000005,
+    "duration": 21.464000000000002,
+    "speech_dur": 20.664
+  },
+  {
+    "key": "seg_05_block_explode",
+    "text": "注意が必要なのが、ブロックと外部参照です。図面全体がひとつの大きなブロックになっていたり、グループ化されていると線分を抽出できません。書き出し前に必ずブロック解除、分解を行ってください。",
+    "telop": "ルール④：ブロック解除（分解・EXPLODE）\n図面全体のブロック化を解除して通常の線分で保存",
+    "mp3": "video_production/vol1/audio\\seg_05_block_explode.mp3",
+    "start": 75.584,
+    "duration": 17.696,
+    "speech_dur": 16.896
+  },
+  {
+    "key": "seg_06_model_example",
+    "text": "こちらが今回のモデルプランのレイヤ構成例です。通り芯、柱、壁、文字が整然と分かれているため、ツール側でレイヤを選ぶだけで、自動的に正確な構造モデルが構築されます。",
+    "telop": "実践例：整然としたレイヤ構成のメリット\nレイヤが整理されていれば、ツール側で一発自動認識！",
+    "mp3": "video_production/vol1/audio\\seg_06_model_example.mp3",
+    "start": 93.28,
+    "duration": 16.088,
+    "speech_dur": 15.288
+  },
+  {
+    "key": "seg_07_outro",
+    "text": "作図ルールの準備はこれで完璧です。次のVol.2では、このDXFファイルを実際にツールへ読み込み、1階と2階の図面をぴったり重ね合わせる手順をご紹介します。",
+    "telop": "準備完了！ 次は【Vol.2】へ進みましょう\nDXF読込と1階・2階の原点重ね合わせを実演！",
+    "mp3": "video_production/vol1/audio\\seg_07_outro.mp3",
+    "start": 109.368,
+    "duration": 15.152000000000001,
+    "speech_dur": 14.352
+  }
+]

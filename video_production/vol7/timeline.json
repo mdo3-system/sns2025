@@ -1,0 +1,86 @@
+{
+  "title": "Vol.7 基礎スラブ・基礎梁計算編",
+  "total_duration": 252.33999999999997,
+  "segments": [
+    {
+      "index": 1,
+      "id": "seg_01_intro",
+      "text": "上善如水 壁量計算WEB、Vol.7 基礎スラブ・基礎梁構造計算編へようこそ。本ツールでは、基礎伏図は自動作図ではなく、上部構造の計画に合わせて設計者が手動で作図・配置します。上部躯体に合わせて基礎が決まるという構造原則に基づき、スラブと基礎梁の入力、亀甲分割による負担幅算定、そして人通口補強筋の検定手順を徹底解説します。",
+      "subtitle": "【Vol.7】基礎スラブ・基礎梁構造計算編\n〜 実務者基準による手動伏図作図と人通口補強筋検定 〜",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol7\\audio\\seg_01_intro.mp3",
+      "start": 0.5,
+      "duration": 32.064,
+      "end": 32.564
+    },
+    {
+      "index": 2,
+      "id": "seg_02_slab_input_and_preset",
+      "text": "入力はスラブからでも基礎梁からでも行えますが、実務ではスラブから入力するのが基本です。右パネルでは、短辺D13ピッチ150、長辺D10ピッチ300など、あらかじめ3種類のスラブ仕様を事前登録できます。スラブ入力モードを選択し、グリッドの交点を結んで多角形を描き、始点に戻って閉じます。スラブは基本的に4周を基礎梁で囲む必要がありますが、ポーチやテラスなど幅が小さい部分は片持ちスラブとして配置しても支障ありません。",
+      "subtitle": "STEP 1：スラブの仕様登録と作図入力\n3種類の事前登録仕様 ＆ グリッド交点を結んで閉合",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol7\\audio\\seg_02_slab_input_and_preset.mp3",
+      "start": 33.564,
+      "duration": 37.8,
+      "end": 71.364
+    },
+    {
+      "index": 3,
+      "id": "seg_03_kikou_division_and_pressure",
+      "text": "スラブを閉じると、自動で『亀甲分割線』が表示され、各基礎梁の負担幅が視覚的に展開されます。さらに建物重量とスラブ面積に基づき、地盤の接地圧も即座に自動計算されます。スラブをクリックすれば、支持力に対する安全裕度や配筋検定結果をいつでも確認できます。",
+      "subtitle": "STEP 2：亀甲分割線と接地圧の自動算定\nスラブ閉合で基礎梁負担幅と地盤接地圧を瞬時に算出",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol7\\audio\\seg_03_kikou_division_and_pressure.mp3",
+      "start": 72.364,
+      "duration": 24.672,
+      "end": 97.036
+    },
+    {
+      "index": 4,
+      "id": "seg_04_beam_input_and_rules",
+      "text": "次に基礎梁を配置します。基礎梁もFG1からFG3まで3種類の仕様を事前登録できます。レベラー分の高さをあらかじめ天端から引いて梁成を設定するのが実務のポイントです。告示により、柱の下には土台、土台の下には基礎立上りが必要であり、耐力壁の下には必ず基礎立上りを設けてください。両端点を結んで1本の基礎梁として入力すると、入力と同時に応力と断面検定が自動計算されます。なお10キロニュートン未満の柱ではアイランド型立上りも許容されますが、構造設計者の確認なしに配置するのは避けてください。",
+      "subtitle": "STEP 3：基礎梁（立上り・地中梁）の入力\n柱下・耐力壁下への必須配置 ＆ 両端点を結ぶ1本入力",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol7\\audio\\seg_04_beam_input_and_rules.mp3",
+      "start": 98.036,
+      "duration": 46.224,
+      "end": 144.26
+    },
+    {
+      "index": 5,
+      "id": "seg_05_manhole_placement_and_rule",
+      "text": "続いて、床下点検経路となる人通口の配置です。作図サブモードから『人通口を配置』を選び、対象の基礎梁をクリックして開口位置を指定します。ここで極めて重要な実務ルールとして、耐力壁の下の基礎立上りには、基本的に人通口を設置しないようにしてください。",
+      "subtitle": "STEP 4：人通口（開口部）の配置手順\n【重要】耐力壁直下の基礎立上りには人通口を設置しない",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol7\\audio\\seg_05_manhole_placement_and_rule.mp3",
+      "start": 145.26,
+      "duration": 23.472,
+      "end": 168.732
+    },
+    {
+      "index": 6,
+      "id": "seg_06_manhole_rebar_modal",
+      "text": "人通口を配置した基礎梁をクリックして計算根拠モーダルを開き、『人通口補強計算』を確認します。人通口がある部分の梁高さはスラブの厚みのみとして算定されます。断面図では上主筋が開口欠損として黒塗りされ、下主筋の本数を変えることでスラブ内補強筋の長期・短期曲げ耐力を検定し、確実にOKへと導きます。",
+      "subtitle": "STEP 5：人通口補強計算と断面検定\n梁高＝スラブ厚のみ・上主筋黒塗り・下主筋本数調整で検定",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol7\\audio\\seg_06_manhole_rebar_modal.mp3",
+      "start": 169.732,
+      "duration": 28.896,
+      "end": 198.628
+    },
+    {
+      "index": 7,
+      "id": "seg_07_upper_structure_link_and_fix",
+      "text": "スラブや基礎梁にNGエラーが出た場合は、対象部位を選択して配筋や寸法を修正します。上部躯体に合わせて基礎が決まるため、耐力壁の配置を変更した際は必ず基礎設計も再確認してください。左パネルの『全スラブ一覧』『全基礎梁一覧』を使えば、帳票番号と連動して建物全体の安全性を一括点検できます。",
+      "subtitle": "STEP 6：上部躯体連動とエラー解消\n上部躯体変更に追従・全スラブ＆全梁一覧で一括点検",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol7\\audio\\seg_07_upper_structure_link_and_fix.mp3",
+      "start": 199.628,
+      "duration": 28.488,
+      "end": 228.11599999999999
+    },
+    {
+      "index": 8,
+      "id": "seg_08_outro",
+      "text": "これで耐力壁、N値金物、そして基礎計算まで、木造住宅の許容応力度設計・壁量計算がすべて完了しました。上善如水 壁量計算WEBを活用し、安全で合理的な構造設計をスピーディに実現してください。ご視聴ありがとうございました！",
+      "subtitle": "基礎構造計算完了！\n上善如水 壁量計算WEBで安心・確実な構造計算を実現",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol7\\audio\\seg_08_outro.mp3",
+      "start": 229.11599999999999,
+      "duration": 22.224,
+      "end": 251.33999999999997
+    }
+  ]
+}

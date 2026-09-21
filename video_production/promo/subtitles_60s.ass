@@ -1,0 +1,27 @@
+[Script Info]
+Title: Promo CM 60s - Jyouzen Fukyoshitsu Web
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: PromoTop,Meiryo UI,30,&H0000FFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,1,0,3,4,0,7,50,50,40,1
+Style: PromoBottom,Meiryo UI,36,&H00FFFFFF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,1,0,3,6,0,2,60,60,45,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,00:00:00.00,00:00:09.00,PromoTop,,0,0,0,,高額な年間ライセンス・Mac非対応・CADの分断…
+Dialogue: 0,00:00:00.00,00:00:09.00,PromoBottom,,0,0,0,,木造構造計算の悩みを、すべて過去のものにするツールが誕生！
+Dialogue: 0,00:00:09.00,00:00:18.00,PromoTop,,0,0,0,,【上善如水 壁量計算WEB】ブラウザだけでMacもWinも即起動！
+Dialogue: 0,00:00:09.00,00:00:18.00,PromoBottom,,0,0,0,,インストール不要でどこでも設計・検証
+Dialogue: 0,00:00:18.00,00:00:27.00,PromoTop,,0,0,0,,JWW・AutoCAD・ARCHICAD・Grasshopper・SketchUp・Vectorworks
+Dialogue: 0,00:00:18.00,00:00:27.00,PromoBottom,,0,0,0,,どんなCADでもDXFを書き出せば誰でも瞬時に直結！
+Dialogue: 0,00:00:27.00,00:00:36.50,PromoTop,,0,0,0,,耐力壁自動算定・4分割法・告示1460号N値金物・3D立体確認
+Dialogue: 0,00:00:27.00,00:00:36.50,PromoBottom,,0,0,0,,日々の作図・設計・検証は【永久に完全無料】！
+Dialogue: 0,00:00:36.50,00:00:46.00,PromoTop,,0,0,0,,注目のベタ基礎スラブ・基礎梁・人通口補強計算や申請用一括PDFは
+Dialogue: 0,00:00:36.50,00:00:46.00,PromoBottom,,0,0,0,,「必要な時だけ」利用できる安心の都度課金モデル
+Dialogue: 0,00:00:46.00,00:00:58.00,PromoTop,,0,0,0,,【プログラム本体】https://2025.eie.jp
+Dialogue: 0,00:00:46.00,00:00:58.00,PromoBottom,,0,0,0,,【紹介】https://sns.eie.tokyo 【法人契約管理】https://pr.eie.tokyo

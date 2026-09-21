@@ -1,0 +1,74 @@
+[
+  {
+    "id": "seg_01_intro",
+    "text": "上善如水 壁量計算WEB、Vol.4 耐力壁配置と壁仕様選定編へようこそ。この動画では、目標となる必要壁量を満たすための耐力壁の配置手順と、面材や筋交いを自由に組み合わせる壁倍率の設定方法を解説します。",
+    "subtitle": "【Vol.4】耐力壁配置と壁仕様選定\n〜 自由な壁倍率設定と存在壁量リアルタイム検定 〜",
+    "start": 0.5,
+    "end": 20.42,
+    "duration": 19.92,
+    "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol4\\audio\\seg_01_intro.mp3"
+  },
+  {
+    "id": "seg_02_wall_settings_open",
+    "text": "まず、耐力壁の仕様を設定します。右パネルの操作モード『3. 壁の配置』の横にある『⚙️ 仕様変更』ボタンをクリックし、耐力壁の仕様設定モーダルを開きます。",
+    "subtitle": "STEP 1：耐力壁の仕様設定\n右パネルの「⚙️ 仕様変更」をクリック",
+    "start": 22.22,
+    "end": 37.17,
+    "duration": 14.95,
+    "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol4\\audio\\seg_02_wall_settings_open.mp3"
+  },
+  {
+    "id": "seg_03_wall_multipliers",
+    "text": "モーダルでは、外側と内側の面材、そして筋交いの3つを組み合わせて、最大7.0倍まで自由に設定できます。例えば、構造用合板2.5倍に筋交い2.0倍を重ね合わせて、合計4.5倍の高倍率壁を作ることも簡単です。",
+    "subtitle": "最大7.0倍まで自由に合成\n外側・内側面材 ＋ 筋交いの自由な組み合わせ",
+    "start": 38.97,
+    "end": 60.07,
+    "duration": 21.1,
+    "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol4\\audio\\seg_03_wall_multipliers.mp3"
+  },
+  {
+    "id": "seg_04_wall_drawing",
+    "text": "仕様を決めたら、『この仕様で作図を開始する』をクリックします。配置したい区間の始点の柱をクリックして選択し、次に終点の柱をクリックします。柱と柱を掴むだけで、4.5倍の耐力壁が瞬時に配置され、倍率記号も図面上に表示されます。",
+    "subtitle": "STEP 2：耐力壁の配置作図\n始点と終点の柱をクリックして瞬時に配置！",
+    "start": 61.87,
+    "end": 83.49,
+    "duration": 21.62,
+    "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol4\\audio\\seg_04_wall_drawing.mp3"
+  },
+  {
+    "id": "seg_05_realtime_hekiryo",
+    "text": "壁を1本引くたびに、画面左下の『存在壁量』がリアルタイムに加算されていきます。必要壁量を超えると、判定がNGの赤色から、OKの鮮やかな緑色に瞬時に切り替わります。",
+    "subtitle": "存在壁量がリアルタイム加算！\n必要壁量を満たすと判定が「OK」に即座反転",
+    "start": 85.29,
+    "end": 101.2,
+    "duration": 15.91,
+    "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol4\\audio\\seg_05_realtime_hekiryo.mp3"
+  },
+  {
+    "id": "seg_06_batch_load_complete",
+    "text": "本ツールの強みは、JSONデータによる瞬時の復元です。中央上の『復元』から設計データを読み込むことで、1階と2階のすべての耐力壁を完璧に配置した状態を瞬時に再現できます。",
+    "subtitle": "設計データの一括復元\n1階・2階の全耐力壁を瞬時に反映！",
+    "start": 103.0,
+    "end": 119.28,
+    "duration": 16.27,
+    "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol4\\audio\\seg_06_batch_load_complete.mp3"
+  },
+  {
+    "id": "seg_07_floor_switch_inspect",
+    "text": "中央上のタブで1階と2階を切り替えながら、X方向・Y方向のバランスよく耐力壁が配置されているかを確認します。耐力壁の記号や倍率も図面上に明快に可視化されています。",
+    "subtitle": "階層切替とバランス確認\nX方向・Y方向の壁量バランスと倍率表示",
+    "start": 121.08,
+    "end": 137.25,
+    "duration": 16.18,
+    "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol4\\audio\\seg_07_floor_switch_inspect.mp3"
+  },
+  {
+    "id": "seg_08_outro",
+    "text": "存在壁量がすべてOKになりました。次回Vol.5では、壁の配置バランスを検証する『4分割法と偏心率・剛性率の自動算定』を詳しく解説します。",
+    "subtitle": "耐力壁配置・存在壁量クリア！\n次回 Vol.5「床面積＆4分割法・偏心率編」へつづく",
+    "start": 139.05,
+    "end": 153.24,
+    "duration": 14.18,
+    "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol4\\audio\\seg_08_outro.mp3"
+  }
+]

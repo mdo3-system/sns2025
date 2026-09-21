@@ -1,0 +1,29 @@
+[Script Info]
+Title: Jyouzen Fukyoshitsu Vol.3 Mitsuke & Wind
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: HeaderStep,Meiryo UI,26,&H0000FFFF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,1,0,3,4,0,7,50,50,45,1
+Style: SubtitleBottom,Meiryo UI,32,&H00FFFFFF,&H000000FF,&H00000000,&HA0000000,-1,0,0,0,100,100,1,0,3,6,0,2,80,80,50,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:00.50,0:00:28.16,HeaderStep,,0,0,0,,【Vol.3A】見附図DXF読込＆風圧力算定\N〜 見附図スロット解説・原点指定と風圧力必要壁量の自動算定 〜
+Dialogue: 0,0:00:00.50,0:00:28.16,SubtitleBottom,,0,0,0,,上善如水 壁量計算WEB、Vol.3A 見附図DXF読込と風圧力見附面積算定編へようこそ\Nこの動画では、風圧力の算定に不可欠な見附図DXFの取り込み手順、モーダル内の各スロットの設定、基準原点の指定、そして風圧力に対する必要壁量の自動算定までを、丁寧に分かりやすく解説します
+Dialogue: 1,0:00:28.55,0:00:54.40,HeaderStep,,0,0,0,,見附図DXFの選択と登録方式\N「見附図はDXF/手入力で登録」を選択して屋根ふせずを省略
+Dialogue: 0,0:00:28.55,0:00:54.40,SubtitleBottom,,0,0,0,,まずは見附図DXFを取り込みます\NDXF読込ボタンから、立面・見附図のDXFファイルを選択します\N上部の登録方式では、『見附図はDXFまたは手入力で登録』を選択します\Nこれにより、屋根ふせずを省略して、見附図から直接面積を算定できます
+Dialogue: 1,0:00:54.81,0:01:20.06,HeaderStep,,0,0,0,,DXFモーダル 各スロットの役割解説\N通り芯・寸法・柱・外壁スロットにCADレイヤーを正確に割当
+Dialogue: 0,0:00:54.81,0:01:20.06,SubtitleBottom,,0,0,0,,DXF読込ウィザードの各スロットを確認しましょう\N『割り当てDXFファイル』で対象の立面図を確認し、『通り芯レイヤー』『寸法レイヤー』『外壁・輪郭線レイヤー』をそれぞれのスロットに正しく割り当てます\NCAD図面側のレイヤー名に合わせて選択することで、正確な図面要素が抽出されます
+Dialogue: 1,0:01:20.46,0:01:43.53,HeaderStep,,0,0,0,,プレビューでの基準原点（GL交点）設定\N画面上の通り芯交点をクリックして基準原点(0,0)を完全固定！
+Dialogue: 0,0:01:20.46,0:01:43.53,SubtitleBottom,,0,0,0,,続いて基準原点の設定です\N中央のプレビュー画面には、読み込んだ立面図の輪郭が表示されています\N通り芯とGL基準線が交わる交点をクリックして、基準原点をピタリと合わせます\N原点が正しく固定されたら、『次へ』ボタンを押して確定します
+Dialogue: 1,0:01:43.93,0:02:09.34,HeaderStep,,0,0,0,,左パネル 見附面積の登録と確認\N抽出された見附面積（X/Y・1F/2F）を確認・手入力微調整も可能
+Dialogue: 0,0:01:43.93,0:02:09.34,SubtitleBottom,,0,0,0,,本画面に戻りました\N左パネルの『床面積＆4分割面積＆見附面積』アコーディオンを展開すると、取り込んだ見附図から抽出されたX方向・Y方向の1階・2階見附面積が確認できます\N手入力モードへの切り替えや、設計数値の微調整もここから自在に行えます
+Dialogue: 1,0:02:09.74,0:02:32.36,HeaderStep,,0,0,0,,風圧力に対する必要壁量の自動算定\N見附面積から風圧力壁量を瞬時に算出（地震力は床面積確定後に連動）
+Dialogue: 0,0:02:09.74,0:02:32.36,SubtitleBottom,,0,0,0,,画面上の計算結果テーブルをご覧ください\N登録された見附面積に基づき、風圧力に対する必要壁量が各階・各方向ごとに瞬時に自動算定されました\Nなお、地震力に対する必要壁量は、床面積の入力完了後に自動確定します
+Dialogue: 1,0:02:32.75,0:02:56.02,HeaderStep,,0,0,0,,見附図DXF読込・風圧力算定完了！\N次回 Vol.3B「屋根ふせず・3D確認編」へつづく
+Dialogue: 0,0:02:32.75,0:02:56.02,SubtitleBottom,,0,0,0,,これで、見附図DXFからの見附面積登録と、風圧力必要壁量の算定が完了しました\N続くVol.3Bでは、屋根ふせずの入力手順と3Dリアルタイム構造確認を、Vol.3Cでは特殊な床面積入力と見上げ・見下げの違いを詳しく解説します

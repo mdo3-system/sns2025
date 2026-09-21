@@ -8,3 +8,17 @@ scratch/
 /2025/
 default_page.png
 
+# video_production large assets & intermediate data
+video_production/**/*.mp4
+video_production/**/*.mp3
+video_production/**/*.webm
+video_production/**/*.wav
+video_production/**/*.py
+video_production/**/audio/
+video_production/**/raw_record/
+video_production/**/temp_audio/
+video_production/**/test_inspect/
+video_production/**/scratch/
+video_production/**/frames/
+video_production/**/promo/sns/
+

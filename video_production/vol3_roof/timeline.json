@@ -1,0 +1,82 @@
+[
+  {
+    "index": 0,
+    "id": "seg_01_intro",
+    "text": "上善如水 壁量計算WEB、Vol.3B 屋根ふせず入力と見附面積自動算定編へようこそ。この動画では、改正基準法の見附面積自動算定に直結する屋根ふせずの作成手順を解説します。まず絶対に覚えていただきたい鉄則は、本ツールでは屋根面も床面も『グリッドの交点』にしか作図できない、ということです。",
+    "subtitle": "【Vol.3B】屋根ふせず入力＆見附面積自動算定\n〜 鉄則：屋根はグリッド交点にしか作図できない！ 〜",
+    "start": 0.5,
+    "end": 27.88,
+    "duration": 27.38,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_roof\\audio\\seg_01_intro.mp3"
+  },
+  {
+    "index": 1,
+    "id": "seg_02_roof_grid_offset",
+    "text": "屋根を描く前段階として、最も重要なのが屋根専用グリッドの追加です。建物の外壁通り芯、つまり屋根基準線に対して、実際の屋根は軒の出やケラバの出寸法分、外側に張り出しています。左パネルの『屋根グリッド追加』から、外壁通り芯から外側に750ミリなどの出寸法をオフセットした屋根専用グリッドを追加します。この交点があって初めて、正確な軒先位置に屋根を描くことができます。",
+    "subtitle": "屋根専用グリッドの追加（軒の出・ケラバの出寸法設定）\n外壁通り芯（屋根基準線）から出寸法（750mm等）をオフセット！",
+    "start": 29.08,
+    "end": 63.52,
+    "duration": 34.44,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_roof\\audio\\seg_02_roof_grid_offset.mp3"
+  },
+  {
+    "index": 2,
+    "id": "seg_03_roof_concept_order",
+    "text": "屋根入力の独特な書き方と手順を伝授します。屋根を描く際は、まず第1に屋根勾配の基準になる位置、すなわち桁線や勾配基準線を決めます。第2に勾配がどちらに向かって上るか、向きを意識します。そして第3に、軒先グリッド交点を結んで屋根形状をなぞる、という3つの順序で考えます。この基準線、向き、形状という順序をしっかり押さえてください。",
+    "subtitle": "屋根入力の極意：基準線 ➔ 向き ➔ 形状をなぞる\n①勾配の基準位置（桁線）➔ ②勾配の向き ➔ ③屋根形状をなぞる！",
+    "start": 64.72,
+    "end": 96.5,
+    "duration": 31.78,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_roof\\audio\\seg_03_roof_concept_order.mp3"
+  },
+  {
+    "index": 3,
+    "id": "seg_04_draw_ooyane_face1",
+    "text": "それでは、2階屋根である大屋根の作図を実演します。大屋根は最低2つの屋根面を入力します。まずは1面目、西側の屋根面です。左パネルの『屋根面を引く』を選び、北西の軒先交点、南西の軒先交点、中央の棟交点を順にクリックし、始点に戻って閉じます。続けて基準となる桁線、西側外壁芯の2点をクリックし、最後に勾配の高い側である棟の交点をクリックして、4寸勾配で確定します。",
+    "subtitle": "大屋根作図実演①：西側屋根面（R4）の入力\n軒先・棟交点をなぞって閉じる ➔ 桁線2点指定 ➔ 棟側上り点指定！",
+    "start": 97.7,
+    "end": 133.94,
+    "duration": 36.24,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_roof\\audio\\seg_04_draw_ooyane_face1.mp3"
+  },
+  {
+    "index": 4,
+    "id": "seg_05_draw_ooyane_face2",
+    "text": "続けて2面目、南側の屋根面を入力します。同様に、南西の軒先交点、南東の軒先交点、中央の棟交点を順次クリックし、始点で閉じます。そして基準となる南側桁線の2点をクリックし、勾配の上り方向である棟交点をクリックして4寸勾配で確定します。ご覧ください！2つの屋根面が棟でピタリと合わさり、大屋根の立体的な勾配形状が完成しました。",
+    "subtitle": "大屋根作図実演②：南側屋根面（R5）の入力\n2面が棟でピタリと合致！立体的な大屋根の勾配が完成！",
+    "start": 135.14,
+    "end": 168.21,
+    "duration": 33.07,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_roof\\audio\\seg_05_draw_ooyane_face2.mp3"
+  },
+  {
+    "index": 5,
+    "id": "seg_06_geya_and_dxf",
+    "text": "1階屋根である下屋（げや）も同様の手順で入力します。上部のタブを『1階屋根』に切り替えると、下屋専用の屋根面や外壁線を確認できます。また、DXF読込モーダルを使えば、下屋の1RF.dxfと大屋根の2RF.dxfをステップバイステップで取り込み、通り芯原点を完全整合させることも可能です。",
+    "subtitle": "下屋（1階屋根）の確認 ＆ DXF読込モーダル整合\n1階屋根(下屋)と2階屋根(大屋根)を明確に階層別管理！",
+    "start": 169.41,
+    "end": 198.24,
+    "duration": 28.82,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_roof\\audio\\seg_06_geya_and_dxf.mp3"
+  },
+  {
+    "index": 6,
+    "id": "seg_07_mitsuke_auto_calc",
+    "text": "下屋と大屋根の入力が完了すると、見附面積はすべて自動算出されます！屋根形状、勾配、外壁線の立体配置から、GL基準および各階のカットラインに従って、X方向・Y方向の見附面積が瞬時に高精度算定されます。面倒な立面求積図の手計算は一切不要です。",
+    "subtitle": "屋根ふせずから見附面積を全自動算出！\n下屋・大屋根の作図から、X・Y方向の見附面積が瞬時に完全自動算定！",
+    "start": 199.44,
+    "end": 225.26,
+    "duration": 25.82,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_roof\\audio\\seg_07_mitsuke_auto_calc.mp3"
+  },
+  {
+    "index": 7,
+    "id": "seg_08_preview_3d_outro",
+    "text": "右上の『3Dプレビュー』を開いてみましょう。作図した大屋根の2面と下屋が美しい3次元CGで再現され、勾配や立体交差の整合性が一目で確認できます。これで屋根と見附面積の準備が整いました。次回Vol.3Cでは、必須となる床面積入力と見上げ・見下げ面積の違いを解説します。",
+    "subtitle": "3D立体確認 ＆ 次回Vol.3C（床面積編）へ\n大屋根と下屋の立体交差を確認！次回 Vol.3C「床面積入力編」へつづく",
+    "start": 226.46,
+    "end": 252.79,
+    "duration": 26.33,
+    "mp3": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol3_roof\\audio\\seg_08_preview_3d_outro.mp3"
+  }
+]

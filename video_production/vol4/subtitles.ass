@@ -1,0 +1,31 @@
+[Script Info]
+Title: Jyouzen Fukyoshitsu Vol.4 Wall Settings & Placement
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: HeaderStep,Meiryo UI,26,&H0000FFFF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,1,0,3,4,0,7,50,50,45,1
+Style: SubtitleBottom,Meiryo UI,32,&H00FFFFFF,&H000000FF,&H00000000,&HA0000000,-1,0,0,0,100,100,1,0,3,6,0,2,80,80,50,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:00.50,0:00:21.22,HeaderStep,,0,0,0,,【Vol.4】耐力壁配置と壁仕様選定\N〜 自由な壁倍率設定と存在壁量リアルタイム検定 〜
+Dialogue: 0,0:00:00.50,0:00:21.22,SubtitleBottom,,0,0,0,,上善如水 壁量計算WEB、Vol.4 耐力壁配置と壁仕様選定編へようこそ\Nこの動画では、目標となる必要壁量を満たすための耐力壁の配置手順と、面材や筋交いを自由に組み合わせる壁倍率の設定方法を解説します
+Dialogue: 1,0:00:22.21,0:00:37.96,HeaderStep,,0,0,0,,STEP 1：耐力壁の仕様設定\N右パネルの「⚙️ 仕様変更」をクリック
+Dialogue: 0,0:00:22.21,0:00:37.96,SubtitleBottom,,0,0,0,,まず、耐力壁の仕様を設定します\N右パネルの操作モード『3. 壁の配置』の横にある『⚙️ 仕様変更』ボタンをクリックし、耐力壁の仕様設定モーダルを開きます
+Dialogue: 1,0:00:38.96,0:01:00.86,HeaderStep,,0,0,0,,最大7.0倍まで自由に合成\N外側・内側面材 ＋ 筋交いの自由な組み合わせ
+Dialogue: 0,0:00:38.96,0:01:00.86,SubtitleBottom,,0,0,0,,モーダルでは、外側と内側の面材、そして筋交いの3つを組み合わせて、最大7.0倍まで自由に設定できます\N例えば、構造用合板2.5倍に筋交い2.0倍を重ね合わせて、合計4.5倍の高倍率壁を作ることも簡単です
+Dialogue: 1,0:01:01.86,0:01:24.28,HeaderStep,,0,0,0,,STEP 2：耐力壁の配置作図\N始点と終点の柱をクリックして瞬時に配置！
+Dialogue: 0,0:01:01.86,0:01:24.28,SubtitleBottom,,0,0,0,,仕様を決めたら、『この仕様で作図を開始する』をクリックします\N配置したい区間の始点の柱をクリックして選択し、次に終点の柱をクリックします\N柱と柱を掴むだけで、4.5倍の耐力壁が瞬時に配置され、倍率記号も図面上に表示されます
+Dialogue: 1,0:01:25.29,0:01:42.00,HeaderStep,,0,0,0,,存在壁量がリアルタイム加算！\N必要壁量を満たすと判定が「OK」に即座反転
+Dialogue: 0,0:01:25.29,0:01:42.00,SubtitleBottom,,0,0,0,,壁を1本引くたびに、画面左下の『存在壁量』がリアルタイムに加算されていきます\N必要壁量を超えると、判定がNGの赤色から、OKの鮮やかな緑色に瞬時に切り替わります
+Dialogue: 1,0:01:43.00,0:02:00.07,HeaderStep,,0,0,0,,設計データの一括復元\N1階・2階の全耐力壁を瞬時に反映！
+Dialogue: 0,0:01:43.00,0:02:00.07,SubtitleBottom,,0,0,0,,本ツールの強みは、JSONデータによる瞬時の復元です\N中央上の『復元』から設計データを読み込むことで、1階と2階のすべての耐力壁を完璧に配置した状態を瞬時に再現できます
+Dialogue: 1,0:02:01.07,0:02:18.05,HeaderStep,,0,0,0,,階層切替とバランス確認\NX方向・Y方向の壁量バランスと倍率表示
+Dialogue: 0,0:02:01.07,0:02:18.05,SubtitleBottom,,0,0,0,,中央上のタブで1階と2階を切り替えながら、X方向・Y方向のバランスよく耐力壁が配置されているかを確認します\N耐力壁の記号や倍率も図面上に明快に可視化されています
+Dialogue: 1,0:02:19.05,0:02:34.04,HeaderStep,,0,0,0,,耐力壁配置・存在壁量クリア！\N次回 Vol.5「床面積＆4分割法・偏心率編」へつづく
+Dialogue: 0,0:02:19.05,0:02:34.04,SubtitleBottom,,0,0,0,,存在壁量がすべてOKになりました\N次回Vol.5では、壁の配置バランスを検証する『4分割法と偏心率・剛性率の自動算定』を詳しく解説します

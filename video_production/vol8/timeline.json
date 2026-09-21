@@ -1,0 +1,76 @@
+{
+  "title": "Vol.8 計算書一括PDF出力＆確認申請書類まとめ編",
+  "total_duration": 251.12,
+  "segments": [
+    {
+      "index": 1,
+      "id": "seg_01_intro",
+      "text": "上善如水 壁量計算WEB、操作解説動画シリーズの最終回、Vol.8 計算書一括PDF出力＆確認申請書類まとめ編へようこそ。これまでVol.1からVol.7にかけて入力・算定してきたすべての構造計算データを、確認申請や構造審査にそのまま提出できる、正式な構造計算書として一冊のPDF帳票に一括出力します。左パネル上部の『計算書を一括出力』ボタンをクリックして、計算書プレビュー画面を起動しましょう。",
+      "subtitle": "【Vol.8 最終回】計算書一括PDF出力＆確認申請書類まとめ編\n〜 審査機関提出用の正式計算書（全7項目）を一括生成 〜",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol8\\audio\\seg_01_intro.mp3",
+      "start": 0.5,
+      "duration": 37.656,
+      "end": 38.156
+    },
+    {
+      "index": 2,
+      "id": "seg_02_cover_and_nav",
+      "text": "プレビュー上部には、物件名、設計者情報、計算実施日、そして建築基準法や性能表示の適用基準が記載された正式な表紙が自動生成されます。その下には全7項目の目次ナビゲーションバーが用意されており、1の面積・壁量から、2の壁量検定、4分割法、N値金物、柱負担、基礎スラブ、そして基礎梁まで、確認したい計算書セクションへワンクリックで瞬時にジャンプできます。",
+      "subtitle": "STEP 1：表紙・物件情報 ＆ 目次ナビゲーション\n物件情報・設計者・適用基準と全7項目の目次ジャンプ",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol8\\audio\\seg_02_cover_and_nav.mp3",
+      "start": 39.156,
+      "duration": 33.84,
+      "end": 72.996
+    },
+    {
+      "index": 3,
+      "id": "seg_03_upper_structure_reports",
+      "text": "上部躯体の計算書を順番に点検していきましょう。第1項目では各階の床面積求積表と見付面積、第2項目では地震力・風圧力に対する存在壁量と充足率の判定一覧表が整然と並びます。第3項目には側端部壁率比0.5以上を確認する4分割法計算書、第4項目には告示1460号に基づく全柱の引抜力と採用金物一覧表、そして第5項目には各柱の負担面積と軸力計算書が完璧に網羅されています。",
+      "subtitle": "STEP 2：上部躯体計算書（第1〜第5項目）の点検\n求積表・壁量検定・4分割バランス・告示1460号N値金物",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol8\\audio\\seg_03_upper_structure_reports.mp3",
+      "start": 73.996,
+      "duration": 39.768,
+      "end": 113.764
+    },
+    {
+      "index": 4,
+      "id": "seg_04_foundation_reports",
+      "text": "続いて、第6項目と第7項目の基礎構造計算書です。第6項目ではベタ基礎スラブの長期接地圧、地盤支持力に対する安全率、および配筋の検定結果が記載されます。第7項目では基礎梁の連続梁解析による曲げ・せん断検定比、配筋仕様、さらに人通口を配置した箇所のスラブ内補強筋の長期・短期曲げ耐力検定まで、構造設計の根拠がすべて詳細に記載されています。",
+      "subtitle": "STEP 3：基礎構造計算書（第6〜第7項目）の点検\nベタ基礎スラブ接地圧・基礎梁応力断面算定・人通口補強",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol8\\audio\\seg_04_foundation_reports.mp3",
+      "start": 114.764,
+      "duration": 34.68,
+      "end": 149.444
+    },
+    {
+      "index": 5,
+      "id": "seg_05_print_range_and_pdf",
+      "text": "プレビュー上部の『印刷範囲』セレクトボックスを使えば、全7項目すべてを一括出力するだけでなく、上部躯体の壁量計算書のみ、あるいは基礎構造計算書のみを個別に切り替えて出力することも可能です。『印刷・PDF』ボタンを押せば、ブラウザの印刷ダイアログが開き、A4縦向きで改ページ位置も完璧に調整された、高品質なPDFファイルとして保存できます。",
+      "subtitle": "STEP 4：印刷範囲選択 ＆ 一括PDF出力\n提出先に応じた範囲切替 ＆ A4縦向きで美しく1冊に保存",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol8\\audio\\seg_05_print_range_and_pdf.mp3",
+      "start": 150.444,
+      "duration": 30.48,
+      "end": 180.924
+    },
+    {
+      "index": 6,
+      "id": "seg_06_other_export_tools",
+      "text": "一括PDFのほかにも、設計実務を支える便利な出力機能が揃っています。左パネルの『耐力壁の軸力図』では通り芯ごとの立面フレーム応力図を確認でき、『直下率』や『重心剛心』ダイアログでは構造バランスの適合率を検証できます。さらに『CSV保存』を実行すれば、入力した壁データや柱データを外部CADや社内管理台帳へ簡単に連携できます。",
+      "subtitle": "STEP 5：立面軸力図・直下率・CSVエクスポート\n通り芯ごとの立面フレーム・直下率点検・CAD連携用CSV保存",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol8\\audio\\seg_06_other_export_tools.mp3",
+      "start": 181.924,
+      "duration": 32.448,
+      "end": 214.372
+    },
+    {
+      "index": 7,
+      "id": "seg_07_series_outro",
+      "text": "これで、DXF読込から耐力壁・屋根・4分割・N値金物・基礎設計、そして確認申請用の一括PDF出力まで、全8回にわたる操作解説シリーズはすべて完了です。直感的な操作性と厳格な構造基準を両立した『上善如水 壁量計算WEB』を活用し、安心で合理的な木造住宅設計を力強く推進してください。最後までご視聴いただき、誠にありがとうございました！",
+      "subtitle": "【シリーズ完結】安全で確実な木造構造計算の実現へ\n上善如水 壁量計算WEBをご活用いただきありがとうございました！",
+      "file": "E:\\Dropbox\\■設計ｻﾎﾟｰﾄ\\■note\\antigravity\\wall_4split_v2\\video_production\\vol8\\audio\\seg_07_series_outro.mp3",
+      "start": 215.372,
+      "duration": 34.752,
+      "end": 250.124
+    }
+  ]
+}

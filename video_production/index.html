@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>上善如水 壁量計算WEB - 操作解説動画シリーズ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --accent-blue: #38bdf8;
+      --accent-green: #22c55e;
+      --accent-yellow: #facc15;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 24px;
+    }
+    .header {
+      max-width: 1400px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 16px;
+    }
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 9999px;
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--accent-green);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+    }
+    /* シリーズ選択タブ */
+    .vol-tabs {
+      max-width: 1400px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .vol-tab-btn {
+      flex: 1 1 calc(25% - 10px);
+      min-width: 180px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .vol-tab-btn:hover {
+      background: rgba(56, 189, 248, 0.1);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: var(--text-main);
+    }
+    .vol-tab-btn.active {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+    }
+
+    .main-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 24px;
+    }
+    @media (max-width: 1024px) {
+      .main-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    .video-wrapper {
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .video-info {
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+    }
+    .video-info h2 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+    .video-info p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .chapter-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .chapter-item {
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+    .chapter-item:hover {
+      background: rgba(56, 189, 248, 0.1);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+    .chapter-time {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-yellow);
+      background: rgba(250, 204, 21, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .chapter-text {
+      font-size: 0.85rem;
+      color: var(--text-main);
+    }
+    .feature-points {
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .feature-points li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .feature-points li::before {
+      content: "✔";
+      color: var(--accent-green);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <h1>上善如水 壁量計算WEB 操作解説動画シリーズ</h1>
+      <span style="font-size: 0.85rem; color: var(--text-muted);">実務モデルプラン解説シリーズ（Full HD 1080p・全編女性AIナレーション＆電車内テロップ付）</span>
+    </div>
+    <div>
+      <a href="https://eie.jp" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 8px; background: rgba(56, 189, 248, 0.15); border: 1px solid var(--accent-blue); color: var(--accent-blue); text-decoration: none; font-size: 0.85rem; font-weight: 700;">🏠 公式ポータル（eie.jp）へ戻る</a>
+    </div>
+  </div>
+
+  <!-- シリーズ切替タブ -->
+  <div class="vol-tabs">
+    <button class="vol-tab-btn" id="tab-vol1" onclick="switchVideo('vol1')">
+      🎬 【Vol.1】作図ルール (2分04秒)
+    </button>
+    <button class="vol-tab-btn" id="tab-vol2" onclick="switchVideo('vol2')">
+      🎬 【Vol.2】DXF読込 (2分43秒)
+    </button>
+    <button class="vol-tab-btn" id="tab-vol3a" onclick="switchVideo('vol3a')">
+      🎬 【Vol.3A】見附図DXF＆風力 (2分56秒)
+    </button>
+    <button class="vol-tab-btn active" id="tab-vol3b" onclick="switchVideo('vol3b')">
+      🎬 【Vol.3B】屋根ふせず＆3D (4分14秒)
+    </button>
+    <button class="vol-tab-btn" id="tab-vol3c" onclick="switchVideo('vol3c')">
+      🎬 【Vol.3C】床面積＆見上げ・見下げ (3分01秒)
+    </button>
+    <button class="vol-tab-btn" id="tab-vol4" onclick="switchVideo('vol4')">
+      🎬 【Vol.4】耐力壁配置＆仕様 (2分35秒)
+    </button>
+    <button class="vol-tab-btn" id="tab-vol5" onclick="switchVideo('vol5')">
+      🎬 【Vol.5】床面積＆4分割・偏心率 (2分44秒)
+    </button>
+    <button class="vol-tab-btn" id="tab-vol6" onclick="switchVideo('vol6')">
+      🎬 【Vol.6】柱＆N値・金物 (3分21秒)
+    </button>
+    <button class="vol-tab-btn" id="tab-vol7" onclick="switchVideo('vol7')">
+      🎬 【Vol.7】基礎スラブ・基礎梁 (4分13秒)
+    </button>
+    <button class="vol-tab-btn" id="tab-vol8" onclick="switchVideo('vol8')">
+      🎬 【Vol.8 最終回】計算書一括PDF＆申請書類 (4分11秒)
+    </button>
+  </div>
+
+  <!-- 3大ドメイン導線バナー -->
+  <div style="max-width: 1400px; margin: 0 auto 16px auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+    <!-- 1. プログラム本体 -->
+    <a href="https://2025.eie.jp" target="_blank" rel="noopener" style="padding: 12px 18px; border-radius: 10px; background: linear-gradient(135deg, rgba(234, 179, 8, 0.2), rgba(245, 158, 11, 0.15)); border: 1px solid rgba(234, 179, 8, 0.6); text-decoration: none; display: flex; align-items: center; justify-content: space-between; color: var(--text-main); transition: all 0.2s ease;">
+      <div>
+        <div style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: bold;">【プログラム本体（Webアプリ）】</div>
+        <div style="font-size: 1.05rem; font-weight: bold; margin-top: 2px;">💻 上善如水 壁量計算WEB 即起動</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">インストール不要・ブラウザで今すぐ計算開始</div>
+      </div>
+      <span style="font-size: 0.85rem; font-weight: bold; color: var(--accent-yellow); background: rgba(234, 179, 8, 0.25); padding: 4px 10px; border-radius: 6px; white-space: nowrap;">2025.eie.jp ➔</span>
+    </a>
+    <!-- 2. 個人・SNS向け紹介ポータル -->
+    <a href="https://eie.jp" target="_blank" rel="noopener" style="padding: 12px 18px; border-radius: 10px; background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(129, 140, 248, 0.15)); border: 1px solid rgba(56, 189, 248, 0.5); text-decoration: none; display: flex; align-items: center; justify-content: space-between; color: var(--text-main); transition: all 0.2s ease;">
+      <div>
+        <div style="font-size: 0.75rem; color: var(--accent-blue); font-weight: bold;">【個人事業主・アトリエ設計事務所向け】</div>
+        <div style="font-size: 1.05rem; font-weight: bold; margin-top: 2px;">🌐 紹介ポータル・SNS情報</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">機能解説・チュートリアル・X/note連携</div>
+      </div>
+      <span style="font-size: 0.85rem; font-weight: bold; color: var(--accent-blue); background: rgba(56, 189, 248, 0.2); padding: 4px 10px; border-radius: 6px; white-space: nowrap;">eie.jp ➔</span>
+    </a>
+    <!-- 3. 法人契約管理・BtoBポータル -->
+    <a href="https://pr.eie.tokyo" target="_blank" rel="noopener" style="padding: 12px 18px; border-radius: 10px; background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(16, 185, 129, 0.15)); border: 1px solid rgba(34, 197, 94, 0.5); text-decoration: none; display: flex; align-items: center; justify-content: space-between; color: var(--text-main); transition: all 0.2s ease;">
+      <div>
+        <div style="font-size: 0.75rem; color: var(--accent-green); font-weight: bold;">【工務店・法人契約管理窓口】</div>
+        <div style="font-size: 1.05rem; font-weight: bold; margin-top: 2px;">🏢 BtoB向けPR・契約ポータル</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">複数ライセンス・請求書払い・24時間自動営業連携</div>
+      </div>
+      <span style="font-size: 0.85rem; font-weight: bold; color: var(--accent-green); background: rgba(34, 197, 94, 0.2); padding: 4px 10px; border-radius: 6px; white-space: nowrap;">pr.eie.tokyo ➔</span>
+    </a>
+  </div>
+
+  <!-- 宣伝広告プロモーションCM専用タブバー -->
+  <div class="vol-tabs" style="background: rgba(234, 179, 8, 0.08); border-color: rgba(234, 179, 8, 0.3);">
+    <span style="font-size:0.85rem; font-weight:bold; color:var(--accent-yellow); display:flex; align-items:center; padding:0 8px;">
+      📣 宣伝広告CMシリーズ:
+    </span>
+    <button class="vol-tab-btn" id="tab-promo_15s" onclick="switchVideo('promo_15s')" style="border-color:rgba(234,179,8,0.4);">
+      ⚡ 15秒CM（インパクト型）
+    </button>
+    <button class="vol-tab-btn" id="tab-promo_30s" onclick="switchVideo('promo_30s')" style="border-color:rgba(234,179,8,0.4);">
+      📺 30秒CM（標準CM型）
+    </button>
+    <button class="vol-tab-btn" id="tab-promo_45s" onclick="switchVideo('promo_45s')" style="border-color:rgba(234,179,8,0.4);">
+      🚀 45秒CM（機能ダイジェスト）
+    </button>
+    <button class="vol-tab-btn" id="tab-promo_foundation_45s" onclick="switchVideo('promo_foundation_45s')" style="border-color:rgba(234,179,8,0.5); background:rgba(234,179,8,0.15); color:var(--accent-yellow);">
+      🏗️ 基礎特化45秒CM（ベタ基礎＆人通口）
+    </button>
+    <button class="vol-tab-btn" id="tab-promo_60s" onclick="switchVideo('promo_60s')" style="border-color:rgba(234,179,8,0.4);">
+      📖 60秒CM（ストーリー型）
+    </button>
+    <button class="vol-tab-btn" id="tab-promo_90s" onclick="switchVideo('promo_90s')" style="border-color:rgba(234,179,8,0.4);">
+      🌟 90秒CM（完全実演版）
+    </button>
+  </div>
+
+  <div class="main-container">
+    <div>
+      <div class="video-wrapper">
+        <video id="player" controls autoplay playsinline preload="metadata">
+          <source id="video-source" src="vol1/vol1_dxf_rules.mp4" type="video/mp4">
+          お使いのブラウザは動画タグに対応していません。
+        </video>
+        <div class="video-info">
+          <h2 id="video-title">【Vol.1】DXF作図ルールとレイヤ設定 〜 一発取込を成功させるCAD側の基本ルール 〜</h2>
+          <p id="video-desc">DXF読込の成否を決めるCAD側の4大作図ルール（縮尺1:1・連続通り芯・柱のレイヤ分離・ブロック解除）を、わかりやすいグラフィックスライドと実例で解説します。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="card">
+        <div class="card-title" id="chapter-title">📌 チャプター目次（クリックでジャンプ）</div>
+        <ul class="chapter-list" id="chapter-list">
+          <!-- JSで動的生成 -->
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">💡 本動画のポイント・工夫</div>
+        <ul class="feature-points" id="feature-points">
+          <!-- JSで動的生成 -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const player = document.getElementById('player');
+    const videoSource = document.getElementById('video-source');
+    const videoTitle = document.getElementById('video-title');
+    const videoDesc = document.getElementById('video-desc');
+    const chapterList = document.getElementById('chapter-list');
+    const featurePoints = document.getElementById('feature-points');
+
+    const DATA = {
+      vol1: {
+        src: 'vol1/vol1_dxf_rules.mp4',
+        title: '【Vol.1】DXF作図ルールとレイヤ設定 〜 一発取込を成功させるCAD側の基本ルール 〜',
+        desc: 'DXF読込の成否を決めるCAD側の4大作図ルール（縮尺1:1・連続通り芯・柱のレイヤ分離・ブロック解除）を、わかりやすいグラフィックスライドと実例で解説します。',
+        chapters: [
+          { time: 0.0, label: '00:00', text: 'イントロダクション（作図ルールの重要性）' },
+          { time: 16.5, label: '00:16', text: 'ルール①：縮尺1:1 ＆ 単位ミリメートル(mm)' },
+          { time: 34.8, label: '00:34', text: 'ルール②：通り芯は連続直線 ＆ 推奨レイヤ名' },
+          { time: 54.1, label: '00:54', text: 'ルール③：柱は独立レイヤに配置' },
+          { time: 75.6, label: '01:15', text: 'ルール④：ブロック解除（分解・EXPLODE）' },
+          { time: 93.3, label: '01:33', text: '実例紹介：モデルプランのレイヤ構成' },
+          { time: 109.4, label: '01:49', text: '準備完了！【Vol.2】へ進みましょう' }
+        ],
+        features: [
+          'DXF読込の失敗を防ぐCAD側の4大ルールを図解',
+          '推奨レイヤ名（通り芯・柱・壁）の明示',
+          '自然で明瞭な女性AI音声（七海 / Nanami）',
+          '電車内でも音声なしで読める大文字テロップ',
+          'スムーズにVol.2（実践編）へ繋がるストーリー構成'
+        ]
+      },
+      vol2: {
+        src: 'vol2/vol2_dxf_import.mp4',
+        title: '【Vol.2 改訂版】DXF読込と原点設定編 〜 各スロットの役割と図面の正確な重ね合わせ 〜',
+        desc: 'モーダル内の各スロット（割り当てDXF、通り芯、寸法、柱、背景レイヤー、通り芯文字採用ラジオ）が何を意味するのかを分かりやすく解説し、1階と2階のX1-Y1交点を精密に磁石スナップさせてズレゼロで完璧に合致させる手順を実演しています。',
+        chapters: [
+          { time: 0.0, label: '00:00', text: 'イントロダクション（概要・重要性の解説）' },
+          { time: 18.9, label: '00:18', text: 'STEP 1：DXF複数ファイルの選択（1F・2F）' },
+          { time: 33.0, label: '00:33', text: 'STEP 2：見附登録方式の選択（屋根スキップ）' },
+          { time: 50.8, label: '00:50', text: '💡【重要】各スロットの役割解説（DXF/通り芯/寸法/柱/背景/文字）' },
+          { time: 87.1, label: '01:27', text: 'STEP 3：【1階】X1-Y1交点で基準原点確定' },
+          { time: 103.4, label: '01:43', text: '基準原点確定・Step 2へ進む' },
+          { time: 114.6, label: '01:54', text: 'STEP 4：【2階】透け線に合わせX1-Y1交点をクリック（完全合致！）' },
+          { time: 134.3, label: '02:14', text: 'ズレゼロ確認・平面図取込の確定' },
+          { time: 143.6, label: '02:23', text: 'インポート完了（上下階完全一致、屋根ロック、見附手入力）' }
+        ],
+        features: [
+          'モーダル内6つのスロットの目的を全解説',
+          '1階と2階のX1-Y1交点がズレゼロで完璧に合致する実演',
+          '自然で聞き取りやすい女性アナウンサー音声（七海）',
+          '電車内でも音がなくても読める下部大文字テロップ',
+          '赤丸カーソルとクリック波紋エフェクトで直感理解'
+        ]
+      },
+      vol3a: {
+        src: 'vol3/vol3_mitsuke_wind.mp4',
+        title: '【Vol.3A】見附図DXF読込＆風圧力算定編 〜 見附図スロット解説・原点指定と風圧力必要壁量の自動算定 〜',
+        desc: '風圧力の算定に不可欠な見附図DXFの取り込み手順、モーダル内の各スロットの設定、基準原点（GL交点）の指定、そして風圧力に対する必要壁量の自動算定までを丁寧に解説します。',
+        chapters: [
+          { time: 0.0, label: '00:00', text: 'イントロダクション（見附図DXFと風圧力算定の概要）' },
+          { time: 28.5, label: '00:28', text: '見附図DXFの選択と登録方式（屋根ふせずを省略）' },
+          { time: 54.8, label: '00:54', text: 'DXFモーダル 各スロットの役割解説（通り芯・寸法・柱・外壁）' },
+          { time: 80.5, label: '01:20', text: 'プレビューでの基準原点（GL交点）設定と確定' },
+          { time: 103.9, label: '01:43', text: '左パネル 見附面積の登録と確認（手入力微調整も可能）' },
+          { time: 129.7, label: '02:09', text: '風圧力に対する必要壁量の自動算定（地震力は床面積確定後に連動）' },
+          { time: 152.8, label: '02:32', text: '算定完了！次回 Vol.3B「屋根ふせず・3D確認編」へ' }
+        ],
+        features: [
+          '立面・見附図DXF（manualmodel_elev.dxf）の正確な取込実演',
+          'モーダル内スロット（通り芯・寸法・柱・外壁）の丁寧な役割解説',
+          '画面上の通り芯交点をクリックして基準原点をピタリと固定',
+          '「伏図」の読み仮名を「ふせず」と正確に徹底発音',
+          '風圧力必要壁量の自動確定（床面積未入力時の正確なステータス明示）'
+        ]
+      },
+      vol3b: {
+        src: 'vol3_roof/vol3_roof_3d.mp4',
+        title: '【Vol.3B】屋根ふせず入力＆見附面積自動算定編 〜 屋根専用グリッド追加、基準線・桁線設定と大屋根2面作図実演 〜',
+        desc: '改正建築基準法の見附面積自動算定の核心となる屋根ふせずの作成手順を解説。「グリッド交点にしか作図できない」鉄則から、軒の出・ケラバ出寸法（750mm）の屋根専用グリッド追加、基準線・桁線の思考順序、大屋根2面の連続作図実演、見附面積の全自動算出までを丁寧に分かりやすく解説します。',
+        chapters: [
+          { time: 0.0, label: '00:00', text: 'イントロダクション（鉄則：屋根はグリッド交点にしか作図できない！）' },
+          { time: 29.1, label: '00:29', text: '屋根専用グリッドの追加（外壁通り芯から軒出750mmをオフセット）' },
+          { time: 64.7, label: '01:05', text: '屋根入力の極意（①基準線・桁線 ➔ ②勾配の向き ➔ ③形状をなぞる）' },
+          { time: 97.7, label: '01:38', text: '大屋根作図実演①：西側屋根面（R4）の作図・桁線・上り点指定' },
+          { time: 135.1, label: '02:15', text: '大屋根作図実演②：南側屋根面（R5）の作図・2面が棟でピタリ合致！' },
+          { time: 169.4, label: '02:49', text: '下屋（1階屋根）の確認 ＆ DXF読込モーダルでの階層別整合' },
+          { time: 199.4, label: '03:19', text: '屋根ふせずから見附面積（X/Y・1F/2F）を全自動算出！' },
+          { time: 226.5, label: '03:46', text: '3D立体確認（下屋・大屋根交差）＆ 次回Vol.3C（床面積編）へ' }
+        ],
+        features: [
+          '「屋根はグリッド交点にしか作図できない」鉄則とオフセット補助線の意義を徹底強調',
+          '外壁通り芯（屋根基準線）から軒の出・ケラバの出寸法（750mm）を設定する実演',
+          '「①基準線・桁線 ➔ ②勾配の向き ➔ ③形状をなぞる」思考順序の丁寧な伝授',
+          '大屋根（2F）において西側斜面（R4）と南側斜面（R5）の最低2面を連続作図実演',
+          '2つの屋根面が中央の棟でピタリと合わさり立体的な寄棟勾配が完成する様子',
+          '下屋・大屋根の作図からX・Y方向の見附面積が瞬時に完全自動算出される実証',
+          '「伏図」の読み仮名を「ふせず」と正確に徹底発音'
+        ]
+      },
+      vol3c: {
+        src: 'vol3_floor/vol3_floor_calc.mp4',
+        title: '【Vol.3C】床面積入力＆見上げ・見下げ面積徹底解説 〜 特殊な多角形作図、仕様変更、見上げ・見下げの違いと必要壁量確定 〜',
+        desc: '地震力算定の基礎となる床面積の作図方法、入力後の仕様変更、見上げ面積と見下げ面積の力学的違い、そして耐震等級2や3での見下げ不可UI制御まで詳しく解説します。',
+        chapters: [
+          { time: 0.0, label: '00:00', text: 'イントロダクション（床面積入力と計算モードの概要）' },
+          { time: 27.5, label: '00:27', text: '床面積の特殊な作図手順①：仕様の選択（一般床/吹抜/バルコニー）' },
+          { time: 49.5, label: '00:49', text: '床面積の特殊な作図手順②：交点を順次クリックして始点で閉じる' },
+          { time: 74.0, label: '01:14', text: '入力後の仕様変更（クリックして後から用途・仕様をフレキシブル編集）' },
+          { time: 96.5, label: '01:36', text: '見上げ面積 vs 見下げ面積の力学的違い徹底解説' },
+          { time: 127.0, label: '02:07', text: '【新機能】耐震等級2・3での見下げ不可UI制御実演' },
+          { time: 150.0, label: '02:30', text: '床面積確定による地震力必要壁量・安全側比較の完全自動算定' },
+          { time: 171.0, label: '02:51', text: '壁量目標確定！次回 Vol.4「耐力壁配置＆壁仕様選定編」へ' }
+        ],
+        features: [
+          '特殊な床面積入力方法（仕様選択 ➔ 交点を順次クリック ➔ 始点で閉じる）の丁寧な実演',
+          '作図後にクリックして用途や仕様を変更できる柔軟なプロパティ編集',
+          '見下げ面積（基準法・上階按分）と見上げ面積（性能表示・直下実荷重）の力学的違い解説',
+          '耐震等級2・3選択時に見下げ面積をdisabled化し、性能表示へ自動固定する新機能',
+          '地震力と風圧力の自動比較判定による必要壁量の最終確定'
+        ]
+      },
+      vol4: {
+        src: 'vol4/vol4_wall_placement.mp4',
+        title: '【Vol.4 改訂版】耐力壁配置と壁仕様選定編 〜 DXF原点完全合致・柱を掴む耐力壁配置と存在壁量リアルタイム検定 〜',
+        desc: 'DXF原点（1F・2F）のミリ単位での精密合致から、面材と筋交いを自由に組み合わせる倍率設定モーダル、柱をクリックして掴んで耐力壁を確実に配置していく様子、存在壁量のリアルタイムOK判定までを丁寧に解説します。',
+        chapters: [
+          { time: 0.0, label: '00:00', text: 'イントロダクション ＆ DXF原点精密合致（1F・2F）' },
+          { time: 22.2, label: '00:22', text: 'STEP 1：耐力壁の仕様設定（⚙️ 仕様変更モーダル）' },
+          { time: 39.0, label: '00:39', text: '面材＋筋交いの合成倍率設定（4.5倍の高倍率壁を作成）' },
+          { time: 61.9, label: '01:02', text: 'STEP 2：柱をクリックして掴む！直感的な耐力壁の連続配置' },
+          { time: 85.3, label: '01:25', text: '存在壁量がリアルタイム加算・判定が「OK」に即座反転！' },
+          { time: 103.0, label: '01:43', text: '設計データの一括復元（1F・2Fの全耐力壁を瞬時反映）' },
+          { time: 121.1, label: '02:01', text: '階層切替とX方向・Y方向の壁量バランス確認' },
+          { time: 139.1, label: '02:19', text: '壁量クリア！次回 Vol.5「床面積＆4分割法・偏心率編」へ' }
+        ],
+        features: [
+          'DXF読込時の1階・2階基準原点を精密クリックし下絵とグリッドを完全合致',
+          '始点・終点の柱をクリックして掴む直感的で確実な耐力壁配置の実演',
+          '外側面材（構造用合板2.5倍）＋筋交い（2.0倍）を組み合わせて4.5倍に合成',
+          '壁を引くたびに存在壁量がリアルタイム加算されOK判定へ即座に連動',
+          '完成JSONデータによる全耐力壁の一括復元と上下階のバランス点検'
+        ]
+      },
+      vol5: {
+        src: 'vol5/vol5_floor_div4_balance.mp4',
+        title: '【Vol.5 改訂版】床面積＆4分割法・偏心率編 〜 Vol.3C連携・外形基準とバランス検定・重心剛心自動算定 〜',
+        desc: 'Vol.3Cで解説した床面積が4分割法の外形判定枠を決定づける基準となる理由を解説し、建物の端から1/4エリアの自動算出、側端部壁量・壁率比（0.5以上）のリアルタイムOK判定、重心G・剛心Cの自動プロットと重心剛心モーダルによるスパン点検までを網羅します。',
+        chapters: [
+          { time: 0.0, label: '00:00', text: 'イントロダクション（壁の配置バランス検証と4分割法）' },
+          { time: 21.9, label: '00:22', text: 'STEP 1：床面積と4分割判定枠（Vol.3Cで解説した床面積が外形基準に！）' },
+          { time: 44.7, label: '00:45', text: 'STEP 2：4分割法の1/4境界ライン自動算出・表示' },
+          { time: 65.2, label: '01:05', text: '側端部壁量 ＆ 壁率比（0.5以上）の自動検定テーブル' },
+          { time: 86.7, label: '01:27', text: 'STEP 3：重心G（青丸）＆ 剛心C（赤丸）の自動プロット' },
+          { time: 110.4, label: '01:50', text: '重心剛心モーダル（スパン・1/4ライン位置の数値点検）' },
+          { time: 125.7, label: '02:06', text: '2階への切替とねじれに強いバランス設計の確認' },
+          { time: 144.5, label: '02:24', text: 'バランス検定クリア！次回 Vol.6「柱＆N値計算・金物自動選定編」へ' }
+        ],
+        features: [
+          'Vol.3Cで解説した床面積が4分割枠（1/4ライン）を決定する外形基準となる関係性を解説',
+          '建物のX方向・Y方向両端から側端部1/4境界ラインを瞬時に自動可視化',
+          '側端部存在壁量と壁率比（0.5以上）の即座OK判定テーブル',
+          '床面積から求まる重心G（青）と耐力壁から求まる剛心C（赤）のリアルタイム追従プロット',
+          '全体スパン・1/4ライン位置を一覧確認できる重心剛心モーダル'
+        ]
+      },
+      vol6: {
+        src: 'vol6/vol6_pillar_nvalue_hardware.mp4',
+        title: '【Vol.6】柱＆N値計算・金物自動選定編 〜 告示1460号N値計算法による引抜力算定と隅柱設定 〜',
+        desc: '地震力による柱頭・柱脚の引抜力をリアルタイム算定する「告示1460号準拠のN値計算」（建物重量減歩を行わない厳格計算法）と金物自動判定、ユーザー自身が右パネルで明示的に行う「出隅柱（隅柱）の手動設定」、出隅係数B=0.8や告示押さえL値を網羅した柱ごとの計算根拠ダイアログ、通り芯ごとの「耐力壁の軸力図（立面）」ビューア、任意特注金物の手動指定とCAD逆輸入DXF出力までを完全実演します。',
+        chapters: [
+          { time: 0.0, label: '00:00', text: 'イントロダクション（告示1460号N値計算法と金物自動選定）' },
+          { time: 29.6, label: '00:29', text: 'STEP 1：N値計算・金物図モードの起動（告示1460号準拠の引抜力算定）' },
+          { time: 60.0, label: '01:00', text: 'STEP 2：出隅柱（隅柱）の手動指定【必須】（右パネルで明示的にチェック）' },
+          { time: 91.5, label: '01:31', text: 'STEP 3：柱ごとのN値計算根拠ダイアログ（出隅係数B=0.8・告示押さえL値・算定式）' },
+          { time: 117.9, label: '01:58', text: 'STEP 4：耐力壁の軸力図（立面）ビューア（フレーム応力・軸力一覧）' },
+          { time: 138.0, label: '02:18', text: 'STEP 5：任意金物の手動指定 ＆ DXF逆輸入連携' },
+          { time: 159.4, label: '02:39', text: 'STEP 6：1F/2F 階切替と2階隅柱設定・柱直下率の検証' },
+          { time: 181.0, label: '03:01', text: 'まとめ ＆ 次回 Vol.7「基礎梁・基礎スラブ構造計算編」へ' }
+        ],
+        features: [
+          '告示1460号に基づく厳格なN値計算法（建物重量減歩を行わず安全性を徹底確保）',
+          '隅柱は自動判定に頼らずユーザーが右パネルで明示的に指定する確実な運用手順',
+          '出隅係数（B=0.8）および告示押さえ効果（L値）のリアルタイム反映',
+          '柱個別ダイアログによる引抜算定式（X・Y方向差Σα、採用N値、選定金物）の完全開示',
+          '通り芯ごとの立面フレーム軸力図・地震時引抜/圧縮応力集計ビューアの実演',
+          '金物の手動指定・メーカー特注仕様の任意登録およびCAD逆輸入DXF出力機能',
+          '2階切替時の2階隅柱設定と柱直下率・壁直下率の同時チェック'
+        ]
+      },
+      vol7: {
+        src: 'vol7/vol7_foundation_slab_beam.mp4',
+        title: '【Vol.7 改訂版】基礎スラブ・基礎梁計算編 〜 実務者基準による手動伏図作図・亀甲分割・人通口補強筋検定 〜',
+        desc: '上部躯体に合わせて基礎が決まるという構造原則に基づき、設計者が手動で作図・配置する実務者基準の基礎構造計算を徹底解説。スラブ仕様の事前登録（FS1〜FS3）と多角形閉合入力、自動展開される「亀甲分割線」と地盤接地圧の自動算定、基礎梁仕様（FG1〜FG3、レベラー天端考慮）の柱下・耐力壁下への必須配置、耐力壁直下を避ける人通口配置ルール、そして梁成＝スラブ厚のみとして上主筋黒塗り・下主筋本数調整でOKに導く人通口補強筋検定モーダル、全スラブ・全基礎梁一覧による一括点検までを網羅します。',
+        chapters: [
+          { time: 0.0, label: '00:00', text: 'イントロダクション（基礎伏図は手動作図・上部躯体に合わせた基礎設計）' },
+          { time: 33.5, label: '00:33', text: 'STEP 1：スラブの仕様登録と作図入力（FS1〜FS3事前登録・多角形閉合と片持ちスラブ）' },
+          { time: 72.3, label: '01:12', text: 'STEP 2：亀甲分割線と接地圧の自動算定（基礎梁負担幅と地盤接地圧）' },
+          { time: 98.0, label: '01:38', text: 'STEP 3：基礎梁（立上り・地中梁）の入力（FG1〜FG3・柱下・耐力壁下に必須配置・レベラー天端）' },
+          { time: 145.2, label: '02:25', text: 'STEP 4：人通口（開口部）の配置手順（耐力壁直下は配置非推奨ルール）' },
+          { time: 169.7, label: '02:49', text: 'STEP 5：人通口補強計算と断面検定（梁高＝スラブ厚のみ・上主筋黒塗り・下主筋本数調整）' },
+          { time: 199.6, label: '03:19', text: 'STEP 6：上部躯体連動とエラー解消（全スラブ一覧・全基礎梁一覧で一括点検）' },
+          { time: 229.1, label: '03:49', text: '基礎構造計算完了！許容応力度設計・壁量計算がすべて完了' }
+        ],
+        features: [
+          '基礎伏図は自動作図に頼らず、上部構造計画に合わせて設計者が手動で作図・配置',
+          'FS1〜FS3のスラブ仕様事前登録と、グリッド交点を結ぶ多角形閉合による直感作図',
+          '閉合と同時に現れる「亀甲分割線」による基礎梁負担幅の視覚化と接地圧の自動計算',
+          '告示に準拠した柱下・耐力壁下への基礎立上り必須配置とレベラー天端を考慮した梁成設定',
+          '耐力壁直下の人通口配置非推奨ルールと、梁高＝スラブ厚のみ・上主筋欠損・下主筋本数調整による確実な補強筋検定',
+          '上部躯体の壁変更に連動し、「全スラブ一覧」「全基礎梁一覧」で建物全体を一括点検',
+          '自然で聞き取りやすい女性アナウンサー音声（七海）と電車内でも理解できるダブルテロップ完備'
+        ]
+      },
+      vol8: {
+        src: 'vol8/vol8_pdf_doc_summary.mp4',
+        title: '【Vol.8 最終回】計算書一括PDF出力＆確認申請書類まとめ編 〜 審査機関提出用の正式計算書（全7項目）を一括生成 〜',
+        desc: '全8回にわたる操作解説シリーズの最終回。Vol.1〜Vol.7で入力・算定したすべての構造計算データ（壁量、4分割バランス、N値金物、基礎スラブ、基礎梁、人通口補強）を、確認申請・構造審査にそのまま提出できる正式な「構造計算書帳票（全7項目一括PDF）」として出力する手順を徹底解説。表紙と全7項目の目次ジャンプ、上部躯体＆基礎計算書の点検、印刷範囲選択（全項目/壁量のみ/基礎のみ）による高品質A4縦PDF保存、さらに立面軸力図・直下率・CSV保存までを網羅します。',
+        chapters: [
+          { time: 0.0, label: '00:00', text: 'イントロダクション（確認申請用 構造計算書の一括出力機能）' },
+          { time: 39.2, label: '00:39', text: 'STEP 1：表紙・物件情報 ＆ 目次ナビゲーション（全7項目ジャンプ）' },
+          { time: 74.0, label: '01:14', text: 'STEP 2：上部躯体計算書（求積表・壁量検定・4分割・告示1460号N値）' },
+          { time: 114.8, label: '01:55', text: 'STEP 3：基礎構造計算書（ベタ基礎スラブ接地圧・梁応力算定・人通口補強）' },
+          { time: 150.4, label: '02:30', text: 'STEP 4：印刷範囲選択 ＆ 一括PDF出力（全項目/壁量/基礎切替・A4保存）' },
+          { time: 181.9, label: '03:02', text: 'STEP 5：各種個別モーダル ＆ CSV保存（立面軸力図・直下率・外部CAD連携）' },
+          { time: 215.4, label: '03:35', text: 'シリーズ完結！安全・確実な木造住宅構造計算の実現へ（感謝のメッセージ）' }
+        ],
+        features: [
+          '確認申請・構造審査にそのまま提出できる正式な構造計算書（A4縦帳票）を一括自動生成',
+          '物件名・設計者・計算実施日・適用基準（基準法/性能表示）を網羅した正式表紙',
+          '全7項目（面積・壁量・4分割・N値・柱負担・スラブ・基礎梁）のスムーズ目次ジャンプ',
+          '印刷範囲セレクト（全項目一括 / 壁量計算書のみ / 基礎計算書のみ）の柔軟な切替',
+          '通り芯ごとの立面フレーム応力図（軸力図）ビューアによる詳細点検',
+          '柱・壁直下率ダイアログおよび外部CAD・社内台帳連携用CSV保存機能',
+          '自然で聞き取りやすい女性アナウンサー音声（七海）とダブルテロップ完備'
+        ]
+      },
+      promo_15s: {
+        src: 'promo/promo_15s.mp4',
+        title: '【15秒CM】上善如水 壁量計算WEB 〜 インストール不要・あらゆるCADと直結 〜',
+        desc: 'MacもWindowsもブラウザで即起動！JWW、AutoCAD、ARCHICADなど、あらゆるCADのDXFを一発取込。壁量、N値、ベタ基礎まで完全無料。申請出力時のみ課金の画期的な壁量計算ツールを今すぐ体験！',
+        chapters: [
+          { time: 0.0, label: '00:00', text: 'MacもWindowsもブラウザで即起動（インストール不要）' },
+          { time: 4.0, label: '00:04', text: 'JWW・AutoCAD・ARCHICAD・Vectorworks全対応' },
+          { time: 8.5, label: '00:08', text: '壁量・N値・ベタ基礎まで完全無料・申請時のみ課金' },
+          { time: 12.5, label: '00:12', text: '上善如水 壁量計算WEB！今すぐ検索' }
+        ],
+        features: [
+          '15秒で伝わる圧倒的なインパクトと解放感',
+          'MacでもWindowsでもブラウザを開くだけで即座に動作',
+          'あらゆるCADからDXF一発インポート',
+          '日常の設計・計算・検証は完全無料、申請図書出力時のみ課金'
+        ]
+      },
+      promo_15s: {
+        src: 'promo/promo_15s.mp4',
+        title: '【15秒CM】上善如水 壁量計算WEB 〜 MacもWinもブラウザで即起動！ 〜',
+        desc: 'MacもWinもブラウザで即起動！あらゆるCADのDXFを一発取込。壁量算定・4分割法・N値金物・3D確認は完全無料！ベタ基礎計算・確認申請用PDFは手軽な都度課金。プログラム本体は 2025.eie.jp、紹介ポータルは eie.jp へ！',
+        chapters: [
+          { time: 0.0, label: '00:00', text: 'MacもWindowsもブラウザで即起動！インストール不要' },
+          { time: 3.2, label: '00:03', text: 'JWW・AutoCAD・ARCHICAD・Vectorworks等のDXF一発取込' },
+          { time: 7.0, label: '00:07', text: '壁量・N値・3Dは完全無料！基礎計算・申請出力は安心の都度課金' },
+          { time: 11.0, label: '00:11', text: 'プログラム: https://2025.eie.jp / 紹介: https://eie.jp' }
+        ],
+        features: [
+          '15秒で伝わる圧倒的な手軽さとスピード感',
+          'Mac / Windows どちらでもブラウザ完結で即利用可能',
+          'あらゆるCADからDXF一発インポート',
+          'プログラム本体（2025.eie.jp）と紹介ポータル（eie.jp）の明確な導線'
+        ]
+      },
+      promo_30s: {
+        src: 'promo/promo_30s.mp4',
+        title: '【30秒CM】上善如水 壁量計算WEB 〜 木造構造計算が、ここまで自由になる 〜',
+        desc: '木造構造計算がここまで自由に。ブラウザで動く壁量計算WEB。MacもWinもDXFさえあればJWWやAutoCAD、ARCHICADと瞬時に直結！壁量リアルタイム判定、4分割、N値金物は完全無料！ベタ基礎計算や申請PDFは使った分だけの従量課金。プログラムは 2025.eie.jp、紹介は eie.jp！',
+        chapters: [
+          { time: 0.0, label: '00:00', text: '木造構造計算が、ここまで自由になる（ブラウザ型WEB）' },
+          { time: 5.0, label: '00:05', text: 'MacでもWindowsでも！あらゆるCADとDXF直結' },
+          { time: 11.5, label: '00:11', text: '存在壁量リアルタイム判定・4分割法・N値金物・3D確認は完全無料！' },
+          { time: 18.5, label: '00:18', text: 'ベタ基礎計算・確認申請用PDFは使った分だけの従量課金！' },
+          { time: 24.0, label: '00:24', text: 'プログラム: 2025.eie.jp / 紹介: eie.jp （法人: pr.eie.tokyo）' }
+        ],
+        features: [
+          '標準CM枠（30秒）で課題提起・解決策・料金の魅力を凝縮',
+          'JWW、AutoCAD、ARCHICAD、SketchUp、VectorworksとDXFで直結',
+          '壁量・4分割・N値・3D確認は完全無料',
+          'プログラム本体（2025.eie.jp）即起動'
+        ]
+      },
+      promo_45s: {
+        src: 'promo/promo_45s.mp4',
+        title: '【45秒CM】上善如水 壁量計算WEB 〜 高機能ダイジェスト・改正基準法対応 〜',
+        desc: '法改正時代の木造構造設計、もう高額ソフトに縛られる必要はありません。完全ブラウザ型、上善如水 壁量計算WEB。JWWやAutoCAD、ARCHICADなど、あらゆるCADのDXFを瞬時に取込。壁量リアルタイム判定、4分割法、告示1460号N値金物、3D立体プレビューまで完全無料で使い放題！ベタ基礎構造計算や申請用一括PDFは必要な時だけの手軽な課金システム。プログラムは 2025.eie.jp、ご紹介は eie.jp！',
+        chapters: [
+          { time: 0.0, label: '00:00', text: '法改正時代の木造構造設計、もう高額ソフトに縛られない' },
+          { time: 6.5, label: '00:06', text: 'どんなCADだってDXFを書き出せば即連携（JWW, AutoCAD, BIM）' },
+          { time: 14.5, label: '00:14', text: '壁・柱・屋根伏図の一発配置 ＆ 存在壁量・4分割・N値が完全無料！' },
+          { time: 23.0, label: '00:23', text: 'ベタ基礎接地圧・基礎梁・人通口補強や申請PDFは必要な時だけの都度課金' },
+          { time: 32.0, label: '00:32', text: '個人事業主・設計事務所の業務を劇的にスピーディに' },
+          { time: 37.5, label: '00:37', text: 'プログラム: 2025.eie.jp / 紹介: eie.jp （法人: pr.eie.tokyo）' }
+        ],
+        features: [
+          '屋根伏図・見付面積立体自動算定や3Dリアルタイム構造プレビューを網羅',
+          '法改正に完全準拠した許容応力度設計レベルの計算精度',
+          'あらゆるCADとの完全シームレスなDXF連携',
+          'プログラム本体（2025.eie.jp）へのスムーズな誘導'
+        ]
+      },
+      promo_foundation_45s: {
+        src: 'promo/promo_foundation_45s.mp4',
+        title: '【基礎計算 特化CM 45秒】もうベタ基礎・人通口で悩まない！ 〜 個人設計者のための新常識 〜',
+        desc: 'ベタ基礎計算や人通口の補強検討、外注や手計算で悩んでいませんか？上善如水 壁量計算WEBなら、伏図からスラブ亀甲分割、接地圧、基礎梁の連続梁解析まで全自動！開口部の人通口スラブ補強筋も実務者基準で即座に検定。高額な専用ソフトを契約しなくても、必要な物件だけ手軽に課金して計算書を一括出力できます。基礎計算の決定版。プログラムは 2025.eie.jp、詳細は eie.jp！',
+        chapters: [
+          { time: 0.0, label: '00:00', text: 'ベタ基礎計算・人通口補強検討の外注・手計算の悩みを解決！' },
+          { time: 7.0, label: '00:07', text: '伏図からスラブ亀甲分割線を自動生成！接地圧・支持力を一発算定' },
+          { time: 15.0, label: '00:15', text: '基礎梁連続梁解析 ＆ 人通口（点検口）スラブ補強筋の自動検定' },
+          { time: 23.0, label: '00:23', text: '高額ソフト不要！日々の伏図作成は無料・計算書出力は必要な時だけ' },
+          { time: 31.0, label: '00:31', text: '確認申請・構造審査にそのまま出せる計算書を最短即日完成！' },
+          { time: 37.0, label: '00:37', text: 'プログラム: 2025.eie.jp / 紹介: eie.jp （BtoB: pr.eie.tokyo）' }
+        ],
+        features: [
+          '設計者が最も求めていた「ベタ基礎接地圧・基礎梁応力・人通口補強」に特化したキラーCM',
+          'スラブを閉合するだけで亀甲分割線と接地圧が自動計算される実演シーン',
+          '人通口開口部の梁成＝スラブ厚み・上主筋欠損黒塗りの精密な実務基準をクリア',
+          'プログラム本体（2025.eie.jp）で今すぐ基礎計算を体験可能'
+        ]
+      },
+      promo_60s: {
+        src: 'promo/promo_60s.mp4',
+        title: '【60秒CM】上善如水 壁量計算WEB 〜 設計者の悩みを解放するストーリー 〜',
+        desc: '高額な年間ライセンスやMac非対応に悩む設計者の皆様へ。完全ブラウザ型『上善如水 壁量計算WEB』が誕生しました。Jw_cad、AutoCAD、ARCHICAD、SketchUp、Vectorworks。どんなCADからでもDXFを書き出せば、柱・壁・通り芯まで一発取込。壁量自動算定、4分割法、N値金物自動選定、3D立体確認がすべて完全無料！さらに多くの設計者が求めるベタ基礎スラブ・地中梁・人通口補強の構造計算や、申請用一括PDF出力は、必要な時だけ選べる安心の都度課金モデル。個人事務所の業務を劇的に効率化します。プログラムは 2025.eie.jp、ご紹介は eie.jp、法人窓口は pr.eie.tokyo まで！',
+        chapters: [
+          { time: 0.0, label: '00:00', text: '高額ライセンス・Mac非対応・CAD分断…設計者の悩みを解決' },
+          { time: 9.0, label: '00:09', text: 'ブラウザだけでMacもWinも即起動！インストール不要' },
+          { time: 18.0, label: '00:18', text: 'あらゆるCAD（JWW/AutoCAD/ARCHICAD等）のDXFと瞬時直結' },
+          { time: 27.0, label: '00:27', text: '耐力壁・4分割・告示1460号N値・3D確認は【永久に完全無料】！' },
+          { time: 36.5, label: '00:36', text: '注目のベタ基礎スラブ・基礎梁・人通口補強計算や申請PDFは都度課金' },
+          { time: 46.0, label: '00:46', text: '本体: 2025.eie.jp / 紹介: eie.jp / 法人: pr.eie.tokyo' }
+        ],
+        features: [
+          '設計実務者のリアルな課題提起から解決までのドラマチックなストーリー',
+          '年間ライセンス料の縛りを打ち破るオープン設計',
+          '意匠CADと構造ソフトの分断を解消するDXF一発インポート',
+          'プログラム本体（2025.eie.jp）と紹介・法人窓口の明確化'
+        ]
+      },
+      promo_90s: {
+        src: 'promo/promo_90s.mp4',
+        title: '【90秒CM】上善如水 壁量計算WEB 〜 完全実演・新時代の構造計算プレゼンテーション 〜',
+        desc: '木造住宅の壁量計算・構造設計に革新を。完全ブラウザ型『上善如水 壁量計算WEB』。MacでもWindowsでもインストール不要で即座に動作。Jw_cad、AutoCAD、ARCHICAD、Grasshopper、SketchUp、Vectorworksなど、あらゆるCADのDXFから通り芯・柱・耐力壁・屋根伏図を瞬時にインポートできます。柱をつかんで壁を直感配置し、存在壁量はリアルタイムにOK判定。側端部壁率比の4分割法や告示1460号準拠のN値金物選定、リアルタイム3D確認まで、日常の設計検証はすべて完全無料でご利用いただけます。さらに、多くの設計者から熱望されていた本格的なベタ基礎スラブ接地圧、基礎梁連続梁解析、人通口補強筋の計算や、確認申請用の一括PDF出力は、必要な物件だけ手軽に利用できる画期的な都度課金システムを採用。高額な初期費用や年間保守料のリスクはゼロ。個人設計事務所の頼れる相棒として、今すぐブラウザからご体験ください。プログラム本体は 2025.eie.jp、ご紹介は eie.jp、法人様向け契約ポータルは pr.eie.tokyo まで！',
+        chapters: [
+          { time: 0.0, label: '00:00', text: '木造住宅の壁量計算・構造設計に革新を（完全ブラウザ型）' },
+          { time: 8.5, label: '00:08', text: 'ブラウザだから実現した圧倒的自由度！MacもWinも即フル動作' },
+          { time: 18.5, label: '00:18', text: 'あらゆるCAD（JWW/AutoCAD/ARCHICAD等）とDXF直結' },
+          { time: 30.0, label: '00:30', text: '柱をつかんで壁配置・リアルタイム判定・4分割法・告示1460号N値' },
+          { time: 42.0, label: '00:42', text: '日々の作図・壁量チェック・3D立体確認は【永久に完全無料】！' },
+          { time: 54.5, label: '00:54', text: 'ベタ基礎スラブ亀甲分割・基礎梁連続梁・人通口補強筋・一括PDFは都度課金' },
+          { time: 68.5, label: '01:08', text: '高額ソフト代から解放！個人設計事務所の頼れる相棒へ' },
+          { time: 78.0, label: '01:18', text: '本体: 2025.eie.jp / 紹介: eie.jp / 法人: pr.eie.tokyo' }
+        ],
+        features: [
+          '全機能の実演映像を網羅した90秒決定版プレゼンテーション',
+          'CAD読込から壁量、4分割、N値、基礎スラブ・梁・人通口、3D、一括PDFまで完全可視化',
+          '建物重量減歩を行わない告示1460号厳格計算法',
+          'スラブ厚のみ・上主筋欠損・下主筋補強の実務者目線の人通口補強計算',
+          'プログラム本体（2025.eie.jp）、紹介（eie.jp）、法人（pr.eie.tokyo）の完全連携'
+        ]
+      }
+    };
+
+    function switchVideo(volKey) {
+      document.querySelectorAll('.vol-tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + volKey).classList.add('active');
+
+      const item = DATA[volKey];
+      videoSource.src = item.src;
+      player.load();
+      player.play();
+
+      videoTitle.innerText = item.title;
+      videoDesc.innerText = item.desc;
+
+      chapterList.innerHTML = item.chapters.map(c => `
+        <li class="chapter-item" onclick="seekTo(${c.time})">
+          <span class="chapter-time">${c.label}</span>
+          <div class="chapter-text">${c.text}</div>
+        </li>
+      `).join('');
+
+      featurePoints.innerHTML = item.features.map(f => `<li>${f}</li>`).join('');
+    }
+
+    function seekTo(sec) {
+      player.currentTime = sec;
+      player.play();
+    }
+
+    // URLパラメータ解析 (?vol=vol1, vol3, promo_15s 等)
+    const urlParams = new URLSearchParams(window.location.search);
+    const requestedVol = urlParams.get('vol');
+    if (requestedVol && DATA[requestedVol]) {
+      switchVideo(requestedVol);
+    } else {
+      switchVideo('vol1');
+    }
+  </script>
+</body>
+</html>

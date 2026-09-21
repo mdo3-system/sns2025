@@ -1,0 +1,31 @@
+[Script Info]
+Title: Promo CM 90s - Jyouzen Fukyoshitsu Web
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: PromoTop,Meiryo UI,30,&H0000FFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,1,0,3,4,0,7,50,50,40,1
+Style: PromoBottom,Meiryo UI,36,&H00FFFFFF,&H000000FF,&H00000000,&HB0000000,-1,0,0,0,100,100,1,0,3,6,0,2,60,60,45,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,00:00:00.00,00:00:08.50,PromoTop,,0,0,0,,木造住宅の壁量計算・構造設計に革新を。
+Dialogue: 0,00:00:00.00,00:00:08.50,PromoBottom,,0,0,0,,【完全ブラウザ型】上善如水 壁量計算WEB
+Dialogue: 0,00:00:08.50,00:00:18.50,PromoTop,,0,0,0,,ブラウザだから実現した圧倒的な自由度！
+Dialogue: 0,00:00:08.50,00:00:18.50,PromoBottom,,0,0,0,,Windowsはもちろん、Macでもインストール不要で即座にフル動作
+Dialogue: 0,00:00:18.50,00:00:30.00,PromoTop,,0,0,0,,JWW・AutoCAD・ARCHICAD・Grasshopper・SketchUp・Vectorworks
+Dialogue: 0,00:00:18.50,00:00:30.00,PromoBottom,,0,0,0,,あらゆるCADのDXFから通り芯・柱・壁・屋根伏図を一発インポート！
+Dialogue: 0,00:00:30.00,00:00:42.00,PromoTop,,0,0,0,,柱をつかんで耐力壁を直感配置！存在壁量はリアルタイムにOK判定
+Dialogue: 0,00:00:30.00,00:00:42.00,PromoBottom,,0,0,0,,4分割法・重心剛心プロット・告示1460号厳格準拠のN値金物自動選定
+Dialogue: 0,00:00:42.00,00:00:54.50,PromoTop,,0,0,0,,日々の作図・壁量チェック・3D立体確認は【永久に完全無料】！
+Dialogue: 0,00:00:42.00,00:00:54.50,PromoBottom,,0,0,0,,リスクゼロで日々の設計検討を圧倒的にスピーディに
+Dialogue: 0,00:00:54.50,01:07.50,PromoTop,,0,0,0,,ベタ基礎スラブ亀甲分割・基礎梁連続梁解析・人通口補強筋検定や
+Dialogue: 0,00:00:54.50,01:07.50,PromoBottom,,0,0,0,,確認申請用の一括PDF出力は、必要な時だけ手軽に利用できる都度課金制！
+Dialogue: 0,01:07.50,01:18.00,PromoTop,,0,0,0,,高額な年間ソフト代から解放され、個人設計事務所の頼れる相棒へ。
+Dialogue: 0,01:07.50,01:18.00,PromoBottom,,0,0,0,,ブラウザを開くだけで、最高峰の構造計算環境がそこに
+Dialogue: 0,01:18.00,01:29.00,PromoTop,,0,0,0,,【プログラム本体】https://2025.eie.jp
+Dialogue: 0,01:18.00,01:29.00,PromoBottom,,0,0,0,,【紹介】https://sns.eie.tokyo 【法人契約管理】https://pr.eie.tokyo

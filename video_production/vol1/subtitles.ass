@@ -1,0 +1,29 @@
+[Script Info]
+Title: Jyouzen Fukyoshitsu Vol.1
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: HeaderStep,Meiryo UI,26,&H0000FFFF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,1,0,3,4,0,7,50,50,45,1
+Style: SubtitleBottom,Meiryo UI,32,&H00FFFFFF,&H000000FF,&H00000000,&HA0000000,-1,0,0,0,100,100,1,0,3,6,0,2,80,80,50,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:00.00,0:00:16.54,HeaderStep,,0,0,0,,【Vol.1】DXF作図ルールとレイヤ設定\N〜 一発取込を成功させるCAD側の基本ルール 〜
+Dialogue: 0,0:00:00.00,0:00:16.54,SubtitleBottom,,0,0,0,,上善如水 壁量計算WEB、Vol.1 DXF作図ルールとレイヤ設定編へようこそ\N本ツールで図面を一発で正確に読み込むための、CAD側での作図の基本ルールを丁寧に解説します
+Dialogue: 1,0:00:16.54,0:00:34.81,HeaderStep,,0,0,0,,ルール①：縮尺1:1 ＆ 単位ミリメートル(mm)\N※ モデル空間で原寸（1:1）で作図・保存する
+Dialogue: 0,0:00:16.54,0:00:34.81,SubtitleBottom,,0,0,0,,まず最も大切な基本は、縮尺と単位です\N図面は必ず原寸である1分の1、単位はミリメートルで作図・保存してください\Nペーパー空間ではなく、モデル空間で作図することが重要です
+Dialogue: 1,0:00:34.81,0:00:54.12,HeaderStep,,0,0,0,,ルール②：通り芯は連続直線 ＆ 推奨レイヤ名\Nレイヤ名：『通り芯』『GRID』『GLID』等で自動認識
+Dialogue: 0,0:00:34.81,0:00:54.12,SubtitleBottom,,0,0,0,,次に、通り芯の作図ルールです\N通り芯は必ず連続した1本の直線として引いてください\Nレイヤ名は『通り芯』『GRID』『GLID』などにしておくと、システムが自動で検出し、交点に磁石スナップが効くようになります
+Dialogue: 1,0:00:54.12,0:01:15.58,HeaderStep,,0,0,0,,ルール③：柱は独立レイヤに配置\N推奨レイヤ名：『柱』『COL』等（四角・円を自動認識）
+Dialogue: 0,0:00:54.12,0:01:15.58,SubtitleBottom,,0,0,0,,続いて、柱の作図です\N柱は通り芯とは別の、独立したレイヤに作図します\N推奨レイヤ名は『柱』や『COL』です\N四角形や円で作図された柱を自動認識し、構造計算用の柱として自動プロットします
+Dialogue: 1,0:01:15.58,0:01:33.28,HeaderStep,,0,0,0,,ルール④：ブロック解除（分解・EXPLODE）\N図面全体のブロック化を解除して通常の線分で保存
+Dialogue: 0,0:01:15.58,0:01:33.28,SubtitleBottom,,0,0,0,,注意が必要なのが、ブロックと外部参照です\N図面全体がひとつの大きなブロックになっていたり、グループ化されていると線分を抽出できません\N書き出し前に必ずブロック解除、分解を行ってください
+Dialogue: 1,0:01:33.28,0:01:49.36,HeaderStep,,0,0,0,,実践例：整然としたレイヤ構成のメリット\Nレイヤが整理されていれば、ツール側で一発自動認識！
+Dialogue: 0,0:01:33.28,0:01:49.36,SubtitleBottom,,0,0,0,,こちらが今回のモデルプランのレイヤ構成例です\N通り芯、柱、壁、文字が整然と分かれているため、ツール側でレイヤを選ぶだけで、自動的に正確な構造モデルが構築されます
+Dialogue: 1,0:01:49.36,0:02:04.51,HeaderStep,,0,0,0,,準備完了！ 次は【Vol.2】へ進みましょう\NDXF読込と1階・2階の原点重ね合わせを実演！
+Dialogue: 0,0:01:49.36,0:02:04.51,SubtitleBottom,,0,0,0,,作図ルールの準備はこれで完璧です\N次のVol.2では、このDXFファイルを実際にツールへ読み込み、1階と2階の図面をぴったり重ね合わせる手順をご紹介します
