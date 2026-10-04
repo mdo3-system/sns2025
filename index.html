@@ -1277,11 +1277,15 @@
         💻 計算プログラム本体（即起動）：<b>2025.eie.jp</b> ➔
       </a>
       <a href="#qa" class="domain-badge" style="border-color: rgba(56, 189, 248, 0.4); color: var(--accent-blue);">
-        💬 実務Q&A・掲示板 ➔
+        💬 実務Q&A・掲示板 ＆ アップデート速報 ➔
       </a>
-      <a href="#updates" onclick="switchQaTab('updates')" class="domain-badge" style="border-color: rgba(16, 185, 129, 0.45); color: var(--accent-emerald); font-weight: bold;">
-        ⚡ SNS投稿・最新アップデート速報 ➔
-      </a>
+      <span class="domain-badge" style="border-color: rgba(16, 185, 129, 0.35); color: var(--accent-emerald);">
+        ⚡ 不具合報告は即日解消・爆速アップデート対応中
+      </span>
+      <div id="admin-status-strip" style="display: none; margin-left: auto; align-items: center; gap: 10px; font-size: 0.8rem; background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.4); padding: 2px 10px; border-radius: 999px; color: var(--accent-gold);">
+        <span>🔐 管理者モード (期限なし)</span>
+        <a href="javascript:void(0)" onclick="logoutAdmin()" style="color: #f87171; text-decoration: underline; font-weight: bold;">ログアウト</a>
+      </div>
     </div>
   </div>
 
@@ -1301,8 +1305,7 @@
         <li><a href="#features">9大革新機能</a></li>
         <li><a href="#foundation">基礎計算キラー特集</a></li>
         <li><a href="#video">実演動画</a></li>
-        <li><a href="#qa">実務Q&A</a></li>
-        <li><a href="#updates" onclick="switchQaTab('updates')" style="color: var(--accent-emerald); font-weight: bold;">⚡ SNS投稿・速報</a></li>
+        <li><a href="#qa">実務Q&A・更新速報</a></li>
         <li><a href="#pricing">安心の料金体系</a></li>
       </ul>
 
@@ -1911,10 +1914,43 @@
         </a>
       </div>
     </div>
-    <div class="container" style="margin-top: 24px; text-align: center; font-size: 0.78rem; color: var(--text-dim);">
-      &copy; 2025-2026 上善如水 壁量計算WEB. All Rights Reserved.
+    <div class="container" style="margin-top: 24px; text-align: center; font-size: 0.78rem; color: var(--text-dim); display: flex; justify-content: center; align-items: center; gap: 12px;">
+      <span>&copy; 2025-2026 上善如水 壁量計算WEB. All Rights Reserved.</span>
+      <a href="javascript:void(0)" onclick="openAdminLoginModal()" style="color: var(--text-dim); text-decoration: none; opacity: 0.5; font-size: 0.75rem;" title="管理者ログイン">🔐 管理者</a>
     </div>
   </footer>
+
+  <!-- 管理者ログインモーダル (SNS投稿管理用・認証期限なし) -->
+  <div id="modalAdminLogin" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); z-index:9999; justify-content:center; align-items:center; backdrop-filter:blur(4px);">
+    <div style="background:#161b22; border:1px solid #30363d; border-radius:12px; width:90%; max-width:440px; padding:24px; color:#f0f6fc; box-shadow:0 20px 40px rgba(0,0,0,0.6); position:relative; font-family:'Noto Sans JP',sans-serif;">
+      <button type="button" onclick="closeAdminLoginModal()" style="position:absolute; top:16px; right:16px; background:none; border:none; color:#8b949e; font-size:1.4rem; cursor:pointer;">✖</button>
+      <div style="text-align:center; margin-bottom:20px;">
+        <div style="font-size:2rem; margin-bottom:6px;">🔐</div>
+        <h3 style="font-size:1.15rem; font-weight:700; color:#fff; margin:0;">管理者認証（SNS投稿管理）</h3>
+        <p style="font-size:0.8rem; color:#8b949e; margin:6px 0 0 0;">一度認証されると、このブラウザで無期限でご利用いただけます。</p>
+      </div>
+
+      <!-- パスワード即時ログイン -->
+      <div style="background:#0d1117; border:1px solid #21262d; border-radius:8px; padding:16px; margin-bottom:16px;">
+        <label style="display:block; font-size:0.82rem; font-weight:600; color:#e2e8f0; margin-bottom:6px;">🔑 管理者パスワードで即時認証</label>
+        <div style="display:flex; gap:8px;">
+          <input type="password" id="adminPassInput" placeholder="管理者パスワード" style="flex:1; background:#161b22; border:1px solid #30363d; border-radius:6px; padding:8px 12px; color:#fff; font-size:0.9rem;" onkeydown="if(event.key==='Enter') loginWithPassword()">
+          <button type="button" onclick="loginWithPassword()" style="background:#22c55e; color:#fff; border:none; border-radius:6px; padding:8px 16px; font-weight:700; cursor:pointer; font-size:0.85rem;">認証</button>
+        </div>
+      </div>
+
+      <div style="text-align:center; font-size:0.75rem; color:#8b949e; margin-bottom:16px;">または</div>
+
+      <!-- メールでマジックリンク送信 -->
+      <div style="background:#0d1117; border:1px solid #21262d; border-radius:8px; padding:16px;">
+        <label style="display:block; font-size:0.82rem; font-weight:600; color:#e2e8f0; margin-bottom:6px;">✉️ マジックリンクを受信（メール認証）</label>
+        <input type="email" id="adminEmailInput" placeholder="管理者メールアドレス (例: support@eie.tokyo)" style="width:100%; box-sizing:border-box; background:#161b22; border:1px solid #30363d; border-radius:6px; padding:8px 12px; color:#fff; font-size:0.9rem; margin-bottom:10px;">
+        <button type="button" id="btnSendMagicLink" onclick="sendAdminMagicLink()" style="width:100%; background:#2563eb; color:#fff; border:none; border-radius:6px; padding:10px; font-weight:700; cursor:pointer; font-size:0.88rem;">✉️ ログインリンクを送信（期限なし）</button>
+      </div>
+
+      <div id="adminLoginMsg" style="display:none; margin-top:14px; padding:10px; border-radius:6px; font-size:0.82rem; line-height:1.5;"></div>
+    </div>
+  </div>
 
   <!-- トースト通知 -->
   <div id="toastNotice" class="toast-notice">
@@ -1929,8 +1965,128 @@
   <script>
     let currentCategory = 'all';
 
+    // 管理者認証判定（localStorage保存・期限なし）
+    function isAdminLoggedIn() {
+      return !!localStorage.getItem('eie_admin_auth');
+    }
+
+    function checkAdminAuth() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tokenFromUrl = urlParams.get('admin_auth');
+      if (tokenFromUrl) {
+        localStorage.setItem('eie_admin_auth', tokenFromUrl);
+        urlParams.delete('admin_auth');
+        const newUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '') + window.location.hash;
+        window.history.replaceState({}, '', newUrl);
+        showToast('🔐 管理者として認証されました（認証期限なし）');
+      }
+
+      if (urlParams.get('admin_login') === '1') {
+        openAdminLoginModal();
+      }
+
+      const strip = document.getElementById('admin-status-strip');
+      if (strip) {
+        strip.style.display = isAdminLoggedIn() ? 'flex' : 'none';
+      }
+    }
+
+    function openAdminLoginModal() {
+      const modal = document.getElementById('modalAdminLogin');
+      if (modal) modal.style.display = 'flex';
+      const msg = document.getElementById('adminLoginMsg');
+      if (msg) msg.style.display = 'none';
+    }
+
+    function closeAdminLoginModal() {
+      const modal = document.getElementById('modalAdminLogin');
+      if (modal) modal.style.display = 'none';
+    }
+
+    async function loginWithPassword() {
+      const pass = document.getElementById('adminPassInput').value.trim();
+      const msg = document.getElementById('adminLoginMsg');
+      if (!pass) return;
+
+      try {
+        const res = await fetch('api/send_admin_magic_link.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: pass })
+        });
+        const data = await res.json();
+        if (data.success && data.token) {
+          localStorage.setItem('eie_admin_auth', data.token);
+          checkAdminAuth();
+          if (window.UPDATE_LOGS) renderUpdateList(window.UPDATE_LOGS);
+          showToast('🔐 管理者として認証されました（期限なし）');
+          closeAdminLoginModal();
+        } else {
+          msg.style.display = 'block';
+          msg.style.background = '#7f1d1d';
+          msg.style.color = '#fecaca';
+          msg.textContent = data.message || 'パスワードが正しくありません。';
+        }
+      } catch (err) {
+        msg.style.display = 'block';
+        msg.style.background = '#7f1d1d';
+        msg.style.color = '#fecaca';
+        msg.textContent = '通信エラーが発生しました。';
+      }
+    }
+
+    async function sendAdminMagicLink() {
+      const email = document.getElementById('adminEmailInput').value.trim();
+      const msg = document.getElementById('adminLoginMsg');
+      const btn = document.getElementById('btnSendMagicLink');
+      if (!email) {
+        alert('メールアドレスを入力してください。');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = '送信中...';
+      try {
+        const res = await fetch('api/send_admin_magic_link.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
+        });
+        const data = await res.json();
+        msg.style.display = 'block';
+        if (data.success) {
+          msg.style.background = '#14532d';
+          msg.style.color = '#bbf7d0';
+          msg.textContent = data.message;
+        } else {
+          msg.style.background = '#7f1d1d';
+          msg.style.color = '#fecaca';
+          msg.textContent = data.message || '送信に失敗しました。';
+        }
+      } catch (err) {
+        msg.style.display = 'block';
+        msg.style.background = '#7f1d1d';
+        msg.style.color = '#fecaca';
+        msg.textContent = '通信エラーが発生しました。';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '✉️ ログインリンクを送信（期限なし）';
+      }
+    }
+
+    function logoutAdmin() {
+      if (confirm('管理者モードをログアウトしますか？')) {
+        localStorage.removeItem('eie_admin_auth');
+        showToast('ログアウトしました');
+        checkAdminAuth();
+        if (window.UPDATE_LOGS) renderUpdateList(window.UPDATE_LOGS);
+      }
+    }
+
     // 初期化
     document.addEventListener('DOMContentLoaded', () => {
+      checkAdminAuth();
+
       if (window.QA_DATABASE) {
         renderQaList(window.QA_DATABASE);
         const countBadge = document.getElementById('qa-count-badge');
@@ -1942,7 +2098,7 @@
         if (updBadge) updBadge.textContent = window.UPDATE_LOGS.length + '件';
       }
 
-      // URLハッシュまたはパラメータで #updates が指定されている場合は自動で速報タブを開く
+      // URLハッシュまたはパラメータで #updates が指定されている場合は速報タブを開く
       const hash = window.location.hash;
       const urlParams = new URLSearchParams(window.location.search);
       if (hash === '#updates' || urlParams.get('tab') === 'updates') {
@@ -2073,23 +2229,13 @@
 
         const jsonStr = JSON.stringify(upd).replace(/"/g, '&quot;');
 
-        return `
-          <div class="update-card" id="${upd.id}">
-            <div class="update-header">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <span class="update-badge-ver">${upd.version}</span>
-                <span class="update-badge-status ${badgeClass}">${upd.badgeLabel}</span>
-                <span style="font-size: 0.82rem; color: var(--text-dim);">${upd.date}</span>
-              </div>
-              <div style="font-size: 0.8rem; color: var(--text-dim);">
-                報告者: <strong style="color: var(--text-main);">${upd.reporter}</strong>
-              </div>
-            </div>
-            <h4 class="update-title">${upd.title}</h4>
-            <div class="update-detail">${upd.detail}</div>
-            <div class="update-action-bar">
-              <div style="font-size: 0.78rem; color: var(--text-dim);">
-                対象: <span style="color: var(--accent-blue);">${upd.affectedAreas}</span>
+        // 管理者のみSNS投稿ボタンを表示
+        let actionBarHtml = '';
+        if (isAdminLoggedIn()) {
+          actionBarHtml = `
+            <div class="update-action-bar" style="border-top: 1px dashed rgba(251, 191, 36, 0.3); padding-top: 10px; margin-top: 12px;">
+              <div style="font-size: 0.78rem; color: var(--accent-gold); font-weight: bold; margin-bottom: 6px;">
+                対象: <span style="color: var(--accent-blue); font-weight: normal;">${upd.affectedAreas}</span> ｜ 🔐 管理者SNS投稿ツール：
               </div>
               <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                 <button type="button" class="btn-sns-copy" onclick="copyUpdateShare('${upd.id}', 'x')">
@@ -2106,6 +2252,30 @@
                 </button>
               </div>
             </div>
+          `;
+        } else {
+          actionBarHtml = `
+            <div style="font-size: 0.78rem; color: var(--text-dim); margin-top: 10px;">
+              対象: <span style="color: var(--accent-blue);">${upd.affectedAreas}</span>
+            </div>
+          `;
+        }
+
+        return `
+          <div class="update-card" id="${upd.id}">
+            <div class="update-header">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span class="update-badge-ver">${upd.version}</span>
+                <span class="update-badge-status ${badgeClass}">${upd.badgeLabel}</span>
+                <span style="font-size: 0.82rem; color: var(--text-dim);">${upd.date}</span>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-dim);">
+                報告者: <strong style="color: var(--text-main);">${upd.reporter}</strong>
+              </div>
+            </div>
+            <h4 class="update-title">${upd.title}</h4>
+            <div class="update-detail">${upd.detail}</div>
+            ${actionBarHtml}
           </div>
         `;
       }).join('');
