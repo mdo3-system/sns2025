@@ -1,0 +1,27 @@
+[Script Info]
+Title: Jyouzen Fukyoshitsu Vol.9 Foundation Cross Section CAD Tool
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: HeaderStep,Meiryo UI,26,&H0000FFFF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,1,0,3,4,0,7,50,50,45,1
+Style: SubtitleBottom,Meiryo UI,32,&H00FFFFFF,&H000000FF,&H00000000,&HA0000000,-1,0,0,0,100,100,1,0,3,6,0,2,80,80,50,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:00.00,0:00:29.33,HeaderStep,,0,0,0,,【Vol.9】基礎断面詳細図作図ツール（FOUNDATION CAD PRO）\N〜 梁断面CAD自動作図・平均GL連動・全符号DXF一括出力 〜
+Dialogue: 0,0:00:00.00,0:00:29.33,SubtitleBottom,,0,0,0,,上善如水 壁量計算WEB、Vol.9 基礎断面詳細図作図ツール編へようこそ\N本ツールでは、基礎梁の構造計算に加えて、伏図の各梁符号に連動した高精度な基礎梁断面詳細図を瞬時にCAD作図できます\Nパラメータの調整から平均GLの連動、そして全符号DXF一括出力までの操作手順をわかりやすく解説します
+Dialogue: 1,0:00:29.03,0:00:49.12,HeaderStep,,0,0,0,,STEP 1：基礎断面詳細図ツールの起動\N基礎タブから『断面詳細図・CAD出力』をクリックして起動
+Dialogue: 0,0:00:29.03,0:00:49.12,SubtitleBottom,,0,0,0,,基礎断面図ツールは、『基礎』タブで梁を選択し、プロパティや計算結果ダイアログの『断面詳細図・CAD出力』ボタンをクリックすることで起動します\N伏図に配置された基礎梁符号が自動抽出され、上部のタブに一覧表示されます
+Dialogue: 1,0:00:48.82,0:01:10.09,HeaderStep,,0,0,0,,STEP 2：符号切り替えとパラメータ調整\N立上り幅・梁成・主筋本数・段数・スターラップを即座に連動描画
+Dialogue: 0,0:00:48.82,0:01:10.09,SubtitleBottom,,0,0,0,,上部の符号タブをクリックすると、FG1、FG2、FG3といった各梁の断面図が瞬時に切り替わります\N梁幅やGL上の高さ、根入れ深さ、主筋本数や段数、スターラップの径とピッチがリアルタイムにベクター描画に反映されます
+Dialogue: 1,0:01:09.79,0:01:34.04,HeaderStep,,0,0,0,,STEP 3：スラブ配筋・平均GL連動 ＆ 天端同寸干渉解消\N平均GLレベル差シミュレーションと美しい寸法線レイアウト
+Dialogue: 0,0:01:09.79,0:01:34.04,SubtitleBottom,,0,0,0,,スラブの厚みや配筋、天端下がりも連動表示されます\Nさらに『平均GLを表示』にチェックを入れると、敷地の平均GLラインが表示され、高低差スライダーでレベル差を直感的にシミュレーション可能です\N天端同寸の場合でも、文字や寸法線が美しく干渉回避されます
+Dialogue: 1,0:01:33.75,0:01:59.31,HeaderStep,,0,0,0,,STEP 4：CAD出力（全符号一括DXF ＆ 選択符号DXF）\NワンクリックでDXF出力し、Jw_cadやAutoCADに即座に直結
+Dialogue: 0,0:01:33.75,0:01:59.31,SubtitleBottom,,0,0,0,,完成した断面図は、右上の出力ボタンから『選択符号DXF』、またはすべての符号を綺麗に並べて出力する『全符号DXF』としてワンクリックでダウンロードできます\NJw_cadやAutoCADにそのまま読み込んで、基礎伏図や確認申請図面に即座に活用いただけます
+Dialogue: 1,0:01:59.01,0:02:15.20,HeaderStep,,0,0,0,,基礎断面詳細図の自動作図完了！\N上善如水 壁量計算WEBで図面作成業務を圧倒的スピード化
+Dialogue: 0,0:01:59.01,0:02:15.20,SubtitleBottom,,0,0,0,,基礎断面詳細図作図ツールにより、手作業での断面図修正やCADの描き直しは完全に不要になります\Nぜひ実務の効率化にお役立てください\Nご視聴ありがとうございました！
