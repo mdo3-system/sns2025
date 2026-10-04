@@ -1282,9 +1282,10 @@
       <span class="domain-badge" style="border-color: rgba(16, 185, 129, 0.35); color: var(--accent-emerald);">
         ⚡ 不具合報告は即日解消・爆速アップデート対応中
       </span>
-      <div id="admin-status-strip" style="display: none; margin-left: auto; align-items: center; gap: 10px; font-size: 0.8rem; background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.4); padding: 2px 10px; border-radius: 999px; color: var(--accent-gold);">
+      <div id="admin-status-strip" style="display: none; margin-left: auto; align-items: center; gap: 10px; font-size: 0.8rem; background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.4); padding: 3px 12px; border-radius: 999px; color: var(--accent-gold);">
         <span>🔐 管理者モード (期限なし)</span>
-        <a href="javascript:void(0)" onclick="logoutAdmin()" style="color: #f87171; text-decoration: underline; font-weight: bold;">ログアウト</a>
+        <button type="button" onclick="scrollToUpdatesTab()" style="background: var(--accent-gold); color: #000; border: none; padding: 3px 10px; border-radius: 4px; font-weight: 800; font-size: 0.78rem; cursor: pointer;">📋 SNS投稿カード一覧へ移動 ➔</button>
+        <a href="javascript:void(0)" onclick="logoutAdmin()" style="color: #f87171; text-decoration: underline; font-weight: bold; margin-left: 4px;">ログアウト</a>
       </div>
     </div>
   </div>
@@ -1979,6 +1980,7 @@
         const newUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '') + window.location.hash;
         window.history.replaceState({}, '', newUrl);
         showToast('🔐 管理者として認証されました（認証期限なし）');
+        setTimeout(scrollToUpdatesTab, 300);
       }
 
       if (urlParams.get('admin_login') === '1') {
@@ -1988,6 +1990,14 @@
       const strip = document.getElementById('admin-status-strip');
       if (strip) {
         strip.style.display = isAdminLoggedIn() ? 'flex' : 'none';
+      }
+    }
+
+    function scrollToUpdatesTab() {
+      switchQaTab('updates');
+      const target = document.getElementById('qa');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
       }
     }
 
@@ -2021,6 +2031,7 @@
           if (window.UPDATE_LOGS) renderUpdateList(window.UPDATE_LOGS);
           showToast('🔐 管理者として認証されました（期限なし）');
           closeAdminLoginModal();
+          scrollToUpdatesTab();
         } else {
           msg.style.display = 'block';
           msg.style.background = '#7f1d1d';
