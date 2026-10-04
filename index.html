@@ -2079,12 +2079,18 @@
               <div style="font-size: 0.78rem; color: var(--text-dim);">
                 対象: <span style="color: var(--accent-blue);">${upd.affectedAreas}</span>
               </div>
-              <div style="display: flex; gap: 8px;">
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                 <button type="button" class="btn-sns-copy" onclick="copyUpdateShare('${upd.id}', 'x')">
-                  <span>𝕏 ポスト文をコピー</span>
+                  <span>𝕏 ポスト</span>
+                </button>
+                <button type="button" class="btn-sns-copy" onclick="copyUpdateShare('${upd.id}', 'threads')">
+                  <span>🧵 Threads</span>
+                </button>
+                <button type="button" class="btn-sns-copy" onclick="copyUpdateShare('${upd.id}', 'youtube')">
+                  <span>▶️ YouTube用</span>
                 </button>
                 <button type="button" class="btn-sns-copy" onclick="copyUpdateShare('${upd.id}', 'note')">
-                  <span>📝 note・SNS用要約コピー</span>
+                  <span>📝 note・詳細</span>
                 </button>
               </div>
             </div>
@@ -2100,14 +2106,23 @@
       if (!upd) return;
 
       let shareText = '';
+      let platformLabel = '';
       if (platform === 'x') {
+        platformLabel = '𝕏 ポスト文';
         shareText = `【壁量計算WEB アップデート速報 ${upd.version}】\n${upd.badgeLabel}：${upd.title}\n\n${upd.shareSummary}\n\n詳細・実務Q&Aはこちら ➔ https://eie.jp/#qa\n#木造構造計算 #2025年法改正 #壁量計算 #建築士実務`;
+      } else if (platform === 'threads') {
+        platformLabel = 'Threads投稿文';
+        shareText = `【壁量計算WEB アップデート速報 ${upd.version}】\n${upd.title}\n\n${upd.shareSummary}\n\n💡 改善ポイント：\n${upd.detail}\n\n実務設計者のみなさまと共に進化し続けています！質問や改善リクエストはWeb内の掲示板へお気軽にどうぞ。\n\n詳細・Q&A ➔ https://eie.jp/#qa\n#木造構造計算 #壁量計算 #建築実務 #2025年法改正 #一級建築士`;
+      } else if (platform === 'youtube') {
+        platformLabel = 'YouTube用プロンプト・概要欄';
+        shareText = `【YouTube動画タイトル案】\n【2025年法改正対応】${upd.title}！壁量計算WEBが大幅進化（${upd.version}）\n\n【動画概要欄 / 説明文】\n壁量計算オープンシステム（https://2025.eie.jp/）の最新アップデート【${upd.version}】の解説です。\n\n▼ 今回の改善・新機能ハイライト\n・内容：${upd.title}\n・詳細：${upd.detail}\n・対象：${upd.affectedAreas}\n\n▼ タイムライン目安\n0:00 オープニング・実務における課題\n0:30 ${upd.title} の実演・操作デモ\n1:30 設計・申請への効果と活用ポイント\n2:00 まとめ・Webで今すぐ無料試算\n\n▼ 壁量計算WEB（インストール不要・ブラウザで動く）\nhttps://2025.eie.jp/\n\n▼ 設計者サポート・Q&Aコミュニティ\nhttps://eie.jp/\n\n#木造構造計算 #壁量計算 #2025年建築基準法改正 #CAD #一級建築士`;
       } else {
+        platformLabel = 'note・SNS要約文';
         shareText = `【アップデート改善報告】${upd.title}（${upd.version}）\n日付：${upd.date}\nご報告者：${upd.reporter}\n内容：${upd.detail}\n対応領域：${upd.affectedAreas}\n\n公式サイト：https://eie.jp/`;
       }
 
       navigator.clipboard.writeText(shareText).then(() => {
-        showToast('SNS用の投稿文をクリップボードにコピーしました！');
+        showToast(`${platformLabel}をクリップボードにコピーしました！`);
       }).catch(err => {
         showToast('コピーに失敗しました');
       });
