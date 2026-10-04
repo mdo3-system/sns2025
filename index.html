@@ -1277,11 +1277,11 @@
         💻 計算プログラム本体（即起動）：<b>2025.eie.jp</b> ➔
       </a>
       <a href="#qa" class="domain-badge" style="border-color: rgba(56, 189, 248, 0.4); color: var(--accent-blue);">
-        💬 実務Q&A・掲示板 ＆ アップデート速報 ➔
+        💬 実務Q&A・掲示板 ➔
       </a>
-      <span class="domain-badge" style="border-color: rgba(16, 185, 129, 0.35); color: var(--accent-emerald);">
-        ⚡ 不具合報告は即日解消・爆速アップデート対応中
-      </span>
+      <a href="#updates" onclick="switchQaTab('updates')" class="domain-badge" style="border-color: rgba(16, 185, 129, 0.45); color: var(--accent-emerald); font-weight: bold;">
+        ⚡ SNS投稿・最新アップデート速報 ➔
+      </a>
     </div>
   </div>
 
@@ -1301,7 +1301,8 @@
         <li><a href="#features">9大革新機能</a></li>
         <li><a href="#foundation">基礎計算キラー特集</a></li>
         <li><a href="#video">実演動画</a></li>
-        <li><a href="#qa">実務Q&A・更新速報</a></li>
+        <li><a href="#qa">実務Q&A</a></li>
+        <li><a href="#updates" onclick="switchQaTab('updates')" style="color: var(--accent-emerald); font-weight: bold;">⚡ SNS投稿・速報</a></li>
         <li><a href="#pricing">安心の料金体系</a></li>
       </ul>
 
@@ -1939,6 +1940,17 @@
         renderUpdateList(window.UPDATE_LOGS);
         const updBadge = document.getElementById('update-count-badge');
         if (updBadge) updBadge.textContent = window.UPDATE_LOGS.length + '件';
+      }
+
+      // URLハッシュまたはパラメータで #updates が指定されている場合は自動で速報タブを開く
+      const hash = window.location.hash;
+      const urlParams = new URLSearchParams(window.location.search);
+      if (hash === '#updates' || urlParams.get('tab') === 'updates') {
+        switchQaTab('updates');
+        const target = document.getElementById('qa');
+        if (target) {
+          setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 100);
+        }
       }
     });
 
