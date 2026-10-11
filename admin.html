@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>上善如水 壁量計算WEB｜管理者認証ポータル</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #07090e;
+      color: #f8fafc;
+      font-family: 'Noto Sans JP', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .admin-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 440px;
+      padding: 32px 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      text-align: center;
+    }
+    .input-box {
+      width: 100%;
+      box-sizing: border-box;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 10px 14px;
+      color: #fff;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      font-size: 0.95rem;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.9; }
+    .btn-green { background: #22c55e; color: #fff; }
+    .btn-blue { background: #2563eb; color: #fff; margin-top: 8px; }
+    .msg-box {
+      display: none;
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="admin-card">
+    <div style="font-size: 2.4rem; margin-bottom: 8px;">🔐</div>
+    <h1 style="font-size: 1.3rem; font-weight: 700; margin: 0 0 6px 0;">管理者認証（SNS投稿・運用管理）</h1>
+    <p style="font-size: 0.82rem; color: #8b949e; margin: 0 0 24px 0;">認証後、公式ポータルの管理機能が有効化されます。</p>
+
+    <!-- パスワード認証 -->
+    <div style="text-align: left; margin-bottom: 20px;">
+      <label style="display: block; font-size: 0.82rem; font-weight: 600; color: #cbd5e1; margin-bottom: 6px;">🔑 パスワード認証</label>
+      <input type="password" id="adminPassInput" class="input-box" placeholder="管理者パスワード" onkeydown="if(event.key==='Enter') loginWithPassword()">
+      <button type="button" class="btn btn-green" onclick="loginWithPassword()">認証してポータルへ進む</button>
+    </div>
+
+    <div style="font-size: 0.8rem; color: #64748b; margin-bottom: 20px;">または</div>
+
+    <!-- マジックリンク認証 -->
+    <div style="text-align: left;">
+      <label style="display: block; font-size: 0.82rem; font-weight: 600; color: #cbd5e1; margin-bottom: 6px;">✉️ マジックリンク認証（メール）</label>
+      <input type="email" id="adminEmailInput" class="input-box" placeholder="管理者メールアドレス (support@eie.tokyo)">
+      <button type="button" id="btnSendMagicLink" class="btn btn-blue" onclick="sendAdminMagicLink()">ログインリンクを受信</button>
+    </div>
+
+    <div id="adminLoginMsg" class="msg-box"></div>
+
+    <div style="margin-top: 24px;">
+      <a href="index.html" style="color: #64748b; font-size: 0.8rem; text-decoration: none;">← 公式ポータルへ戻る</a>
+    </div>
+  </div>
+
+  <script>
+    async function loginWithPassword() {
+      const pass = document.getElementById('adminPassInput').value.trim();
+      const msg = document.getElementById('adminLoginMsg');
+      if (!pass) return;
+
+      try {
+        const res = await fetch('api/send_admin_magic_link.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: pass })
+        });
+        const data = await res.json();
+        if (data.success && data.token) {
+          localStorage.setItem('eie_admin_auth', data.token);
+          msg.style.display = 'block';
+          msg.style.background = '#14532d';
+          msg.style.color = '#bbf7d0';
+          msg.textContent = '認証に成功しました。ポータルへ遷移します...';
+          setTimeout(() => {
+            window.location.href = 'index.html#qa';
+          }, 800);
+        } else {
+          msg.style.display = 'block';
+          msg.style.background = '#7f1d1d';
+          msg.style.color = '#fecaca';
+          msg.textContent = data.message || 'パスワードが正しくありません。';
+        }
+      } catch (err) {
+        msg.style.display = 'block';
+        msg.style.background = '#7f1d1d';
+        msg.style.color = '#fecaca';
+        msg.textContent = '通信エラーが発生しました。';
+      }
+    }
+
+    async function sendAdminMagicLink() {
+      const email = document.getElementById('adminEmailInput').value.trim();
+      const msg = document.getElementById('adminLoginMsg');
+      const btn = document.getElementById('btnSendMagicLink');
+      if (!email) {
+        alert('メールアドレスを入力してください。');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = '送信中...';
+      try {
+        const res = await fetch('api/send_admin_magic_link.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
+        });
+        const data = await res.json();
+        msg.style.display = 'block';
+        if (data.success) {
+          msg.style.background = '#14532d';
+          msg.style.color = '#bbf7d0';
+          msg.textContent = data.message;
+        } else {
+          msg.style.background = '#7f1d1d';
+          msg.style.color = '#fecaca';
+          msg.textContent = data.message || '送信に失敗しました。';
+        }
+      } catch (err) {
+        msg.style.display = 'block';
+        msg.style.background = '#7f1d1d';
+        msg.style.color = '#fecaca';
+        msg.textContent = '通信エラーが発生しました。';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'ログインリンクを受信';
+      }
+    }
+  </script>
+</body>
+</html>
