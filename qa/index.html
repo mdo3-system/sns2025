@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>実務Q&A・技術FAQ集｜Jw_cad連携・四分割法・ベタ基礎・人通口補強【上善如水 壁量計算WEB】</title>
+  <meta name="description" content="『上善如水 壁量計算WEB』の実務Q&Aおよび技術FAQ集。Jw_cadからのDXF読み込み・原点スナップ、ベタ基礎人通口開口部スラブ補強筋、耐力壁直下率と四分割法・壁率比、告示1460号N値金物選定、ボロノイ柱小径算定など、設計実務の現場から寄せられた具体的な質疑と回答を全件公開。">
+  <meta name="keywords" content="壁量計算 Q&A,Jw_cad DXF スナップ,人通口 補強筋 計算,四分割法 壁率比0.5,N値計算 出隅金物,木造構造計算 FAQ">
+  <link rel="canonical" href="https://eie.jp/qa/">
+
+  <!-- OGP -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://eie.jp/qa/">
+  <meta property="og:title" content="実務Q&A・技術FAQ集｜Jw_cad連携・四分割法・ベタ基礎・人通口補強">
+  <meta property="og:description" content="設計実務のリアルな疑問に徹底回答。Jw_cad・DXF連携、ベタ基礎人通口補強、四分割法、告示1460号N値金物の技術Q&A集。">
+  <meta property="og:image" content="https://eie.jp/apple-touch-icon.png">
+  <meta property="og:site_name" content="上善如水 壁量計算WEB">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@2025eie">
+  <meta name="twitter:title" content="実務Q&A・技術FAQ集｜上善如水 壁量計算WEB">
+  <meta name="twitter:description" content="設計実務の現場から寄せられた技術Q&A全件公開。">
+  <meta name="twitter:image" content="https://eie.jp/apple-touch-icon.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Jw_cadから書き出したDXFを読み込むと、壁芯がズレて認識されてしまいます。原点の合わせ方はどうすればよいですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Jw_cadからのDXF出力時は、「用紙原点を維持して書き出し」を行い、通り芯と壁芯を専用レイヤに分けていただくことで、当システムがミリ単位で自動吸着（スナップ）します。余分な文字・寸法・ハッチング要素を非表示にすると誤認識をゼロにできます。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ベタ基礎の人通口開口部で、スラブ主筋の欠損補強筋（D13/D16）はどのように自動判定・配置されますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "本システムの基礎キラー機能では、基礎伏図上で人通口（開口幅）をクリック配置するだけで、開口に伴う応力集中と断面欠損を自動解析します。欠損上主筋の代替補強筋、およびスラブ斜め補強筋が配筋指針に基づき自動算定され、そのまま確認申請提出用PDF計算書へ図解付きで出力されます。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "2階建て木造住宅で、1階と2階の耐力壁ラインがずれている場合の四分割法・壁率比の判定はどう扱われますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "建物外周四分割領域（1/4側端部分）の境界線をリアルタイムでカラーオーバーレイ表示します。耐力壁を1スパン移動または倍率変更するごとに、壁率比（0.5以上）と偏心率（0.15以下）のクリア状況が瞬時に緑/赤で更新されます。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "柱頭・柱脚のN値金物計算で、出隅の柱にホールダウン金物が必要かどうかの判定根拠は計算書に明記されますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "告示1460号の全算定式に完全準拠し、各柱の位置係数（出隅/一般）、筋交い配置方向、上階柱の有無による押さえ効果を1本ずつ明細化した「柱頭柱脚N値算定一覧表」を出力します。指定金物記号および必要耐力（kN）が明確に記載されるため、構造審査機関でも一発通過実績が多数ございます。"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --bg-card: #0f141c;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --accent-blue: #38bdf8;
+      --accent-gold: #fbbf24;
+      --accent-emerald: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+    header.site-header {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(16px); background: rgba(7, 9, 14, 0.9);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 16px 0;
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; }
+    .brand-logo { color: #fff; text-decoration: none; font-weight: 800; font-size: 1.1rem; }
+    .btn-launch {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      color: #000; font-weight: 800; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.9rem;
+    }
+    .breadcrumb { font-size: 0.85rem; color: var(--text-dim); margin: 32px 0 16px 0; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .hero-article { padding: 40px 0 60px 0; border-bottom: 1px solid var(--border-subtle); }
+    .hero-eyebrow { color: var(--accent-blue); font-size: 0.9rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    h1 { font-size: 2.3rem; font-weight: 900; line-height: 1.3; margin-bottom: 24px; }
+    .hero-lead { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px; }
+    .content-section { padding: 60px 0; border-bottom: 1px solid var(--border-subtle); }
+    h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 24px; color: #fff; }
+    .qa-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: 12px; padding: 28px; margin-bottom: 24px;
+    }
+    .qa-q {
+      font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 14px;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .badge-q {
+      background: var(--accent-blue); color: #000; font-weight: 900;
+      padding: 2px 10px; border-radius: 4px; font-size: 0.85rem; flex-shrink: 0;
+    }
+    .qa-a {
+      background: rgba(255, 255, 255, 0.03); border-radius: 8px; padding: 16px 20px;
+      color: #cbd5e1; font-size: 0.95rem; border-left: 3px solid var(--accent-emerald);
+    }
+    .qa-tags { margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .qa-tag {
+      font-size: 0.75rem; background: rgba(255, 255, 255, 0.06); padding: 2px 8px; border-radius: 4px; color: var(--text-muted);
+    }
+    footer { padding: 40px 0; font-size: 0.85rem; color: var(--text-dim); text-align: center; border-top: 1px solid var(--border-subtle); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../" class="brand-logo">
+        <span>上善如水 壁量計算WEB</span>
+      </a>
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <a href="../" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">← 公式ポータル</a>
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-launch">💻 ツール本体へ</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb">
+      <a href="../">ホーム</a> &gt; <span>実務Q&A・技術FAQ集</span>
+    </div>
+
+    <article>
+      <section class="hero-article">
+        <div class="hero-eyebrow">PRACTICAL ARCHITECT Q&A & FAQS</div>
+        <h1>実務Q&A・技術FAQ集｜設計現場のリアルな疑問に徹底回答</h1>
+        <p class="hero-lead">
+          Jw_cadのDXF取り込みから、ベタ基礎人通口スラブ補強、四分割法、告示1460号N値金物選定まで。<br>
+          全国の一級建築士・工務店実務者から寄せられた質問と、開発チームによる公式回答を全件公開しています。
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>💬 よくある実務質問と公式回答</h2>
+
+        <!-- QA 1 -->
+        <div class="qa-card">
+          <div class="qa-q">
+            <span class="badge-q">Q</span>
+            <div>Jw_cadから書き出したDXFを読み込むと、壁芯がズレて認識されてしまいます。原点の合わせ方はどうすればよいですか？</div>
+          </div>
+          <div class="qa-a">
+            <p style="margin-bottom: 8px;"><strong>【公式回答】</strong></p>
+            Jw_cadからのDXF出力時は、<strong>「用紙原点を維持して書き出し」</strong>を行い、通り芯と壁芯を専用レイヤ（例: 通り芯=レイヤ1、耐力壁=レイヤ2）に分けていただくことで、当システムがミリ単位で自動吸着（スナップ）します。また、余分な文字・寸法・ハッチング要素をDXF書き出し時に非表示にすると誤認識をゼロにできます。
+          </div>
+          <div class="qa-tags">
+            <span class="qa-tag">#Jw_cad</span>
+            <span class="qa-tag">#DXF</span>
+            <span class="qa-tag">#原点合わせ</span>
+            <span class="qa-tag">#通り芯スナップ</span>
+          </div>
+        </div>
+
+        <!-- QA 2 -->
+        <div class="qa-card">
+          <div class="qa-q">
+            <span class="badge-q">Q</span>
+            <div>ベタ基礎の人通口開口部で、スラブ主筋の欠損補強筋（D13/D16）はどのように自動判定・配置されますか？</div>
+          </div>
+          <div class="qa-a">
+            <p style="margin-bottom: 8px;"><strong>【公式回答】</strong></p>
+            本システムの基礎キラー機能では、基礎伏図上で<strong>「人通口（開口幅）」をクリック配置するだけ</strong>で、開口に伴う応力集中と断面欠損を自動解析します。欠損上主筋の代替補強筋、およびスラブ斜め補強筋（45度・開口両側補強）が配筋指針に基づき自動算定され、そのまま確認申請提出用のPDF計算書へ図解付きで出力されます。
+          </div>
+          <div class="qa-tags">
+            <span class="qa-tag">#ベタ基礎</span>
+            <span class="qa-tag">#人通口</span>
+            <span class="qa-tag">#補強筋</span>
+            <span class="qa-tag">#スラブ欠損</span>
+          </div>
+        </div>
+
+        <!-- QA 3 -->
+        <div class="qa-card">
+          <div class="qa-q">
+            <span class="badge-q">Q</span>
+            <div>2階建て木造住宅で、1階と2階の耐力壁ラインがずれている場合の四分割法・壁率比の判定はどう扱われますか？</div>
+          </div>
+          <div class="qa-a">
+            <p style="margin-bottom: 8px;"><strong>【公式回答】</strong></p>
+            本システムは、建物外周四分割領域（1/4側端部分）の境界線をリアルタイムでカラーオーバーレイ表示します。耐力壁を1スパン移動または倍率変更（例: 筋交い2.0倍 ➔ 構造用合板2.5倍/3.0倍）するごとに、<strong>壁率比（0.5以上）と偏心率（0.15以下）のクリア状況が瞬時に緑/赤で更新</strong>されます。画面上の数値をリアルタイムに見ながら、直下壁のバランス配置をわずか数秒で探ることができます。
+          </div>
+          <div class="qa-tags">
+            <span class="qa-tag">#四分割法</span>
+            <span class="qa-tag">#壁率比0.5</span>
+            <span class="qa-tag">#耐力壁</span>
+            <span class="qa-tag">#偏心率</span>
+          </div>
+        </div>
+
+        <!-- QA 4 -->
+        <div class="qa-card">
+          <div class="qa-q">
+            <span class="badge-q">Q</span>
+            <div>柱頭・柱脚のN値金物計算で、出隅の柱にホールダウン金物が必要かどうかの判定根拠は計算書に明記されますか？</div>
+          </div>
+          <div class="qa-a">
+            <p style="margin-bottom: 8px;"><strong>【公式回答】</strong></p>
+            ご安心ください。当システムのN値計算エンジンは、告示1460号の全算定式に完全準拠し、各柱の<strong>「位置係数（出隅/一般）」「筋交い配置方向」「上階柱の有無による押さえ効果」を1本ずつ明細化</strong>した「柱頭柱脚N値算定一覧表」を出力します。指定金物記号（（い）〜（と））および必要耐力（kN）が明確に記載されるため、構造審査機関でも一切の質疑なく一発通過実績が多数ございます。
+          </div>
+          <div class="qa-tags">
+            <span class="qa-tag">#N値計算</span>
+            <span class="qa-tag">#告示1460号</span>
+            <span class="qa-tag">#ホールダウン</span>
+            <span class="qa-tag">#審査機関対応</span>
+          </div>
+        </div>
+
+        <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 28px; text-align: center; margin-top: 40px;">
+          <h3 style="margin-top: 0; color: #fff;">ご不明な点や検証用図面がございましたら</h3>
+          <p style="color: var(--text-muted); margin-bottom: 20px;">
+            「この図面はどう入れる？」「この判定はどう出る？」といった個別のご質問は、公式ポータルの実務質問フォーム（DXF添付可能）よりお気軽にお寄せください。開発チームが迅速に回答いたします。
+          </p>
+          <a href="../#qa-form-anchor" style="background: var(--accent-blue); color: #000; font-weight: 800; padding: 12px 28px; border-radius: 8px; text-decoration: none; display: inline-block;">
+            💬 実務質問・不具合報告フォームへ（公式ポータル）
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="margin-bottom: 12px;">
+        <a href="../" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">紹介ポータル</a>
+        <a href="../mac/" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">Mac対応</a>
+        <a href="../jww/" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">Jw_cad連携</a>
+        <a href="../foundation/" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">基礎・人通口</a>
+        <a href="../evidence/" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">計算適合白書</a>
+      </div>
+      <div>運営：株式会社住ま居る（一級建築士事務所） | &copy; 2025-2026 上善如水 壁量計算WEB.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
