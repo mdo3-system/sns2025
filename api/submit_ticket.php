@@ -22,11 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // 入力値のサニタイズ
 $userName   = trim($_POST['userName'] ?? '');
 $userEmail  = trim($_POST['userEmail'] ?? '');
+$userPlan   = trim($_POST['userPlan'] ?? 'free');
 $postType   = trim($_POST['postType'] ?? 'question');
 $category   = trim($_POST['category'] ?? 'other');
 $title      = trim($_POST['title'] ?? '');
 $content    = trim($_POST['content'] ?? '');
 $agreed     = trim($_POST['agreed'] ?? '0');
+$recentActions = json_decode($_POST['recentActions'] ?? '[]', true) ?: [];
 
 // 必須チェック
 if (empty($userName) || empty($userEmail) || empty($title) || empty($content) || $agreed !== '1') {
@@ -95,21 +97,32 @@ if (!empty($_FILES['files']) && is_array($_FILES['files']['name'])) {
 }
 
 // チケット情報の構造化
+$planLabel = [
+    'free'         => '🆓 無料体験・未契約（操作確認・DXF読込）',
+    'weekly'       => '⏱️ 週額プラン利用中（1,650円/週・スポット申請）',
+    'monthly'      => '📅 月額プラン利用中（5,500円/月・業務利用）',
+    'annual'       => '🏢 年額・法人ライセンス（55,000円/年）',
+    'pre_purchase' => '🤝 導入検討中・契約前のご相談'
+][$userPlan] ?? $userPlan;
+
 $ticketData = [
-    'ticketId'    => $ticketId,
-    'submittedAt' => date('c'),
-    'userName'    => $userName,
-    'userEmail'   => $userEmail,
-    'postType'    => $postType,
-    'category'    => $category,
-    'title'       => $title,
-    'content'     => $content,
-    'agreed'      => true,
-    'filesCount'  => count($uploadedFiles),
-    'files'       => $uploadedFiles,
-    'status'      => 'open',
-    'userAgent'   => $_SERVER['HTTP_USER_AGENT'] ?? '',
-    'ipAddress'   => $_SERVER['REMOTE_ADDR'] ?? ''
+    'ticketId'      => $ticketId,
+    'submittedAt'   => date('c'),
+    'userName'      => $userName,
+    'userEmail'     => $userEmail,
+    'userPlan'      => $userPlan,
+    'userPlanLabel' => $planLabel,
+    'postType'      => $postType,
+    'category'      => $category,
+    'title'         => $title,
+    'content'       => $content,
+    'agreed'        => true,
+    'recentActions' => $recentActions,
+    'filesCount'    => count($uploadedFiles),
+    'files'         => $uploadedFiles,
+    'status'        => 'open',
+    'userAgent'     => $_SERVER['HTTP_USER_AGENT'] ?? '',
+    'ipAddress'     => $_SERVER['REMOTE_ADDR'] ?? ''
 ];
 
 // ticket.json として保存
@@ -117,7 +130,7 @@ file_put_contents($baseUploadDir . '/ticket.json', json_encode($ticketData, JSON
 
 // 管理者宛てメール通知（support@eie.tokyo）
 $adminEmail = 'support@eie.tokyo';
-$mailSubject = "【質疑・不具合報告】[{$postType}:{$category}] {$title} ({$ticketId})";
+$mailSubject = "【質疑・不具合報告】[{$postType}:{$category}] [{$userPlan}] {$title} ({$ticketId})";
 
 $fileListText = "";
 if (count($uploadedFiles) > 0) {
@@ -142,6 +155,7 @@ $mailBody = <<<MAIL
 ■ 受付チケット番号 : {$ticketId}
 ■ 受付日時         : {$ticketData['submittedAt']}
 ■ 投稿種別         : {$postTypeLabel}
+■ ご利用プラン     : {$planLabel}
 ■ 該当カテゴリ     : {$category}
 ■ 投稿者名 / 事務所 : {$userName}
 ■ 返信用メール     : {$userEmail}

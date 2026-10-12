@@ -22,12 +22,14 @@ foreach ($dirs as $d) {
                 'submittedAt'  => $data['submittedAt'] ?? '',
                 'userName'     => $data['userName'] ?? '',
                 'userEmail'    => $data['userEmail'] ?? '',
-                'postType'     => $data['postType'] ?? '',
-                'category'     => $data['category'] ?? '',
-                'title'        => $data['title'] ?? '',
-                'filesCount'   => $data['filesCount'] ?? 0,
-                'filesSummary' => implode(', ', $filesSummary),
-                'status'       => $data['status'] ?? 'open'
+                'postType'      => $data['postType'] ?? '',
+                'userPlan'      => $data['userPlan'] ?? 'free',
+                'userPlanLabel' => $data['userPlanLabel'] ?? '未分類',
+                'category'      => $data['category'] ?? '',
+                'title'         => $data['title'] ?? '',
+                'filesCount'    => $data['filesCount'] ?? 0,
+                'filesSummary'  => implode(', ', $filesSummary),
+                'status'        => $data['status'] ?? 'open'
             ];
         }
     }

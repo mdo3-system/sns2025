@@ -1666,63 +1666,116 @@
       <div class="section-header">
         <div class="section-eyebrow gold">FAIR & TRANSPARENT PRICING</div>
         <h2 class="section-title">建築士の固定費リスクを抑える料金設計</h2>
-        <p class="section-desc">年間数十万円の固定費はもう不要です。日々の検討は永久に完全無料。費用は基礎計算や申請書類を出したい期間だけ選べる安心の定額サブスクリプション（週額・月額・年額）。</p>
+        <p class="section-desc">年間数十万円の固定保守費は不要です。日々の作図・壁量チェックは永久に無料。費用は基礎計算や申請書類を出したい期間だけ選べる安心の定額制（週額・月額・年額）。</p>
       </div>
 
-      <div class="pricing-table-container">
-        <!-- 無料プラン -->
-        <div class="pricing-card free-card">
+      <!-- 無料と有料の比較サマリー（作業時間・成果物） -->
+      <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 24px 28px; margin-bottom: 36px; max-width: 1040px; margin-left: auto; margin-right: auto;">
+        <h3 style="font-size: 1.15rem; color: #fff; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+          <span>⚖️</span> <span>【無料】と【有料】でできること・成果物・作業時間の比較</span>
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+          <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 18px;">
+            <div style="color: var(--accent-emerald); font-weight: 800; font-size: 1.0rem; margin-bottom: 6px;">🆓 無料プラン（¥0 / 永久無料）</div>
+            <div style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 8px;"><b>対象・作業時間:</b> プラン初期の壁量検討・間取り安全性チェック（即時判定）</div>
+            <div style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">
+              ・Jw_cad / DXF無制限インポート<br>
+              ・耐力壁配置 ＆ 存在壁量リアルタイム判定<br>
+              ・令46条 四分割法 ＆ 重心・剛心プロット<br>
+              ・告示1460号 厳格N値金物自動選定<br>
+              ・3Dリアルタイム構造モデル
+            </div>
+          </div>
+          <div style="background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 12px; padding: 18px;">
+            <div style="color: var(--accent-gold); font-weight: 800; font-size: 1.0rem; margin-bottom: 6px;">💼 有料プラン（週額・月額・年額）</div>
+            <div style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 8px;"><b>対象・作業時間:</b> 確認申請・構造審査提出（作業約15分で一括生成）</div>
+            <div style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">
+              ・ベタ基礎スラブ接地圧 ＆ 連続梁応力解析<br>
+              ・<b>人通口開口部スラブ補強筋・上主筋欠損検定</b><br>
+              ・確認申請用 A4縦一括構造計算書PDF出力<br>
+              ・基礎断面詳細図CAD ＆ 全符号DXF一括出力<br>
+              ・期間中何度でも出力使い放題・いつでも解約自由
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 選べる3つの有料プラン（週額・月額・年額/法人） -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 24px; max-width: 1040px; margin: 0 auto;">
+        
+        <!-- 週額プラン -->
+        <div class="pricing-card" style="border-color: rgba(56, 189, 248, 0.4); background: linear-gradient(135deg, rgba(15, 20, 28, 0.95), rgba(56, 189, 248, 0.05));">
           <div>
             <div class="pricing-card-header">
-              <span class="feature-badge">誰でも今すぐ使える</span>
-              <h3>日々の作図・設計検証</h3>
-              <p style="font-size: 0.9rem; color: var(--text-muted);">プランニング初期の壁量チェックや3D確認</p>
+              <span class="feature-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-color: rgba(56, 189, 248, 0.4);">駆け込み・単発申請</span>
+              <h3>週額プラン</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">「今週出す1棟だけ急ぎで申請書を出したい」スポット利用</p>
             </div>
-            <div class="pricing-price" style="color: var(--accent-emerald);">
-              ¥0 <span>/ 永久完全無料</span>
+            <div class="pricing-price" style="color: #38bdf8;">
+              ¥1,650 <span>(税込) / 7日間</span>
             </div>
-            <ul class="pricing-items">
-              <li>CAD（DXF）無制限インポート</li>
-              <li>耐力壁配置 ＆ 存在壁量リアルタイム判定</li>
-              <li>平面斜め壁・自由グリッド完全連動</li>
-              <li>4分割法 ＆ 重心剛心プロット</li>
-              <li>告示1460号 厳格N値金物自動選定</li>
-              <li>屋根伏図 ＆ 見付面積立体自動算定</li>
-              <li>3Dリアルタイム構造モデルプレビュー</li>
-              <li>Mac / Windows / iPad マルチデバイス対応</li>
+            <ul class="pricing-items" style="font-size: 0.88rem;">
+              <li>7日間全機能使い放題</li>
+              <li>A4一括申請用計算書PDF無制限出力</li>
+              <li>基礎伏図・詳細断面DXF出力</li>
+              <li>自動更新停止（解約）いつでも可能</li>
+              <li>年数回のスポット申請に最適</li>
             </ul>
           </div>
-          <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-sub-cta" style="justify-content: center; width: 100%; border-color: rgba(16, 185, 129, 0.5);">
-            今すぐ無料で始める（2025.eie.jp）
+          <a href="https://2025.eie.jp/pricing.html" target="_blank" rel="noopener" class="btn-sub-cta" data-plan="weekly" data-funnel="funnel_plan_weekly" style="justify-content: center; width: 100%; border-color: rgba(56, 189, 248, 0.5); color: #38bdf8;">
+            週額プランで今すぐ出力 ➔
           </a>
         </div>
 
-        <!-- サブスクリプションプラン -->
-        <div class="pricing-card paid-card">
+        <!-- 月額プラン -->
+        <div class="pricing-card" style="border-color: rgba(251, 191, 36, 0.6); background: linear-gradient(135deg, rgba(15, 20, 28, 0.95), rgba(251, 191, 36, 0.08)); position: relative;">
+          <div style="position: absolute; top: -12px; right: 24px; background: var(--accent-gold); color: #000; font-size: 0.75rem; font-weight: 800; padding: 3px 12px; border-radius: 9999px;">一番人気・日常実務</div>
           <div>
             <div class="pricing-card-header">
-              <span class="feature-badge" style="background:rgba(251,191,36,0.15); color:var(--accent-gold); border-color:rgba(251,191,36,0.4);">選べる週・月・年額</span>
-              <h3>本格基礎計算 ＆ 申請用帳票</h3>
-              <p style="font-size: 0.9rem; color: var(--text-muted);">確認申請・構造審査へそのまま提出する期間だけ契約</p>
+              <span class="feature-badge" style="background: rgba(251, 191, 36, 0.15); color: var(--accent-gold); border-color: rgba(251, 191, 36, 0.4);">常時業務利用</span>
+              <h3>月額プラン</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">アトリエ設計事務所・個人事業主の日常設計インフラ</p>
             </div>
             <div class="pricing-price" style="color: var(--accent-gold);">
-              週額 ¥1,650〜 <span>(税込) / 定額使い放題</span>
+              ¥5,500 <span>(税込) / 1ヶ月</span>
             </div>
-            <ul class="pricing-items">
-              <li>ベタ基礎スラブ亀甲分割 ＆ 接地圧算定</li>
-              <li>基礎立上り・地中梁 連続梁応力解析</li>
-              <li>人通口開口部スラブ補強筋・上主筋欠損検定</li>
-              <li>基礎断面詳細図CAD作図 ＆ 全符号DXF一括出力</li>
-              <li>確認申請用 A4縦一括構造計算書PDF出力</li>
-              <li>週額(¥1,650)・月額(¥5,500)・年額から自由に選択</li>
-              <li>期間中何度でも出力使い放題・いつでも解約自由</li>
-              <li>年間固定保守料・解約違約金 0円</li>
+            <ul class="pricing-items" style="font-size: 0.88rem;">
+              <li>全機能完全無制限使い放題</li>
+              <li>月間複数棟の設計・申請に最適</li>
+              <li>法改正アップデート即日自動反映</li>
+              <li>月単位で契約・停止自由</li>
+              <li>固定保守費・初期費用ゼロ</li>
             </ul>
           </div>
-          <a href="https://2025.eie.jp/pricing.html" target="_blank" rel="noopener" class="btn-main-cta" style="justify-content: center; width: 100%;">
-            料金プラン詳細・決済へ ➔
+          <a href="https://2025.eie.jp/pricing.html" target="_blank" rel="noopener" class="btn-main-cta" data-plan="monthly" data-funnel="funnel_plan_monthly" style="justify-content: center; width: 100%;">
+            月額プランで利用開始 ➔
           </a>
         </div>
+
+        <!-- 年額・法人プラン -->
+        <div class="pricing-card" style="border-color: rgba(168, 85, 247, 0.4); background: linear-gradient(135deg, rgba(15, 20, 28, 0.95), rgba(168, 85, 247, 0.05));">
+          <div>
+            <div class="pricing-card-header">
+              <span class="feature-badge" style="background: rgba(168, 85, 247, 0.15); color: #c084fc; border-color: rgba(168, 85, 247, 0.4);">請求書払い・年間2ヶ月分得</span>
+              <h3>年額・法人プラン</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">工務店・設計組織・経理請求書払い対応</p>
+            </div>
+            <div class="pricing-price" style="color: #c084fc;">
+              ¥55,000 <span>(税込) / 年間</span>
+            </div>
+            <ul class="pricing-items" style="font-size: 0.88rem;">
+              <li>月額換算 約¥4,583（年間2ヶ月分お得）</li>
+              <li><b>請求書払い（銀行振込）対応</b></li>
+              <li>適格請求書（インボイス）領収書発行</li>
+              <li>複数ライセンスの一括契約・優先サポート</li>
+              <li>設計組織・工務店の共通インフラに</li>
+            </ul>
+          </div>
+          <a href="enterprise/" class="btn-sub-cta" data-plan="annual" data-funnel="funnel_plan_annual" style="justify-content: center; width: 100%; border-color: rgba(168, 85, 247, 0.5); color: #c084fc;">
+            法人プラン・請求書払い窓口 ➔
+          </a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1816,6 +1869,17 @@
               <label for="qaUserEmail">返信用メールアドレス <span class="form-required">必須</span></label>
               <input type="email" id="qaUserEmail" class="form-control" placeholder="example@arch-office.jp" required>
             </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 18px;">
+            <label for="qaUserPlan">ご利用状況・ご契約プラン <span class="form-required">必須</span></label>
+            <select id="qaUserPlan" class="form-control" required style="background: rgba(30, 41, 59, 0.9); border: 1px solid var(--accent-gold); color: #fff; font-weight: 600;">
+              <option value="free">🆓 無料体験中・未契約（まずは操作確認・DXF読込中）</option>
+              <option value="weekly">⏱️ 週額プラン利用中（1,650円/週・スポット申請利用）</option>
+              <option value="monthly">📅 月額プラン利用中（5,500円/月・通常業務利用）</option>
+              <option value="annual">🏢 年額・法人ライセンス利用中（55,000円/年）</option>
+              <option value="pre_purchase">🤝 導入検討中・契約前の技術相談</option>
+            </select>
           </div>
 
           <div class="form-grid">
@@ -2002,6 +2066,9 @@
     <span style="font-size: 1.3rem;">✅</span>
     <span id="toastMessage">コピーしました</span>
   </div>
+
+  <!-- ファネルイベント計測 ＆ 行動トラッカー -->
+  <script src="assets/js/funnel_tracker.js"></script>
 
   <!-- Q&A ＆ アップデートデータ読み込み -->
   <script src="assets/js/qa_data.js"></script>
@@ -2412,6 +2479,7 @@
 
       const userName = document.getElementById('qaUserName')?.value;
       const userEmail = document.getElementById('qaUserEmail')?.value;
+      const userPlan = document.getElementById('qaUserPlan')?.value || 'free';
       const postType = document.getElementById('qaPostType')?.value;
       const category = document.getElementById('qaCategory')?.value;
       const title = document.getElementById('qaTitle')?.value;
@@ -2432,11 +2500,18 @@
         const formData = new FormData();
         formData.append('userName', userName);
         formData.append('userEmail', userEmail);
+        formData.append('userPlan', userPlan);
         formData.append('postType', postType);
         formData.append('category', category);
         formData.append('title', title);
         formData.append('content', content);
         formData.append('agreed', '1');
+
+        // 直前の行動履歴（ファネル追跡用）
+        if (window.FunnelTracker) {
+          const recent = window.FunnelTracker.getRecentActions();
+          formData.append('recentActions', JSON.stringify(recent));
+        }
 
         attachedFiles.forEach((file) => {
           formData.append('files[]', file);
@@ -2450,6 +2525,9 @@
         const result = await response.json().catch(() => ({ success: false }));
 
         if (result && result.success) {
+          if (window.FunnelTracker) {
+            window.FunnelTracker.track('funnel_ticket_submitted', { plan: userPlan, category: category });
+          }
           showToast(`✉️ チケット「${result.ticketId}」として受付完了しました！`);
           document.getElementById('qaSubmitForm').reset();
           attachedFiles = [];
