@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ベタ基礎接地圧算定 ＆ 人通口スラブ補強検定｜実務計算ガイド【上善如水 壁量計算WEB】</title>
+  <meta name="description" content="木造住宅のベタ基礎構造計算、スラブ亀甲分割による接地圧・短期許容支持力算定、基礎立上り・地中梁の連続梁応力解析、人通口（点検口）開口部スラブ補強検定（上主筋欠損・下主筋増打ち）の実務基準と自動計算ツールの完全解説。">
+  <meta name="keywords" content="ベタ基礎 接地圧,人通口 補強 計算,基礎梁 応力計算,人通口 開口部補強,スラブ亀甲分割,基礎断面図 CAD,2025年法改正 基礎計算">
+  <link rel="canonical" href="https://eie.jp/foundation/">
+
+  <!-- OGP -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://eie.jp/foundation/">
+  <meta property="og:title" content="ベタ基礎接地圧算定 ＆ 人通口スラブ補強検定｜実務計算ガイド">
+  <meta property="og:description" content="手計算や外注に頼っていたベタ基礎構造計算をブラウザで全自動化。スラブ亀甲分割・基礎梁連続梁解析・人通口欠損補強検定に対応。">
+  <meta property="og:image" content="https://eie.jp/apple-touch-icon.png">
+  <meta property="og:site_name" content="上善如水 壁量計算WEB">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@2025eie">
+  <meta name="twitter:title" content="ベタ基礎接地圧算定 ＆ 人通口スラブ補強検定｜実務計算ガイド">
+  <meta name="twitter:description" content="ベタ基礎接地圧算定と人通口スラブ補強検定の実務基準を網羅。ブラウザで即座に計算書出力。">
+  <meta name="twitter:image" content="https://eie.jp/apple-touch-icon.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --bg-card: #0f141c;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --accent-blue: #38bdf8;
+      --accent-gold: #fbbf24;
+      --accent-emerald: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    header.site-header {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(16px); background: rgba(7, 9, 14, 0.9);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 16px 0;
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; }
+    .brand-logo { color: #fff; text-decoration: none; font-weight: 800; font-size: 1.1rem; }
+    .btn-launch {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      color: #000; font-weight: 800; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.9rem;
+    }
+    .breadcrumb { font-size: 0.85rem; color: var(--text-dim); margin: 32px 0 16px 0; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .hero-article { padding: 40px 0 60px 0; border-bottom: 1px solid var(--border-subtle); }
+    .hero-eyebrow { color: var(--accent-gold); font-size: 0.9rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    h1 { font-size: 2.3rem; font-weight: 900; line-height: 1.3; margin-bottom: 24px; }
+    .hero-lead { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px; }
+    .content-section { padding: 60px 0; border-bottom: 1px solid var(--border-subtle); }
+    h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 20px; color: #fff; }
+    h3 { font-size: 1.25rem; font-weight: 700; margin: 30px 0 14px 0; color: var(--accent-gold); }
+    p { margin-bottom: 20px; color: #cbd5e1; }
+    ul { margin-bottom: 24px; padding-left: 24px; color: #cbd5e1; }
+    li { margin-bottom: 10px; }
+    .card-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: 12px; padding: 28px; margin: 24px 0;
+    }
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(56, 189, 248, 0.1));
+      border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 16px;
+      padding: 48px; text-align: center; margin: 60px 0;
+    }
+    footer { padding: 40px 0; font-size: 0.85rem; color: var(--text-dim); text-align: center; border-top: 1px solid var(--border-subtle); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../" class="brand-logo">
+        <span>上善如水 壁量計算WEB</span>
+      </a>
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <a href="../" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">← 公式ポータル</a>
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-launch">💻 基礎計算を試す</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb">
+      <a href="../">ホーム</a> &gt; <span>ベタ基礎接地圧算定 ＆ 人通口補強検定</span>
+    </div>
+
+    <article>
+      <section class="hero-article">
+        <div class="hero-eyebrow">FOUNDATION ENGINEERING & REINFORCEMENT</div>
+        <h1>もうベタ基礎と人通口で消耗しない｜スラブ亀甲分割接地圧と点検口スラブ補強検定の全自動化</h1>
+        <p class="hero-lead">
+          2025年4月の法改正に伴い、木造住宅の基礎構造に対しても厳格な審査が行われるようになりました。<br>
+          多くの設計事務所・工務店が「手計算に何日も費やす」か「1棟十数万円で外注に出す」しかなかったベタ基礎接地圧算定と人通口（点検口）欠損補強検定を、ブラウザ上で完全自動化しました。
+        </p>
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-launch" style="display: inline-block; padding: 14px 32px; font-size: 1.05rem;">
+          🚀 ベタ基礎計算を今すぐ体験する（2025.eie.jp） ➔
+        </a>
+      </section>
+
+      <section class="content-section">
+        <h2>⚖️ 実務者が直面する「ベタ基礎計算」の3大課題</h2>
+        <div class="card-box">
+          <h3 style="margin-top: 0;">① 多角形スラブの接地圧算定（亀甲分割の重労働）</h3>
+          <p>
+            定型グリッドではない異形敷地や部分的な凹凸スラブにおいて、荷重負担幅を手計算で三角・台形に分割（亀甲分割）して接地圧を算出するのは、極めて煩雑でミスが多発する作業です。
+          </p>
+        </div>
+        <div class="card-box">
+          <h3 style="margin-top: 0;">② 人通口（点検口）開口部の構造的弱点</h3>
+          <p>
+            基礎立ち上がりに人通口を設けると、梁の上主筋が切断され、断面性能が激減します。「耐力壁直下を避けて配置できているか」「開口部の梁成をスラブ厚みのみとみなした上で、下主筋増打ち本数で安全率を確保できるか」の厳格な検定が求められます。
+          </p>
+        </div>
+        <div class="card-box">
+          <h3 style="margin-top: 0;">③ 確認申請用の一括計算書と基礎断面図の作成</h3>
+          <p>
+            計算結果が出ても、基礎伏図や梁符号ごとの配筋詳細断面図（立上り幅・梁成・スラブ厚・GLレベル）をCADで作図し、A4計算書帳票へまとめる作業に莫大な時間が奪われていました。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>🛠️ 上善如水が提供する「全自動基礎ソリューション」</h2>
+        <h3>1. スラブ閉合で即座に「亀甲分割線」を自動描画</h3>
+        <p>
+          多角形スラブの頂点をクリックして閉合するだけで、幾何学的な荷重負担境界（亀甲分割線）が瞬時に生成。長期荷重および短期地震時の接地圧・地盤の短期許容支持力に対する余裕度が一目で分かります。
+        </p>
+        <h3>2. 人通口スラブ補強検定の自動化</h3>
+        <p>
+          人通口を配置すると、耐力壁直下の禁止位置を警告判定。さらに、梁成をスラブ厚みのみとみなして上主筋欠損（黒塗り）とし、下主筋増打ちによる曲げ補強検定を自動実行します。
+        </p>
+        <h3>3. 基礎断面図作図ツール（FOUNDATION CAD PRO）</h3>
+        <p>
+          各梁符号の配筋、梁幅、梁成、スラブ厚、天端レベル、平均GLラインを反映した詳細断面図を瞬時にミリ単位で自動作図。全符号一括DXFエクスポートにより、Jw_cad等の意匠CAD図面に直結します。
+        </p>
+        <h3>4. A4縦一括計算書PDFの即時出力</h3>
+        <p>
+          確認申請に必要な表紙、一般事項、伏図、梁応力図、人通口検定表、断面仕様表を、A4縦形式で一発PDF出力。そのまま審査機関に提出可能です。
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>💰 費用対効果：外注費15万円 vs 本ツール5,500円</h2>
+        <p>
+          ベタ基礎の構造計算を外部の計算事務所に外注した場合、一般的に**1棟あたり10万円〜20万円、納期2〜3週間**がかかります。
+        </p>
+        <p>
+          『上善如水 壁量計算WEB』なら、申請書類を出したい月だけ契約できる**月額5,500円（または週額1,650円）**。外注費を95%以上削減し、即日計算完了で設計実務を絶対に止めません。
+        </p>
+      </section>
+
+      <section class="cta-banner">
+        <h2 style="justify-content: center; font-size: 2rem;">ベタ基礎の構造計算を、今すぐブラウザで。</h2>
+        <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 680px; margin: 16px auto 32px auto;">
+          日々の作図・検証は永久完全無料。基礎計算と帳票出力は、必要な時だけ選べる安心の定額サブスクリプションです。
+        </p>
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-launch" style="font-size: 1.15rem; padding: 16px 40px; display: inline-block;">
+          💻 基礎計算を試してみる（2025.eie.jp） ➔
+        </a>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="margin-bottom: 12px;">
+        <a href="../" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">紹介ポータル</a>
+        <a href="../mac/" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">Macユーザー向けガイド</a>
+        <a href="../jww/" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">Jw_cad連携ガイド</a>
+        <a href="../compare.html" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">競合・howtec比較</a>
+      </div>
+      <div>運営：株式会社住ま居る（一級建築士事務所） | &copy; 2025-2026 上善如水 壁量計算WEB.</div>
+    </div>
+  </footer>
+
+</body>
+</html>

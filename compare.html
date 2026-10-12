@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>木造壁量計算ソフト比較｜国の無料ツール(howtec)・市販ソフトとの違い【上善如水 壁量計算WEB】</title>
+  <meta name="description" content="2025年改正建築基準法に対応した木造壁量計算ソフトの徹底比較。国の無料ツール（howtec・日本住宅木材技術センターExcel）、市販ソフト（壁Check6、ホームズ君、HOUSE-ST1）と『上善如水 壁量計算WEB』の機能・価格・Mac対応・DXF連携を実務者目線で比較検証。">
+  <meta name="keywords" content="壁量計算ソフト 比較,howtec 壁量計算,壁Check6 比較,ホームズ君 構造EX,木造壁量計算 無料,2025年法改正 ツール比較">
+  <link rel="canonical" href="https://eie.jp/compare.html">
+
+  <!-- OGP -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://eie.jp/compare.html">
+  <meta property="og:title" content="木造壁量計算ソフト比較｜国の無料ツール(howtec)・市販ソフトとの違い">
+  <meta property="og:description" content="2025年法改正に対応する木造壁量計算ツールの比較ガイド。国の無料Excelツール、市販ソフト、ブラウザ型SaaSのメリット・デメリットを徹底解説。">
+  <meta property="og:image" content="https://eie.jp/apple-touch-icon.png">
+  <meta property="og:site_name" content="上善如水 壁量計算WEB">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@2025eie">
+  <meta name="twitter:title" content="木造壁量計算ソフト比較｜howtec無料ツール・市販ソフトとの違い">
+  <meta name="twitter:description" content="木造壁量計算ソフト徹底比較。howtec、壁Check6、上善如水の特徴と実務適性を分析。">
+  <meta name="twitter:image" content="https://eie.jp/apple-touch-icon.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --bg-card: #0f141c;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --accent-blue: #38bdf8;
+      --accent-gold: #fbbf24;
+      --accent-emerald: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+    header.site-header {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(16px); background: rgba(7, 9, 14, 0.9);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 16px 0;
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; }
+    .brand-logo { color: #fff; text-decoration: none; font-weight: 800; font-size: 1.1rem; }
+    .btn-launch {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      color: #000; font-weight: 800; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.9rem;
+    }
+    .breadcrumb { font-size: 0.85rem; color: var(--text-dim); margin: 32px 0 16px 0; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .hero-article { padding: 40px 0 60px 0; border-bottom: 1px solid var(--border-subtle); }
+    .hero-eyebrow { color: var(--accent-blue); font-size: 0.9rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    h1 { font-size: 2.3rem; font-weight: 900; line-height: 1.3; margin-bottom: 24px; }
+    .hero-lead { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px; }
+    .content-section { padding: 60px 0; border-bottom: 1px solid var(--border-subtle); }
+    h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 20px; color: #fff; }
+    h3 { font-size: 1.25rem; font-weight: 700; margin: 30px 0 14px 0; color: var(--accent-gold); }
+    p { margin-bottom: 20px; color: #cbd5e1; }
+    ul { margin-bottom: 24px; padding-left: 24px; color: #cbd5e1; }
+    li { margin-bottom: 10px; }
+    .table-compare {
+      width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 0.92rem;
+    }
+    .table-compare th, .table-compare td {
+      padding: 14px 16px; border: 1px solid var(--border-subtle); text-align: left;
+    }
+    .table-compare th { background: rgba(56, 189, 248, 0.1); color: var(--accent-blue); font-weight: 700; }
+    .table-compare .winner { background: rgba(251, 191, 36, 0.08); font-weight: 700; color: #fef08a; }
+    .card-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: 12px; padding: 28px; margin: 24px 0;
+    }
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(251, 191, 36, 0.1));
+      border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 16px;
+      padding: 48px; text-align: center; margin: 60px 0;
+    }
+    footer { padding: 40px 0; font-size: 0.85rem; color: var(--text-dim); text-align: center; border-top: 1px solid var(--border-subtle); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="./" class="brand-logo">
+        <span>上善如水 壁量計算WEB</span>
+      </a>
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <a href="./" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">← 公式ポータル</a>
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-launch">💻 今すぐ無料で試す</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb">
+      <a href="./">ホーム</a> &gt; <span>木造壁量計算ソフト徹底比較</span>
+    </div>
+
+    <article>
+      <section class="hero-article">
+        <div class="hero-eyebrow">SOFTWARE COMPARISON & BUYER'S GUIDE</div>
+        <h1>木造壁量計算ソフト比較｜国の無料ツール（howtec）・市販ソフトとの違いと最適な選び方</h1>
+        <p class="hero-lead">
+          2025年4月の法改正（4号特例縮小・構造審査義務化）に伴い、木造住宅を手掛ける設計者は「どのツールを使って計算すべきか」という選択を迫られています。<br>
+          国が公式配布する無料Excelツール（howtec）、10万円前後の買い切り専門ソフト、数十万円の一貫構造ソフト、そしてブラウザ完結型の『上善如水 壁量計算WEB』を客観的に比較検証します。
+        </p>
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-launch" style="display: inline-block; padding: 14px 32px; font-size: 1.05rem;">
+          🚀 上善如水 壁量計算WEBを無料で試す（2025.eie.jp） ➔
+        </a>
+      </section>
+
+      <section class="content-section">
+        <h2>📊 木造壁量計算ツール 一括比較マトリクス</h2>
+        <div style="overflow-x: auto;">
+          <table class="table-compare">
+            <thead>
+              <tr>
+                <th>ツール区分</th>
+                <th>代表的製品</th>
+                <th>初期費用</th>
+                <th>年間維持費</th>
+                <th>Mac動作</th>
+                <th>CAD連携</th>
+                <th>ベタ基礎・人通口</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>国公式 無料ツール</strong></td>
+                <td>howtec（木材技術センターExcel）</td>
+                <td>¥0</td>
+                <td>¥0</td>
+                <td>△（Excelのみ）</td>
+                <td>×（全手入力）</td>
+                <td>×（非対応）</td>
+              </tr>
+              <tr>
+                <td><strong>新興 買い切りソフト</strong></td>
+                <td>壁Check6 PRO（時空間）</td>
+                <td>100,000円＋税</td>
+                <td>バージョンアップ都度</td>
+                <td>×（Windows専用）</td>
+                <td>○（DXF取込）</td>
+                <td>△（標準仕様のみ）</td>
+              </tr>
+              <tr>
+                <td><strong>大手 構造専業ソフト</strong></td>
+                <td>ホームズ君 / HOUSE-ST1</td>
+                <td>15万〜50万円</td>
+                <td>5万〜10万円/年</td>
+                <td>×（Windows専用）</td>
+                <td>○（高機能）</td>
+                <td>○（オプション）</td>
+              </tr>
+              <tr class="winner">
+                <td><strong>クラウドSaaS型</strong></td>
+                <td><strong>上善如水 壁量計算WEB</strong></td>
+                <td><strong>¥0</strong></td>
+                <td><strong>¥0（日常利用無料）<br>申請時のみ週¥1,650〜</strong></td>
+                <td><strong>◎ 完全対応（Safari）</strong></td>
+                <td><strong>◎ 全CADのDXF直結</strong></td>
+                <td><strong>◎ 亀甲接地圧・人通口欠損補強</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>🔍 競合・代替手段ごとの詳細分析</h2>
+
+        <div class="card-box">
+          <h3 style="margin-top: 0;">1. 国公式無料ツール（howtec・日本住宅木材技術センターExcel）との違い</h3>
+          <p>
+            <strong>【メリット】</strong> 完全無料であり、国交省告示基準の公式解釈に基づいているため信頼性は担保されます。<br>
+            <strong>【実務上の壁】</strong> すべての寸法・壁量・階高をスプレッドシートに手動で打ち込む必要があります。CADとの自動連携がないため、Jw_cad等で引いた図面があっても二重入力になり、図面変更のたびに莫大な手戻りが発生します。また、斜め壁の水平力分解やベタ基礎接地圧・人通口補強などの高度な検討には対応していません。
+          </p>
+        </div>
+
+        <div class="card-box">
+          <h3 style="margin-top: 0;">2. 壁Check6 PRO（時空間）との違い</h3>
+          <p>
+            <strong>【メリット】</strong> 10万円の買い切り価格で、設計事務所の手作り感・法改正対応が迅速です。<br>
+            <strong>【実務上の壁】</strong> Windows専用ソフトウェアであり、Macでは動作しません。また、たまにしか申請しない設計者にとっては10万円の初期費用が一括で発生します。『上善如水』なら日常の検討・作図は永久無料、申請時だけ月5,500円で利用できるため、キャッシュフローの負担が最小限に抑えられます。
+          </p>
+        </div>
+
+        <div class="card-box">
+          <h3 style="margin-top: 0;">3. ホームズ君・HOUSE-ST1等の大手ソフトとの違い</h3>
+          <p>
+            <strong>【メリット】</strong> 許容応力度計算まで網羅し、業界標準としての高い認知度があります。<br>
+            <strong>【実務上の壁】</strong> 導入費用が数十万円と高額で、使わない月も年間保守費（数万円〜十数万円）を支払い続ける必要があります。年に2〜10棟程度の木造住宅を設計するアトリエ建築士や工務店にとっては過剰投資（オーバースペック）になりがちです。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>💡 結論：どんな設計者に「上善如水」が向いているか？</h2>
+        <ul>
+          <li><strong>Macで美しい意匠図面を引いている建築家・アトリエ設計事務所</strong></li>
+          <li><strong>Jw_cadや汎用CADを愛用し、図面データの二重打ちを無くしたい実務者</strong></li>
+          <li><strong>年に数棟の木造住宅申請のために、高額な年間保守料を払いたくない事務所</strong></li>
+          <li><strong>ベタ基礎の接地圧や人通口の補強検討を手計算や外注から解放したい方</strong></li>
+        </ul>
+      </section>
+
+      <section class="cta-banner">
+        <h2 style="justify-content: center; font-size: 2rem;">まずは無料で、操作感を比較してください。</h2>
+        <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 680px; margin: 16px auto 32px auto;">
+          クレジットカード登録不要、インストール不要。ブラウザを開いてDXFをドロップするだけで、今すぐ体験できます。
+        </p>
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-launch" style="font-size: 1.15rem; padding: 16px 40px; display: inline-block;">
+          💻 上善如水 壁量計算WEBを今すぐ起動（2025.eie.jp） ➔
+        </a>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="margin-bottom: 12px;">
+        <a href="./" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">紹介ポータル</a>
+        <a href="./mac/" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">Macユーザー向けガイド</a>
+        <a href="./jww/" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">Jw_cad連携ガイド</a>
+        <a href="./foundation/" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">ベタ基礎・人通口補強</a>
+      </div>
+      <div>運営：株式会社住ま居る（一級建築士事務所） | &copy; 2025-2026 上善如水 壁量計算WEB.</div>
+    </div>
+  </footer>
+
+</body>
+</html>

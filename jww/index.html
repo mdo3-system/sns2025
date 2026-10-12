@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jw_cadからDXF一発で壁量計算・基礎伏図｜JWW図面連携ガイド【上善如水 壁量計算WEB】</title>
+  <meta name="description" content="Jw_cad（JWW）で引いた平面図からDXFを書き出し、ブラウザで即座に壁量計算・4分割法・N値金物・ベタ基礎断面図を作成する実務手順ガイド。図面の二重打ち・再入力の手間をゼロにし、2025年改正建築基準法の構造審査を最短で突破します。">
+  <meta name="keywords" content="Jw_cad 壁量計算,JWW 構造計算,JWW DXF 書き出し,壁量計算 JWW,2025年法改正 Jw_cad,上善如水 壁量計算WEB">
+  <link rel="canonical" href="https://eie.jp/jww/">
+
+  <!-- OGP -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://eie.jp/jww/">
+  <meta property="og:title" content="Jw_cadからDXF一発で壁量計算・基礎伏図｜JWW図面連携ガイド">
+  <meta property="og:description" content="JWW図面の二重打ち・再入力はもう不要。Jw_cadからDXFを書き出してドロップするだけで、壁量算定・4分割・N値・3D確認が即座にスタート。">
+  <meta property="og:image" content="https://eie.jp/apple-touch-icon.png">
+  <meta property="og:site_name" content="上善如水 壁量計算WEB">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@2025eie">
+  <meta name="twitter:title" content="Jw_cadからDXF一発で壁量計算・基礎伏図｜JWW図面連携ガイド">
+  <meta name="twitter:description" content="Jw_cad（JWW）からDXFを書き出し、ブラウザで即座に壁量計算・基礎伏図を作成する実務手順。">
+  <meta name="twitter:image" content="https://eie.jp/apple-touch-icon.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Jw_cad図面からDXF一発で壁量計算を行う実務手順",
+    "description": "Jw_cadで作成した木造平面図をDXF形式で書き出し、上善如水 壁量計算WEBに取り込んで壁量判定を行う手順。",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "JWW側で通り芯・柱・壁のレイヤを整理",
+        "text": "通り芯・柱・壁の縮尺を1:1に揃えて画層を整理します。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "DXFファイルとして保存・エクスポート",
+        "text": "Jw_cadの「ファイル」メニューから「DXF形式で保存」を選択します。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "上善如水 壁量計算WEBへドラッグ＆ドロップ",
+        "text": "ブラウザ画面にDXFをドロップして原点合致インポートを実行します。"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --bg-card: #0f141c;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --accent-blue: #38bdf8;
+      --accent-gold: #fbbf24;
+      --accent-emerald: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    header.site-header {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(16px); background: rgba(7, 9, 14, 0.9);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 16px 0;
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; }
+    .brand-logo { color: #fff; text-decoration: none; font-weight: 800; font-size: 1.1rem; }
+    .btn-launch {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      color: #000; font-weight: 800; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.9rem;
+    }
+    .breadcrumb { font-size: 0.85rem; color: var(--text-dim); margin: 32px 0 16px 0; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .hero-article { padding: 40px 0 60px 0; border-bottom: 1px solid var(--border-subtle); }
+    .hero-eyebrow { color: var(--accent-emerald); font-size: 0.9rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    h1 { font-size: 2.3rem; font-weight: 900; line-height: 1.3; margin-bottom: 24px; }
+    .hero-lead { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px; }
+    .content-section { padding: 60px 0; border-bottom: 1px solid var(--border-subtle); }
+    h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 20px; color: #fff; display: flex; align-items: center; gap: 10px; }
+    h3 { font-size: 1.25rem; font-weight: 700; margin: 30px 0 14px 0; color: var(--accent-gold); }
+    p { margin-bottom: 20px; color: #cbd5e1; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; color: #cbd5e1; }
+    li { margin-bottom: 10px; }
+    .step-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: 12px; padding: 24px; margin: 20px 0; position: relative;
+    }
+    .step-num {
+      background: var(--accent-emerald); color: #000; font-weight: 900;
+      display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 0.85rem; margin-bottom: 10px;
+    }
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(251, 191, 36, 0.1));
+      border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 16px;
+      padding: 48px; text-align: center; margin: 60px 0;
+    }
+    footer { padding: 40px 0; font-size: 0.85rem; color: var(--text-dim); text-align: center; border-top: 1px solid var(--border-subtle); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../" class="brand-logo">
+        <span>上善如水 壁量計算WEB</span>
+      </a>
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <a href="../" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">← 公式ポータル</a>
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-launch">💻 JWW図面で今すぐ試す</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb">
+      <a href="../">ホーム</a> &gt; <span>Jw_cad図面連携ガイド</span>
+    </div>
+
+    <article>
+      <section class="hero-article">
+        <div class="hero-eyebrow">JW_CAD SEAMLESS INTEGRATION</div>
+        <h1>Jw_cadからDXF一発で壁量計算・基礎伏図｜図面の二重打ち・再入力の手間を根絶する実務手順</h1>
+        <p class="hero-lead">
+          「意匠図面はJw_cadで仕上げているのに、構造計算ソフトに同じグリッドと柱をもう一度打ち直している……」<br>
+          そんな無駄な転記作業は今日で終わりにしましょう。『上善如水 壁量計算WEB』は、Jw_cadで描いたDXFファイルをドラッグ＆ドロップするだけで、瞬時にミリ単位で原点合致インポート。日々の作図・壁量検証はずっと無料で利用できます。
+        </p>
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-launch" style="display: inline-block; padding: 14px 32px; font-size: 1.05rem;">
+          🚀 Jw_cad図面で今すぐ無料計算（2025.eie.jp） ➔
+        </a>
+      </section>
+
+      <section class="content-section">
+        <h2>📐 なぜ多くの構造ソフトはJw_cadと相性が悪いのか？</h2>
+        <p>
+          Jw_cad（JWW）は日本全国の工務店・設計事務所で愛用される名機ですが、多くの市販構造ソフトは「自社独自の専用CADエディタ」にユーザーを囲い込もうとします。
+        </p>
+        <p>
+          その結果、JWWの図面があるにもかかわらず：
+        </p>
+        <ul>
+          <li><strong>通り芯寸法を電卓を叩きながら1本ずつ手入力し直す</strong></li>
+          <li><strong>柱の配置や壁のラインを別ソフトでトレースし直す</strong></li>
+          <li><strong>プラン変更のたびにJWWと構造ソフトの両方を修正してミス・食い違いが発生する</strong></li>
+        </ul>
+        <p>
+          という莫大な二重手戻りが発生していました。
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>🛠️ Jw_cad ➔ 壁量計算WEB 実務連携の3ステップ</h2>
+
+        <div class="step-box">
+          <div class="step-num">STEP 1</div>
+          <h3 style="margin-top: 0;">Jw_cadで通り芯・柱レイヤを整理してDXF書き出し</h3>
+          <p>
+            Jw_cadの平面図ファイルで、通り芯レイヤと柱レイヤが整っていることを確認します。縮尺は1:1で出力するのがポイントです。「ファイル」➔「DXF形式で保存」を選択します。
+          </p>
+        </div>
+
+        <div class="step-box">
+          <div class="step-num">STEP 2</div>
+          <h3 style="margin-top: 0;">ブラウザ（2025.eie.jp）へDXFをドラッグ＆ドロップ</h3>
+          <p>
+            『上善如水 壁量計算WEB』を開き、DXFファイルをドロップ。自動的に通り芯交点と柱が認識され、下絵とミリ単位で合致したグリッドが瞬時に立ち上がります。
+          </p>
+        </div>
+
+        <div class="step-box">
+          <div class="step-num">STEP 3</div>
+          <h3 style="margin-top: 0;">柱をつかんで耐力壁を配置 ➔ 存在壁量・4分割・N値が即時判定</h3>
+          <p>
+            JWWの下絵図面をガイドにしながら、クリック操作で耐力壁や筋交いを引くだけ。X方向・Y方向の必要壁量充足率がリアルタイムでOK表示になり、告示1460号準拠の柱引抜金物も自動選定されます。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>🏗️ Jw_cad図面への逆エクスポート（FOUNDATION CAD PRO）</h2>
+        <p>
+          本ツールは取り込むだけではありません。ベタ基礎計算や基礎断面図作図ツール（FOUNDATION CAD PRO）で作成した基礎梁断面詳細図（配筋・立上り幅・スラブ厚・天端レベル）を、**DXF形式で一括エクスポート**できます。
+        </p>
+        <p>
+          書き出したDXFをそのままJw_cadで読み込めば、申請添付図面や現場施工図としてそのままレイアウト・印刷することが可能です。
+        </p>
+      </section>
+
+      <section class="cta-banner">
+        <h2 style="justify-content: center; font-size: 2rem;">JWW図面を今すぐドラッグ＆ドロップ</h2>
+        <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 680px; margin: 16px auto 32px auto;">
+          インストール不要、費用ゼロ。お手元のデスクトップにあるJw_cadの図面を開いて、圧倒的な作業短縮を体験してください。
+        </p>
+        <a href="https://2025.eie.jp" target="_blank" rel="noopener" class="btn-launch" style="font-size: 1.15rem; padding: 16px 40px; display: inline-block;">
+          💻 Jw_cad図面で今すぐ計算開始（2025.eie.jp） ➔
+        </a>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="margin-bottom: 12px;">
+        <a href="../" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">紹介ポータル</a>
+        <a href="../mac/" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">Macユーザー向けガイド</a>
+        <a href="../foundation/" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">ベタ基礎・人通口補強</a>
+        <a href="../compare.html" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">競合・howtec比較</a>
+      </div>
+      <div>運営：株式会社住ま居る（一級建築士事務所） | &copy; 2025-2026 上善如水 壁量計算WEB.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
